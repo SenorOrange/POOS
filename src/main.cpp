@@ -4,7 +4,7 @@
 
 
 // controller
-pros::Controller controller(pros::E_CONTROLLER_MASTER);
+
 
 // motor groups
 pros::MotorGroup leftMotors({-2, -1, -3}, pros::MotorGearset::blue); 
@@ -156,21 +156,22 @@ void autonomous() {
  * Runs in driver control
  */
 void opcontrol() {
-    // loop forever
+
     while (true) {
-        // get left y and right x positions
+        //some code to make robot go vroom
         int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
         int leftX = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
 
         chassis.curvature(leftY, leftX);
 
+        //a tiny bit of code to lifty the ringies
+        setIntakeMotors();
+
+        //a touch of code to lifty the ringies but higher
 
 
 
-
-
-        // delay to save resources
-        pros::delay(25);
+        pros::delay(10);
     }
 
 }
