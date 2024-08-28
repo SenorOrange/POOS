@@ -1,9 +1,12 @@
 #include "main.h"
+#include "pros/adi.hpp"
 
 //MOTORS
 extern pros::Motor lift;
 extern pros::Motor intake;
-//extern pros::ADIPneumatics mogoMech;
+
+//PNEUMATICS
+extern pros::adi::DigitalOut mogoMech;
 
 //CONTROLLER
 extern pros::Controller controller;

@@ -167,6 +167,9 @@ void opcontrol() {
         //a tiny bit of code to lifty the ringies
         setIntakeMotors();
 
+        //smidge of letters to tilt the mogo
+        setMogoMech();
+
         //a touch of code to lifty the ringies but higher
 
 
