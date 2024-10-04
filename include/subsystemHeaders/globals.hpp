@@ -5,8 +5,10 @@
 extern pros::Motor lift;
 extern pros::Motor intake;
 
-//PNEUMATICS
+//3 WIRE
 extern pros::adi::DigitalOut mogoMech;
+extern pros::adi::Encoder rotSensor;
+
 
 //CONTROLLER
 extern pros::Controller controller;
