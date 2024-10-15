@@ -4,7 +4,7 @@
 #include "pros/motors.hpp"
 
 //MOTORS
-pros::Motor lift(4, pros::v5::MotorGears::green, pros::v5::MotorUnits::counts);
+pros::Motor ladyBrown(4, pros::v5::MotorGears::green, pros::v5::MotorUnits::counts);
 pros::Motor intake(5, pros::v5::MotorGears::blue);
 
 //3 WIRE
