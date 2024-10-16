@@ -23,3 +23,20 @@ void setLadyBrown() {
         ladyBrown.move_absolute(50, 200);
         }
 }
+
+//MOTOR POSITION
+void displayMotorPosition() {
+    while (true) {
+        // Get the motor position in ticks (degrees)
+        double position = ladyBrown.get_position();
+
+        // Clear the screen
+        pros::lcd::clear();
+
+        // Print the motor position to the LCD screen
+        pros::lcd::print(0, "Motor position: %.2f ticks", position);
+
+        // Delay to prevent excessive CPU usage (refresh every 100ms)
+        pros::delay(100);
+    }
+}

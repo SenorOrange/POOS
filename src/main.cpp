@@ -172,7 +172,9 @@ void opcontrol() {
 
         //a touch of code to lifty the ringies but higher
         //setLadyBrown();
-        ladyBrown.move_velocity(10);
+        
+        // Display motor position on the screen continuously
+        displayMotorPosition();
 
         pros::delay(10);
     }
