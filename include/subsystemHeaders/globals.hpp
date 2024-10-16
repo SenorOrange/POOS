@@ -7,7 +7,6 @@ extern pros::Motor intake;
 
 //3 WIRE
 extern pros::adi::DigitalOut mogoMech;
-extern pros::adi::Encoder rotSensor;
 
 
 //CONTROLLER

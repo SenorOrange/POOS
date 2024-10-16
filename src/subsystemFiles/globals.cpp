@@ -4,12 +4,11 @@
 #include "pros/motors.hpp"
 
 //MOTORS
-pros::Motor ladyBrown(4, pros::v5::MotorGears::green, pros::v5::MotorUnits::counts);
-pros::Motor intake(5, pros::v5::MotorGears::blue);
+pros::Motor ladyBrown(5, pros::v5::MotorGears::green);
+pros::Motor intake(21, pros::v5::MotorGears::blue);
 
-//3 WIRE
+//Pneumatics
 pros::adi::DigitalOut mogoMech ('A');
-pros::adi::Encoder rotSensor ('C', 'D', false);
 
 
 //CONTROLLER

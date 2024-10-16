@@ -1,24 +1,25 @@
 #include "main.h"
 #include "pros/misc.h"
+#include "pros/motors.hpp"
 
 //DRIVER CONTROL FUNCTIONS
 void setLadyBrown() {
 
-    //SCORE POSITION (R2)
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2) && ladyBrown.get_position() < 100) {
+    //SCORE POSITION (A)
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
 
         ladyBrown.move_absolute(100, 200);
         }
 
-    //DOWN POSITION (L2)
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2) && ladyBrown.get_position() > 0) {
+    //DOWN POSITION (Left)
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
 
         ladyBrown.move_absolute(0, 200);
         }
 
-    //PRIME POSITION (A)
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && ladyBrown.get_position() != 30) {
+    //PRIME POSITION (R2)
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
 
-        ladyBrown.move_absolute(30, 200);
+        ladyBrown.move_absolute(50, 200);
         }
 }

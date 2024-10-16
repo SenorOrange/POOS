@@ -171,8 +171,8 @@ void opcontrol() {
         setMogoMech();
 
         //a touch of code to lifty the ringies but higher
-        setLadyBrown();
-
+        //setLadyBrown();
+        ladyBrown.move_velocity(10);
 
         pros::delay(10);
     }
