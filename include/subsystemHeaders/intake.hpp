@@ -2,3 +2,5 @@
 
 //DRIVER CONTROL FUNCTIONS
 void setIntakeMotors();
+
+void slowIntake();

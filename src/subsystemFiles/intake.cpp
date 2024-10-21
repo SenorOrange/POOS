@@ -32,9 +32,20 @@ void setIntakeMotors() {
         
 
         intake.move_velocity(-600);
+        
 
         x =!x;
         }
     
     
+}
+
+void slowIntake() {
+    while (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1) == true) {
+        intake.move_velocity(300);
+        }
+
+        while (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1) == true) {
+        intake.move_velocity(-300);
+        }
 }

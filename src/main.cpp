@@ -95,7 +95,7 @@ void initialize() {
             // print robot location to the brain screen
             pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
             pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
-            pros::lcd::print(2, "Theta: %f", chassis.getPose().theta); // heading
+            pros::lcd::print(4, "Theta: %f", chassis.getPose().theta); // heading
             // log position telemetry
             lemlib::telemetrySink()->info("Chassis pose: {}", chassis.getPose());
             // delay to save resources
@@ -165,16 +165,24 @@ void opcontrol() {
         chassis.curvature(leftY, leftX);
 
         //a tiny bit of code to lifty the ringies
-        setIntakeMotors();
+        if (ladyBrown.get_position() == 250) {
+            slowIntake();
+        } else {
+            setIntakeMotors();
+        }
 
         //smidge of letters to tilt the mogo
         setMogoMech();
 
         //a touch of code to lifty the ringies but higher
-        //setLadyBrown();
+        setLadyBrown();
         
+        
+
         // Display motor position on the screen continuously
-        displayMotorPosition();
+        //displayMotorPosition();
+
+       
 
         pros::delay(10);
     }
