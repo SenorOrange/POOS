@@ -1,3 +1,5 @@
+
+
 /**
  * \file main.h
  *
@@ -35,6 +37,8 @@
 #define PROS_USE_LITERALS
 
 #include "api.h"
+#include "liblvgl/lvgl.h"  
+#include "pros/apix.h"
 
 /**
  * You should add more #includes here
@@ -75,6 +79,7 @@ void opcontrol(void);
 #include "subsystemHeaders/intake.hpp"
 #include "subsystemHeaders/ladyBrown.hpp"
 #include "subsystemHeaders/mogoMech.hpp"
+#include "subsystemHeaders/poos.hpp"
 
 //#include <iostream>
 #endif

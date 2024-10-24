@@ -1,6 +1,9 @@
 #include "main.h"
 #include "lemlib/api.hpp" // IWYU pragma: keep
 #include "pros/abstract_motor.hpp"
+#include "main.h"
+#include "pros/misc.h"
+#include "pros/screen.hpp"
 
 
 // controller
@@ -10,10 +13,18 @@
 pros::MotorGroup leftMotors({-2, -1, -3}, pros::MotorGearset::blue); 
 pros::MotorGroup rightMotors({8, 7, 10}, pros::MotorGearset::blue); 
 
-// motors
-pros::Motor intakeMotors(5, pros::MotorGearset::blue);
 
 pros::Imu imu(16);
+
+
+lv_obj_t * myButton;
+lv_obj_t * myButtonLabel;
+lv_obj_t * myLabel;
+
+lv_style_t myButtonStyleREL; //relesed style
+lv_style_t myButtonStylePR; //pressed style
+
+
 
 // drivetrain settings
 lemlib::Drivetrain drivetrain(&leftMotors,
@@ -77,31 +88,14 @@ lemlib::Chassis chassis(drivetrain, linearController, angularController, sensors
  * All other competition modes are blocked by initialize; it is recommended
  * to keep execution time for this mode under a few seconds.
  */
+
+
+
 void initialize() {
-    pros::lcd::initialize(); // initialize brain screen
     chassis.calibrate(); // calibrate sensors
-
-    // the default rate is 50. however, if you need to change the rate, you
-    // can do the following.
-    // lemlib::bufferedStdout().setRate(...);
-    // If you use bluetooth or a wired connection, you will want to have a rate of 10ms
-
-    // for more information on how the formatting for the loggers
-    // works, refer to the fmtlib docs
-
-    // thread to for brain screen and position logging
-    pros::Task screenTask([&]() {
-        while (true) {
-            // print robot location to the brain screen
-            pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
-            pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
-            pros::lcd::print(4, "Theta: %f", chassis.getPose().theta); // heading
-            // log position telemetry
-            lemlib::telemetrySink()->info("Chassis pose: {}", chassis.getPose());
-            // delay to save resources
-            pros::delay(50);
-        }
-    });
+    pros::screen::set_pen(pros::c::COLOR_RED);
+    pros::screen::draw_circle(240, 200, 100);
+    
 }
 
 /**
@@ -146,10 +140,8 @@ void autonomous() {
     // the movement will run immediately
     // Unless its another movement, in which case it will wait
     chassis.waitUntil(10);
-    pros::lcd::print(4, "Traveled 10 inches during pure pursuit!");
     // wait until the movement is done
     chassis.waitUntilDone();
-    pros::lcd::print(4, "pure pursuit finished!");
 }
 
 /**
@@ -176,13 +168,6 @@ void opcontrol() {
 
         //a touch of code to lifty the ringies but higher
         setLadyBrown();
-        
-        
-
-        // Display motor position on the screen continuously
-        //displayMotorPosition();
-
-       
 
         pros::delay(10);
     }
