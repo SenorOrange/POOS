@@ -93,9 +93,7 @@ lemlib::Chassis chassis(drivetrain, linearController, angularController, sensors
 
 void initialize() {
     chassis.calibrate(); // calibrate sensors
-    pros::screen::set_pen(pros::c::COLOR_RED);
-    pros::screen::draw_circle(240, 200, 100);
-    
+    drawGUI();
 }
 
 /**
