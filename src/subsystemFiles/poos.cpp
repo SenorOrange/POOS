@@ -2,11 +2,13 @@
 #include "pros/colors.h"
 #include "pros/screen.h"
 #include "pros/screen.hpp"
+#include "subsystemHeaders/poos.hpp"
+
 
 bool bluePlusSide = false;
 bool blueMinusSide = false;
 bool blueRush = false;
-bool blueAWP = false;
+bool blueAWP = true;
 bool redPlusSide = false;
 bool redMinusSide = false;
 bool redRush = false;
@@ -86,15 +88,15 @@ while(1){
     pros::screen::print(pros::E_TEXT_MEDIUM, 32, 55, "Plus");
 
     //Adjust Bools
-    bool bluePlusSide = true;
-    bool blueMinusSide = false;
-    bool blueRush = false;
-    bool blueAWP = false;
-    bool redPlusSide = false;
-    bool redMinusSide = false;
-    bool redRush = false;
-    bool redAWP = false;
-    bool skillsAuton = false;
+    bluePlusSide = true;
+    blueMinusSide = false;
+    blueRush = false;
+    blueAWP = false;
+    redPlusSide = false;
+    redMinusSide = false;
+    redRush = false;
+    redAWP = false;
+    skillsAuton = false;
     }
 
     //Select Blue Minus
@@ -107,15 +109,15 @@ while(1){
     pros::screen::print(pros::E_TEXT_MEDIUM, 120, 55, "Minus");
 
     //Adjust Bools
-    bool bluePlusSide = false;
-    bool blueMinusSide = true;
-    bool blueRush = false;
-    bool blueAWP = false;
-    bool redPlusSide = false;
-    bool redMinusSide = false;
-    bool redRush = false;
-    bool redAWP = false;
-    bool skillsAuton = false;
+    bluePlusSide = false;
+    blueMinusSide = true;
+    blueRush = false;
+    blueAWP = false;
+    redPlusSide = false;
+    redMinusSide = false;
+    redRush = false;
+    redAWP = false;
+    skillsAuton = false;
     }
 
     //Select Blue Rush
@@ -128,15 +130,15 @@ while(1){
     pros::screen::print(pros::E_TEXT_MEDIUM, 220, 55, "Rush");
 
     //Adjust Bools
-    bool bluePlusSide = false;
-    bool blueMinusSide = false;
-    bool blueRush = true;
-    bool blueAWP = false;
-    bool redPlusSide = false;
-    bool redMinusSide = false;
-    bool redRush = false;
-    bool redAWP = false;
-    bool skillsAuton = false;
+    bluePlusSide = false;
+    blueMinusSide = false;
+    blueRush = true;
+    blueAWP = false;
+    redPlusSide = false;
+    redMinusSide = false;
+    redRush = false;
+    redAWP = false;
+    skillsAuton = false;
     }
 
     //Select Blue AWP
@@ -149,15 +151,15 @@ while(1){
     pros::screen::print(pros::E_TEXT_MEDIUM, 320, 55, "AWP");
 
     //Adjust Bools
-    bool bluePlusSide = false;
-    bool blueMinusSide = false;
-    bool blueRush = false;
-    bool blueAWP = true;
-    bool redPlusSide = false;
-    bool redMinusSide = false;
-    bool redRush = false;
-    bool redAWP = false;
-    bool skillsAuton = false;
+    bluePlusSide = false;
+    blueMinusSide = false;
+    blueRush = false;
+    blueAWP = true;
+    redPlusSide = false;
+    redMinusSide = false;
+    redRush = false;
+    redAWP = false;
+    skillsAuton = false;
     }
 
     //Select Red Plus
@@ -170,15 +172,15 @@ while(1){
     pros::screen::print(pros::E_TEXT_MEDIUM, 32, 170, "Plus");
 
     //Adjust Bools
-    bool bluePlusSide = false;
-    bool blueMinusSide = false;
-    bool blueRush = false;
-    bool blueAWP = false;
-    bool redPlusSide = true;
-    bool redMinusSide = false;
-    bool redRush = false;
-    bool redAWP = false;
-    bool skillsAuton = false;
+    bluePlusSide = false;
+    blueMinusSide = false;
+    blueRush = false;
+    blueAWP = false;
+    redPlusSide = true;
+    redMinusSide = false;
+    redRush = false;
+    redAWP = false;
+    skillsAuton = false;
     }
 
     //Select Red Minus
@@ -191,15 +193,15 @@ while(1){
     pros::screen::print(pros::E_TEXT_MEDIUM, 120, 170, "Minus");
 
     //Adjust Bools
-    bool bluePlusSide = false;
-    bool blueMinusSide = false;
-    bool blueRush = false;
-    bool blueAWP = false;
-    bool redPlusSide = false;
-    bool redMinusSide = true;
-    bool redRush = false;
-    bool redAWP = false;
-    bool skillsAuton = false;
+    bluePlusSide = false;
+    blueMinusSide = false;
+    blueRush = false;
+    blueAWP = false;
+    redPlusSide = false;
+    redMinusSide = true;
+    redRush = false;
+    redAWP = false;
+    skillsAuton = false;
     }
 
     //Select Red Rush
@@ -212,15 +214,15 @@ while(1){
     pros::screen::print(pros::E_TEXT_MEDIUM, 220, 170, "Rush");
 
     //Adjust Bools
-    bool bluePlusSide = false;
-    bool blueMinusSide = false;
-    bool blueRush = false;
-    bool blueAWP = false;
-    bool redPlusSide = false;
-    bool redMinusSide = false;
-    bool redRush = true;
-    bool redAWP = false;
-    bool skillsAuton = false;
+    bluePlusSide = false;
+    blueMinusSide = false;
+    blueRush = false;
+    blueAWP = false;
+    redPlusSide = false;
+    redMinusSide = false;
+    redRush = true;
+    redAWP = false;
+    skillsAuton = false;
     }
 
     //Select Red AWP
@@ -233,15 +235,15 @@ while(1){
     pros::screen::print(pros::E_TEXT_MEDIUM, 320, 170, "AWP");
 
     //Adjust Bools
-    bool bluePlusSide = false;
-    bool blueMinusSide = false;
-    bool blueRush = false;
-    bool blueAWP = false;
-    bool redPlusSide = false;
-    bool redMinusSide = false;
-    bool redRush = false;
-    bool redAWP = true;
-    bool skillsAuton = false;
+    bluePlusSide = false;
+    blueMinusSide = false;
+    blueRush = false;
+    blueAWP = false;
+    redPlusSide = false;
+    redMinusSide = false;
+    redRush = false;
+    redAWP = true;
+    skillsAuton = false;
     }
 
     //Select Auton Skills
@@ -255,15 +257,31 @@ while(1){
     pros::screen::print(pros::E_TEXT_MEDIUM, 401, 125, "Skills");
 
     //Adjust Bools
-    bool bluePlusSide = false;
-    bool blueMinusSide = false;
-    bool blueRush = false;
-    bool blueAWP = false;
-    bool redPlusSide = false;
-    bool redMinusSide = false;
-    bool redRush = false;
-    bool redAWP = false;
-    bool skillsAuton = true;
+    bluePlusSide = false;
+    blueMinusSide = false;
+    blueRush = false;
+    blueAWP = false;
+    redPlusSide = false;
+    redMinusSide = false;
+    redRush = false;
+    redAWP = false;
+    skillsAuton = true;
     }
   }
+    pros::delay(10); // Small delay to prevent overwhelming the CPU
+
+}
+
+void testBools() {
+    // Print the current states of the boolean variables
+    std::cout << "Testing Bool States:\n";
+    std::cout << "Blue Plus Side: " << bluePlusSide << "\n";
+    std::cout << "Blue Minus Side: " << blueMinusSide << "\n";
+    std::cout << "Blue Rush: " << blueRush << "\n";
+    std::cout << "Blue AWP: " << blueAWP << "\n";
+    std::cout << "Red Plus Side: " << redPlusSide << "\n";
+    std::cout << "Red Minus Side: " << redMinusSide << "\n";
+    std::cout << "Red Rush: " << redRush << "\n";
+    std::cout << "Red AWP: " << redAWP << "\n";
+    std::cout << "Skills Auton: " << skillsAuton << "\n";
 }

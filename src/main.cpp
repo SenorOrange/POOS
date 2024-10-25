@@ -1,86 +1,12 @@
 #include "main.h"
 #include "lemlib/api.hpp" // IWYU pragma: keep
 #include "pros/abstract_motor.hpp"
-#include "main.h"
 #include "pros/misc.h"
 #include "subsystemHeaders/poos.hpp"
-
-
-// controller
-
-
-// motor groups
-pros::MotorGroup leftMotors({-2, -1, -3}, pros::MotorGearset::blue); 
-pros::MotorGroup rightMotors({8, 7, 10}, pros::MotorGearset::blue); 
-
-
-pros::Imu imu(16);
-
-
-lv_obj_t * myButton;
-lv_obj_t * myButtonLabel;
-lv_obj_t * myLabel;
-
-lv_style_t myButtonStyleREL; //relesed style
-lv_style_t myButtonStylePR; //pressed style
+#include "subsystemHeaders/globals.hpp"
 
 
 
-// drivetrain settings
-lemlib::Drivetrain drivetrain(&leftMotors,
-                              &rightMotors, 
-                              10, // 10 inch track width
-                              lemlib::Omniwheel::NEW_275,
-                              450,
-                              2
-);
-
-// lateral motion controller
-lemlib::ControllerSettings linearController(10, // proportional gain (kP)
-                                            0, // integral gain (kI)
-                                            3, // derivative gain (kD)
-                                            3, // anti windup
-                                            1, // small error range, in inches
-                                            100, // small error range timeout, in milliseconds
-                                            3, // large error range, in inches
-                                            500, // large error range timeout, in milliseconds
-                                            20 // maximum acceleration (slew)
-);
-
-// angular motion controller
-lemlib::ControllerSettings angularController(2, // proportional gain (kP)
-                                             0, // integral gain (kI)
-                                             10, // derivative gain (kD)
-                                             3, // anti windup
-                                             1, // small error range, in degrees
-                                             100, // small error range timeout, in milliseconds
-                                             3, // large error range, in degrees
-                                             500, // large error range timeout, in milliseconds
-                                             0 // maximum acceleration (slew)
-);
-
-// sensors for odometry
-lemlib::OdomSensors sensors(nullptr, 
-                            nullptr, 
-                            nullptr, 
-                            nullptr, 
-                            &imu 
-);
-
-// input curve for throttle input during driver control
-lemlib::ExpoDriveCurve throttleCurve(3, // joystick deadband out of 127
-                                     10, // minimum output where drivetrain will move out of 127
-                                     1.019 // expo curve gain
-);
-
-// input curve for steer input during driver control
-lemlib::ExpoDriveCurve steerCurve(3, // joystick deadband out of 127
-                                  10, // minimum output where drivetrain will move out of 127
-                                  1.019 // expo curve gain
-);
-
-// create the chassis
-lemlib::Chassis chassis(drivetrain, linearController, angularController, sensors, &throttleCurve, &steerCurve);
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -94,9 +20,7 @@ lemlib::Chassis chassis(drivetrain, linearController, angularController, sensors
 void initialize() {
     chassis.calibrate(); // calibrate sensors
     drawGUI();
-    //touchTester();
-    autonSelector();
-    
+    //autonSelector();
 }
 
 /**
@@ -107,7 +31,9 @@ void disabled() {}
 /**
  * runs after initialize if the robot is connected to field control
  */
-void competition_initialize() {}
+void competition_initialize() {
+    autonSelector();
+}
 
 // get a path used for pure pursuit
 // this needs to be put outside a function
@@ -119,7 +45,13 @@ ASSET(example_txt); // '.' replaced with "_" to make c++ happy
  * This is an example autonomous routine which demonstrates a lot of the features LemLib has to offer
  */
 void autonomous() {
-    // Move to x: 20 and y: 15, and face heading 90. Timeout set to 4000 ms
+
+    //Auto Win Point
+    if (blueAWP == true) {
+    AWP();
+    }
+
+    /*// Move to x: 20 and y: 15, and face heading 90. Timeout set to 4000 ms
     chassis.moveToPose(20, 15, 90, 4000);
     // Move to x: 0 and y: 0 and face heading 270, going backwards. Timeout set to 4000ms
     chassis.moveToPose(0, 0, 270, 4000, {.forwards = false});
@@ -142,7 +74,7 @@ void autonomous() {
     // Unless its another movement, in which case it will wait
     chassis.waitUntil(10);
     // wait until the movement is done
-    chassis.waitUntilDone();
+    chassis.waitUntilDone();*/
 }
 
 /**
@@ -157,18 +89,10 @@ void opcontrol() {
 
         chassis.curvature(leftY, leftX);
 
-        //a tiny bit of code to lifty the ringies
-        if (ladyBrown.get_position() == 250) {
-            slowIntake();
-        } else {
-            setIntakeMotors();
-        }
-
-        //smidge of letters to tilt the mogo
+        setIntakeMotors();
         setMogoMech();
-
-        //a touch of code to lifty the ringies but higher
         setLadyBrown();
+        //a touch of code to lifty the ringies but higher
 
         pros::delay(10);
     }

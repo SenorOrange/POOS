@@ -81,6 +81,13 @@ void opcontrol(void);
 #include "subsystemHeaders/mogoMech.hpp"
 #include "subsystemHeaders/poos.hpp"
 
+#include "autons/AWP.hpp"
+#include "autons/minusSide.hpp"
+#include "autons/plusSide.hpp"
+#include "autons/rush.hpp"
+#include "autons/skillsAuton.hpp"
+
+
 //#include <iostream>
 #endif
 
