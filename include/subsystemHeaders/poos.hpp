@@ -3,3 +3,5 @@
 //POOS FUNCTIONS
 
 void drawGUI();
+void touchTester();
+void autonSelector();

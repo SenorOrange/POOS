@@ -3,7 +3,7 @@
 #include "pros/abstract_motor.hpp"
 #include "main.h"
 #include "pros/misc.h"
-#include "pros/screen.hpp"
+#include "subsystemHeaders/poos.hpp"
 
 
 // controller
@@ -94,6 +94,9 @@ lemlib::Chassis chassis(drivetrain, linearController, angularController, sensors
 void initialize() {
     chassis.calibrate(); // calibrate sensors
     drawGUI();
+    //touchTester();
+    autonSelector();
+    
 }
 
 /**
