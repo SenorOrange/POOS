@@ -4,3 +4,6 @@
 void setIntakeMotors();
 
 void slowIntake();
+
+//AUTON FUNCTIONS
+void spinIntake();

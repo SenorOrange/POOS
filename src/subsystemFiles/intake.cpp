@@ -49,3 +49,9 @@ void slowIntake() {
         intake.move_velocity(-300);
         }
 }
+
+//AUTON FUNCTIONS
+
+void spinIntake() {
+    intake.move_velocity(600);
+}
