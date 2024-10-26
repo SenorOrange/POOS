@@ -5,9 +5,11 @@
 #include "pros/colors.h"
 #include "pros/misc.h"
 #include "subsystemHeaders/globals.hpp"
+#include <future>
 
 
 void AWP() {
-    chassis.moveToPose(20, 15, 90, 4000);
-
+    chassis.moveToPoint(0, 72, 1000, {.forwards=false});
+    chassis.moveToPose(20, 15, 90, 1000);
+    clamp();
 }
