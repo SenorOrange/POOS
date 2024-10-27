@@ -80,6 +80,7 @@ void opcontrol(void);
 #include "subsystemHeaders/ladyBrown.hpp"
 #include "subsystemHeaders/mogoMech.hpp"
 #include "subsystemHeaders/poos.hpp"
+#include "subsystemHeaders/doinker.hpp"
 
 #include "autons/AWP.hpp"
 #include "autons/minusSide.hpp"

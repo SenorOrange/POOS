@@ -7,8 +7,8 @@
 
 bool bluePlusSide = false;
 bool blueMinusSide = false;
-bool blueRush = false;
-bool blueAWP = true;
+bool blueRush = true;
+bool blueAWP = false;
 bool redPlusSide = false;
 bool redMinusSide = false;
 bool redRush = false;

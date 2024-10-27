@@ -47,8 +47,8 @@ ASSET(example_txt); // '.' replaced with "_" to make c++ happy
 void autonomous() {
 
     //Auto Win Point
-    if (blueAWP == true) {
-    AWP();
+    if (blueRush == true) {
+    rush();
     }
 
     /*// Move to x: 20 and y: 15, and face heading 90. Timeout set to 4000 ms
@@ -92,7 +92,7 @@ void opcontrol() {
         setIntakeMotors();
         setMogoMech();
         setLadyBrown();
-        //a touch of code to lifty the ringies but higher
+        setDoinker();
 
         pros::delay(10);
     }
