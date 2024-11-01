@@ -6,3 +6,5 @@ void setLadyBrown();
 
 //MOTOR POSITION
 void displayMotorPosition();
+
+extern bool primePosition;

@@ -1,6 +1,8 @@
 #include "main.h"
 #include "pros/misc.h"
 #include "pros/motors.hpp"
+#include "subsystemHeaders/ladyBrown.hpp"
+
 
 bool x = false;
 
@@ -15,10 +17,12 @@ void setIntakeMotors() {
             pros::delay(20);
         }
 
-   
-
         if (x == true) {
+
             intake.move_velocity(0);
+        } else if (primePosition == true) {
+
+            intake.move_velocity(450);
         } else {
             intake.move_velocity(600);
         }
@@ -28,13 +32,21 @@ void setIntakeMotors() {
     }
 
     //REVERSE INTAKE (L1)
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-        
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1)) {
+        // Wait for R1 to be released to avoid multiple state changes on one press
+        while (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+            pros::delay(20);
+        }
 
-        intake.move_velocity(-600);
-        
+        if (x == true) {
 
-        x =!x;
+            intake.move_velocity(0);
+        } else {
+            intake.move_velocity(-400);
+        }
+
+        x = !x;
+
         }
     
     
