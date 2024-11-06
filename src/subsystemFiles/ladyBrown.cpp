@@ -3,6 +3,7 @@
 #include "pros/motors.hpp"
 
 bool primePosition = false;
+bool firstRing = true;
 
 //DRIVER CONTROL FUNCTIONS
 void setLadyBrown() {
@@ -25,13 +26,20 @@ void setLadyBrown() {
     //PRIME POSITION (R2)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
 
-        ladyBrown.move_absolute(320, 150);
+        if (firstRing == true) {
+            ladyBrown.move_absolute(310, 150);
+            firstRing = false;
+        } else {
+            ladyBrown.move_absolute(390, 150);
+            firstRing = true;
+        }
+
         primePosition = true;
         }
 }
 
 //MOTOR POSITION
-void displayMotorPosition() {
+/*void displayMotorPosition() {
     while (true) {
         // Get the motor position in ticks (degrees)
         double position = ladyBrown.get_position();
@@ -45,4 +53,4 @@ void displayMotorPosition() {
         // Delay to prevent excessive CPU usage (refresh every 100ms)
         pros::delay(100);
     }
-}
+}*/

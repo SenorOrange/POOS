@@ -22,7 +22,7 @@ void setIntakeMotors() {
             intake.move_velocity(0);
         } else if (primePosition == true) {
 
-            intake.move_velocity(450);
+            intake.move_velocity(200);
         } else {
             intake.move_velocity(600);
         }

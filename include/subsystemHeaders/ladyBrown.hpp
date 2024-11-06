@@ -8,3 +8,4 @@ void setLadyBrown();
 void displayMotorPosition();
 
 extern bool primePosition;
+extern bool firstRing;
