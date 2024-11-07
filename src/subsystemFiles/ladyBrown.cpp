@@ -11,30 +11,39 @@ void setLadyBrown() {
     //SCORE POSITION (A)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
 
-        ladyBrown.move_absolute(900, 150);
+        ladyBrown.move_absolute(820, 150);
         primePosition = false;
+        firstRing = true;
 
         }
 
     //DOWN POSITION (Left)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
-
+        
         ladyBrown.move_absolute(0, 150);
         primePosition = false;
+        firstRing = true;
+
         }
 
     //PRIME POSITION (R2)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
 
-        if (firstRing == true) {
-            ladyBrown.move_absolute(310, 150);
-            firstRing = false;
-        } else {
-            ladyBrown.move_absolute(390, 150);
-            firstRing = true;
+        while (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+            pros::delay(20);
         }
 
+        if (firstRing == true) {
+            ladyBrown.move_absolute(260, 150);
+            firstRing = true;
+        } /*else {
+            ladyBrown.move_absolute(280, 150);
+            firstRing = true;
+        }*/
+
         primePosition = true;
+        
+
         }
 }
 
