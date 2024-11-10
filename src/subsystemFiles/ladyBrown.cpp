@@ -63,3 +63,8 @@ void setLadyBrown() {
         pros::delay(100);
     }
 }*/
+
+//AUTON FUNCTIONS
+void raiseLadyBrown() {
+    ladyBrown.move_absolute(700, 150);
+}

@@ -1,6 +1,9 @@
 #include "main.h"
 #include "lemlib/api.hpp" // IWYU pragma: keep
 #include "subsystemHeaders/globals.hpp"
+#include "subsystemHeaders/intake.hpp"
+#include "subsystemHeaders/mogoMech.hpp"
+
 
 
 void rush() {

@@ -67,3 +67,11 @@ void slowIntake() {
 void spinIntake() {
     intake.move_velocity(600);
 }
+
+void stopIntake() {
+    intake.move_velocity(0);
+}
+
+void reverseIntake() {
+    intake.move_velocity(-600);
+}

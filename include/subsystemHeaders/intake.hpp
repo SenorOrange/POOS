@@ -7,3 +7,5 @@ void slowIntake();
 
 //AUTON FUNCTIONS
 void spinIntake();
+void stopIntake();
+void reverseIntake();

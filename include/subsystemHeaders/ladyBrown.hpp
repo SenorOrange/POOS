@@ -9,3 +9,6 @@ void displayMotorPosition();
 
 extern bool primePosition;
 extern bool firstRing;
+
+//AUTON FUNCTIONS
+void raiseLadyBrown();
