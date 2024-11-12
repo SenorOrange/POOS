@@ -3,6 +3,7 @@
 #include "subsystemHeaders/globals.hpp"
 #include "subsystemHeaders/intake.hpp"
 #include "subsystemHeaders/mogoMech.hpp"
+#include "subsystemHeaders/ladyBrown.hpp"
 
 
 
@@ -13,9 +14,17 @@ void rush() {
     chassis.moveToPose(-13, -60, 30, 5000, {.forwards=false});
     pros::delay(1000);
     clamp();
+    spinIntake();
     chassis.moveToPose(-15, -40, 110, 1000);
     pros::delay(1000);
+    unclamp();
+    chassis.moveToPose(-25, -0, 45, 1000);
+    pros::delay(500);
+    stopIntake();
+    chassis.moveToPose(15, -40, 60, 1000, {.forwards=false});
+    clamp();
     spinIntake();
-    chassis.moveToPoint(-15, -22, 1000);
-
+    raiseLadyBrown();
+    chassis.moveToPose(-60, 60, 90, 1000, {.forwards=false});
 }
+ 
