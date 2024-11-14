@@ -15,6 +15,9 @@ bool redRush = false;
 bool redAWP = false;
 bool skillsAuton = false;
 
+//Used to switch which side the auton is on to fix the asymmetrical field layout
+int flip = 1;
+
 //POOS FUNCTIONS
 void drawGUI() {
 
@@ -97,6 +100,8 @@ while(1){
     redRush = false;
     redAWP = false;
     skillsAuton = false;
+
+    flip = -1;
     }
 
     //Select Blue Minus
@@ -118,6 +123,8 @@ while(1){
     redRush = false;
     redAWP = false;
     skillsAuton = false;
+
+    flip = -1;
     }
 
     //Select Blue Rush
@@ -139,6 +146,8 @@ while(1){
     redRush = false;
     redAWP = false;
     skillsAuton = false;
+
+    flip = -1;
     }
 
     //Select Blue AWP
@@ -160,6 +169,8 @@ while(1){
     redRush = false;
     redAWP = false;
     skillsAuton = false;
+
+    flip = -1;
     }
 
     //Select Red Plus
@@ -181,6 +192,8 @@ while(1){
     redRush = false;
     redAWP = false;
     skillsAuton = false;
+
+    flip = 1;
     }
 
     //Select Red Minus
@@ -202,6 +215,8 @@ while(1){
     redRush = false;
     redAWP = false;
     skillsAuton = false;
+
+    flip = 1;
     }
 
     //Select Red Rush
@@ -223,6 +238,8 @@ while(1){
     redRush = true;
     redAWP = false;
     skillsAuton = false;
+
+    flip = 1;
     }
 
     //Select Red AWP
@@ -244,6 +261,8 @@ while(1){
     redRush = false;
     redAWP = true;
     skillsAuton = false;
+
+    flip = 1;
     }
 
     //Select Auton Skills
