@@ -39,11 +39,6 @@ void competition_initialize() {
 // this needs to be put outside a function
 ASSET(example_txt); // '.' replaced with "_" to make c++ happy
 
-/**
- * Runs during auto
- *
- * This is an example autonomous routine which demonstrates a lot of the features LemLib has to offer
- */
 void autonomous() {
 
     //Auto Win Point

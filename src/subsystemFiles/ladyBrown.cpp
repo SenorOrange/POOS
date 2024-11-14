@@ -11,7 +11,7 @@ void setLadyBrown() {
     //SCORE POSITION (A)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
 
-        ladyBrown.move_absolute(820, 150);
+        ladyBrown.move_absolute(820, 200);
         primePosition = false;
         firstRing = true;
 
@@ -20,7 +20,7 @@ void setLadyBrown() {
     //DOWN POSITION (Left)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
         
-        ladyBrown.move_absolute(0, 150);
+        ladyBrown.move_absolute(0, 200);
         primePosition = false;
         firstRing = true;
 
@@ -34,7 +34,7 @@ void setLadyBrown() {
         }
 
         if (firstRing == true) {
-            ladyBrown.move_absolute(260, 150);
+            ladyBrown.move_absolute(260, 200);
             firstRing = true;
         } /*else {
             ladyBrown.move_absolute(280, 150);
@@ -66,5 +66,26 @@ void setLadyBrown() {
 
 //AUTON FUNCTIONS
 void raiseLadyBrown() {
-    ladyBrown.move_absolute(700, 150);
+    ladyBrown.move_absolute(700, 200);
+}
+
+void allianceStakePosition() {
+    ladyBrown.move_absolute(260, 200);
+}
+
+void allianceScorePosition() {
+    ladyBrown.move_absolute(700, 200);
+}
+
+//SKILLS FUNCTIONS
+void ladyBrownLower() {
+    ladyBrown.move_absolute(0, 200);
+}
+
+void ladyBrownPrime() {
+    ladyBrown.move_absolute(260, 200);
+}
+
+void ladyBrownScore() {
+    ladyBrown.move_absolute(820, 200);
 }
