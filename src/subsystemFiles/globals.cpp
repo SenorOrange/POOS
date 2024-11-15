@@ -3,6 +3,7 @@
 #include "pros/misc.hpp"
 #include "pros/motors.hpp"
 #include "lemlib/api.hpp" // IWYU pragma: keep
+#include "pros/optical.hpp"
 
 
 //MOTORS
@@ -19,8 +20,9 @@ pros::adi::DigitalOut doinker ('B');
 //CONTROLLER
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
-//IMU
+//SENSORS
 pros::Imu imu(16);
+pros::Optical colorSensor(4);
 
 // drivetrain settings
 lemlib::Drivetrain drivetrain(&leftMotors,

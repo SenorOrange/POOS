@@ -1,6 +1,8 @@
 #include "main.h"
 #include "pros/adi.hpp"
 #include "lemlib/api.hpp" // IWYU pragma: keep
+#include "pros/optical.hpp"
+#include "pros/vision.h"
 
 
 //MOTORS
@@ -18,8 +20,9 @@ extern pros::adi::DigitalOut doinker;
 //CONTROLLER
 extern pros::Controller controller;
 
-//IMU
+//SENSORS
 extern pros::Imu imu;
+extern pros::Optical colorSensor;
 
 // drivetrain settings
 extern lemlib::Drivetrain drivetrain;

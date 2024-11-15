@@ -81,6 +81,8 @@ void opcontrol(void);
 #include "subsystemHeaders/mogoMech.hpp"
 #include "subsystemHeaders/poos.hpp"
 #include "subsystemHeaders/doinker.hpp"
+#include "subsystemHeaders/colorSensor.hpp"
+
 
 #include "autons/AWP.hpp"
 #include "autons/minusSide.hpp"
