@@ -10,13 +10,16 @@
 void rush() {
     chassis.setPose(0, 0, 0);
     //chassis.moveToPoint(0, -32, 1000, {.forwards=false});
-    chassis.moveToPose(flip * -41, -85, 45, 1000, {.forwards=false});
+    chassis.moveToPose(flip * -35, -73, flip * 45, 1000, {.forwards=false});
     chassis.waitUntilDone();
     pros::delay(1000);
     clamp();
     spinIntake();
-    
-    //chassis.moveToPose(flip * -42, -20, 90, 1000);
+    chassis.turnToHeading(0, 1000);
+    chassis.moveToPoint(flip * -25, -35, 1000);
+    raiseLadyBrown();
+    chassis.moveToPose(flip * 48, -76, flip * -45, 1000, {.forwards=false});
+    //chassis.moveToPose(flip * -35, -20, 90, 1000);
     //pros::delay(1000);
     //chassis.waitUntilDone();
     //unclamp();
