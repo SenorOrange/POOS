@@ -45,3 +45,5 @@ extern lemlib::ExpoDriveCurve steerCurve;
 // create the chassis
 extern lemlib::Chassis chassis;
 
+void testPosition();
+

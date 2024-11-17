@@ -8,30 +8,19 @@
 
 
 void rush() {
-    chassis.setPose(0, 0, 0);
+    chassis.setPose(flip * -10, -16, 0);
     //chassis.moveToPoint(0, -32, 1000, {.forwards=false});
-    chassis.moveToPose(flip * -35, -73, flip * 45, 1000, {.forwards=false});
+    chassis.moveToPoint(flip * -10, -48, 1000, {.forwards=false});
+    chassis.turnToHeading(flip * 30, 1000);
+    chassis.moveToPoint(flip * -19, -63, 1000, {.forwards=false});
     chassis.waitUntilDone();
     pros::delay(1000);
     clamp();
     spinIntake();
-    chassis.turnToHeading(0, 1000);
-    chassis.moveToPoint(flip * -25, -35, 1000);
+    chassis.moveToPoint(flip * -40, -50, 1000);
     raiseLadyBrown();
-    chassis.moveToPose(flip * 48, -76, flip * -45, 1000, {.forwards=false});
-    //chassis.moveToPose(flip * -35, -20, 90, 1000);
-    //pros::delay(1000);
-    //chassis.waitUntilDone();
-    //unclamp();
-    //chassis.moveToPose(flip * -25, -0, 45, 1000);
-    //pros::delay(500);
-    //stopIntake();
-    //chassis.moveToPose(flip * 15, -40, 60, 1000, {.forwards=false});
-    //chassis.waitUntilDone();
-    //clamp();
-    //spinIntake();
-    //raiseLadyBrown();
-    //chassis.moveToPose(flip * -60, 60, 90, 1000, {.forwards=false});
-    //stopIntake();
+    chassis.moveToPoint(flip * 0, -67, 1000, {.forwards=false});
+
+    
 }
  
