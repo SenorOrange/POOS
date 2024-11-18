@@ -6,8 +6,8 @@
 
 
 bool bluePlusSide = false;
-bool blueMinusSide = false;
-bool blueRush = true;
+bool blueMinusSide = true;
+bool blueRush = false;
 bool blueAWP = false;
 bool redPlusSide = false;
 bool redMinusSide = false;
@@ -16,7 +16,7 @@ bool redAWP = false;
 bool skillsAuton = false;
 
 //Used to switch which side the auton is on to fix the asymmetrical field layout
-int flip = -1;
+int flip = 1;
 
 //POOS FUNCTIONS
 void drawGUI() {
