@@ -18,20 +18,22 @@
 
 void skills() {
     chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
-    chassis.setPose(60, 12, 135);
-    chassis.moveToPoint(47, 25, 2000, {.forwards=false});
+    chassis.setPose(72, 16, 180);
+    chassis.turnToHeading(-90, 2000);
+    chassis.moveToPoint(96, 24, 2000, {.forwards=false});
     chassis.waitUntilDone();
     clamp();
     spinIntake();
-    chassis.moveToPoint(40, 65, 2000);
-    chassis.turnToHeading(-90, 1000);
-    chassis.moveToPoint(23, 65, 1000);
-    chassis.turnToHeading(-90, 1000);
-    chassis.moveToPoint(23, 40, 2000);
-    chassis.turnToHeading(180, 1000);
+    chassis.turnToHeading(0, 2000);
+    chassis.moveToPoint(96, 48, 2000);
+    chassis.turnToHeading(90, 2000);
+    chassis.moveToPoint(120, 48, 2000);
+    chassis.turnToHeading(180, 2000);
     pros::delay(2000);
-    chassis.moveToPoint(23, 10, 2000);
-    chassis.moveToPoint(0, 0, 2000, {.forwards=false});
+    chassis.moveToPoint(120, 17, 2000);
+    chassis.turnToHeading(45, 2000);
+    chassis.moveToPoint(130, 24, 2000);
+    chassis.moveToPoint(136, 16, 2000, {.forwards=false});
     chassis.waitUntilDone();
     unclamp();
     stopIntake();
