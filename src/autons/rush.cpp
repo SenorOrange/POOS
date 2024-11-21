@@ -20,7 +20,6 @@ void rush() {
     chassis.moveToPoint(flip * -40, -50, 1000);
     raiseLadyBrown();
     chassis.moveToPoint(flip * 0, -67, 1000, {.forwards=false});
-
-    
+    stopIntake();
 }
  
