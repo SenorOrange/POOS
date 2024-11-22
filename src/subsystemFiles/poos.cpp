@@ -16,7 +16,7 @@ bool redAWP = false;
 bool skillsAuton = true;
 
 //Used to switch which side the auton is on to fix the asymmetrical field layout
-int flip = 1;
+int flip = -1;
 
 //POOS FUNCTIONS
 void drawGUI() {

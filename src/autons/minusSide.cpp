@@ -9,27 +9,26 @@
 
 void minusSide() {
     chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
-    chassis.setPose(flip * 48, 16, 180);
-    chassis.moveToPoint(flip * 48, 46, 1000, {.forwards=false}); 
+    chassis.setPose(flip * 64, 16, 180);
+    chassis.moveToPoint(flip * 48, 44, 1000, {.forwards=false}); 
     chassis.waitUntilDone();
     clamp();
     spinIntake();
     pros::delay(1000);
-    chassis.moveToPoint(flip * 48, 56, 1000);
     chassis.turnToHeading(flip * -100, 1000);
     chassis.moveToPoint(flip * 24, 48, 1000);
     pros::delay(2000);
     chassis.turnToHeading(flip * -5, 1000);
-    chassis.moveToPoint(flip * 22, 72, 1000);
+    chassis.moveToPoint(flip * 22, 65, 1000);
     chassis.moveToPoint(flip * 24, 48, 1000, {.forwards=false});
     chassis.turnToHeading(flip * 5, 1000);
-    chassis.moveToPoint(flip * 26, 72, 1000);
+    chassis.moveToPoint(flip * 26, 65, 1000);
     chassis.moveToPoint(flip * 24, 24, 1000, {.forwards=false});
     chassis.waitUntilDone();
-    unclamp();
-    stopIntake();
     raiseLadyBrown();
-    chassis.turnToHeading(flip * -135, 1000);
-    chassis.moveToPoint(flip * 96, 96, 1000, {.forwards=false});
+    //chassis.turnToHeading(flip * 135, 1000);
+    chassis.turnToHeading(0, 1000);
+    chassis.setPose(flip * 24, 24, 0);
+    chassis.moveToPoint(flip * 72, 72, 2000, {.forwards=false});
     stopIntake();
 }

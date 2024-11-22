@@ -14,9 +14,9 @@ void skills() {
     //Red Positive Corner
     chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
     chassis.setPose(72, 16, 180);
-    chassis.moveToPoint(72, 24, 2000, {.maxSpeed=150});
+    chassis.moveToPoint(72, 24, 2000, {.forwards=false, .maxSpeed=150});
     chassis.turnToHeading(-90, 2000, {.maxSpeed=150});
-    chassis.moveToPoint(96, 24, 2000, {.forwards=false, .maxSpeed=150});
+    chassis.moveToPoint(96, 24, 2000, {.forwards=false, .maxSpeed=50});
     chassis.waitUntilDone();
     clamp();
     spinIntake();

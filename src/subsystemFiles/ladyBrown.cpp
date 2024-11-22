@@ -34,7 +34,7 @@ void setLadyBrown() {
         }
 
         if (firstRing == true) {
-            ladyBrown.move_absolute(260, 200);
+            ladyBrown.move_absolute(265, 200);
             firstRing = true;
         } /*else {
             ladyBrown.move_absolute(280, 150);
