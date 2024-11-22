@@ -37,7 +37,7 @@ void skills() {
     //Reset Position
     chassis.moveToPoint(130, 24, 2000, {.forwards=false, .maxSpeed=150});
     chassis.turnToHeading(90, 2000, {.maxSpeed=150});
-    chassis.moveToPoint(144, 24, 2000, {.maxSpeed=150});
+    chassis.moveToPoint(150, 24, 2000, {.maxSpeed=150});
     chassis.setPose(135, 24, 90);
 
     //Red Negative Corner
@@ -65,7 +65,7 @@ void skills() {
     //Reset Position
     chassis.moveToPoint(24, 24, 2000, {.forwards=false, .maxSpeed=150});
     chassis.turnToHeading(180, 2000, {.maxSpeed=150});
-    chassis.moveToPoint(24, 0, 2000, {.maxSpeed=150});
+    chassis.moveToPoint(24, -6, 2000, {.maxSpeed=150});
     chassis.setPose(24, 9, 180);
 
     //Blue Negative Corner
@@ -84,7 +84,7 @@ void skills() {
     chassis.moveToPoint(24, 120, 2000, {.forwards=false, .maxSpeed=150});
     chassis.turnToHeading(-90, 2000, {.maxSpeed=150});
     chassis.moveToPoint(0, 120, 2000, {.maxSpeed=150});
-    chassis.setPose(9, 120, -90);
+    chassis.setPose(3, 120, -90);
 
     //Blue Positive Corner
     chassis.moveToPoint(72, 120, 2000, {.forwards=false, .maxSpeed=150});
