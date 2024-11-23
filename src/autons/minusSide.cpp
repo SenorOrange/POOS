@@ -26,9 +26,12 @@ void minusSide() {
     chassis.moveToPoint(flip * 24, 24, 1000, {.forwards=false});
     chassis.waitUntilDone();
     raiseLadyBrown();
-    //chassis.turnToHeading(flip * 135, 1000);
     chassis.turnToHeading(0, 1000);
     chassis.setPose(flip * 24, 24, 0);
     chassis.moveToPoint(flip * 72, 72, 2000, {.forwards=false});
+
+    //Potential Fix
+    //chassis.moveToPoint(flip * 65, 65, 2000, {.forwards=false});
+
     stopIntake();
 }

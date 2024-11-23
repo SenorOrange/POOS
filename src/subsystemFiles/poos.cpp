@@ -13,7 +13,7 @@ bool redPlusSide = false;
 bool redMinusSide = false;
 bool redRush = false;
 bool redAWP = false;
-bool skillsAuton = true;
+bool skillsAuton = false;
 
 //Used to switch which side the auton is on to fix the asymmetrical field layout
 int flip = 1;

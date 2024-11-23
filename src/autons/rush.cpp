@@ -4,7 +4,7 @@
 #include "subsystemHeaders/intake.hpp"
 #include "subsystemHeaders/mogoMech.hpp"
 #include "subsystemHeaders/ladyBrown.hpp"
-#include "subsystemHeaders/poos.hpp"
+#include "subsystemHeaders/poos.hpp" 
 
 
 void rush() {
@@ -20,6 +20,9 @@ void rush() {
     chassis.moveToPoint(flip * -40, -50, 1000);
     raiseLadyBrown();
     chassis.moveToPoint(flip * 0, -67, 1000, {.forwards=false});
+
+    //Potential Fix
+    //chassis.moveToPoint(flip * -5, -67, 1000, {.forwards=false}); 
     stopIntake();
 }
  

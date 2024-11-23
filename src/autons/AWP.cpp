@@ -39,5 +39,9 @@ void AWP() {
     raiseLadyBrown();
     chassis.turnToHeading(flip * 135, 1000);
     chassis.moveToPoint(flip * 72, 72, 1000, {.forwards=false});
+
+    //Potential Fix
+    //chassis.moveToPoint(flip * 79, 65, 1000, {.forwards=false});
+
     stopIntake();
 }
