@@ -19,19 +19,19 @@ void minusSide() {
     chassis.moveToPoint(flip * 24, 48, 1000);
     pros::delay(2000);
     chassis.turnToHeading(flip * -5, 1000);
-    chassis.moveToPoint(flip * 22, 65, 1000);
+    chassis.moveToPoint(flip * 22, 55, 1000);
     chassis.moveToPoint(flip * 24, 48, 1000, {.forwards=false});
     chassis.turnToHeading(flip * 5, 1000);
-    chassis.moveToPoint(flip * 26, 65, 1000);
+    chassis.moveToPoint(flip * 26, 55, 1000);
     chassis.moveToPoint(flip * 24, 24, 1000, {.forwards=false});
     chassis.waitUntilDone();
     raiseLadyBrown();
     chassis.turnToHeading(0, 1000);
     chassis.setPose(flip * 24, 24, 0);
-    chassis.moveToPoint(flip * 72, 72, 2000, {.forwards=false});
+    //chassis.moveToPoint(flip * 72, 72, 2000, {.forwards=false});
 
     //Potential Fix
-    //chassis.moveToPoint(flip * 65, 65, 2000, {.forwards=false});
+    chassis.moveToPoint(flip * 65, 65, 2000, {.forwards=false});
 
     stopIntake();
 }

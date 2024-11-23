@@ -18,16 +18,25 @@ void skills() {
     chassis.turnToHeading(-90, 2000, {.maxSpeed=150});
     chassis.moveToPoint(96, 24, 2000, {.forwards=false, .maxSpeed=50});
     chassis.waitUntilDone();
+    pros::delay(1000);
     clamp();
     spinIntake();
     chassis.turnToHeading(0, 2000, {.maxSpeed=150});
     chassis.moveToPoint(96, 48, 2000, {.maxSpeed=150});
+        pros::delay(1000);
+
     chassis.turnToHeading(90, 2000, {.maxSpeed=150});
-    chassis.moveToPoint(120, 48, 2000, {.maxSpeed=150});
+    chassis.moveToPoint(120, 54, 2000, {.maxSpeed=150});
+        pros::delay(1000);
+
     chassis.turnToHeading(180, 2000, {.maxSpeed=150});
     chassis.moveToPoint(120, 17, 2000, {.maxSpeed=150});
+        pros::delay(1000);
+
     chassis.turnToHeading(45, 2000, {.maxSpeed=150});
     chassis.moveToPoint(130, 24, 2000, {.maxSpeed=150});
+        pros::delay(1000);
+
     chassis.moveToPoint(130, 14, 2000, {.forwards=false, .maxSpeed=150});
     chassis.turnToHeading(-45, 2000, {.maxSpeed=150});
     chassis.waitUntilDone();
@@ -47,15 +56,28 @@ void skills() {
     spinIntake();
     chassis.turnToHeading(0, 2000, {.maxSpeed=150});
     chassis.moveToPoint(48, 48, 2000, {.maxSpeed=150});
+            pros::delay(1000);
+
     chassis.turnToHeading(-90, 2000, {.maxSpeed=150});
     chassis.moveToPoint(24, 48, 2000, {.maxSpeed=150});
+            pros::delay(1000);
+
     chassis.turnToHeading(-25, 2000, {.maxSpeed=150});
     chassis.moveToPoint(12, 72, 2000, {.maxSpeed=150});
+            pros::delay(1000);
+
     chassis.moveToPoint(24, 48, 2000, {.forwards=false, .maxSpeed=150});
+            pros::delay(1000);
+
     chassis.turnToHeading(180, 2000, {.maxSpeed=150});
+    
     chassis.moveToPoint(24, 17, 2000, {.maxSpeed=150});
+            pros::delay(1000);
+
     chassis.turnToHeading(45, 2000, {.maxSpeed=150});
     chassis.moveToPoint(14, 24, 2000, {.maxSpeed=150});
+            pros::delay(1000);
+
     chassis.moveToPoint(14, 14, 2000, {.forwards=false, .maxSpeed=150});
     chassis.turnToHeading(45, 2000, {.maxSpeed=150});
     chassis.waitUntilDone();
