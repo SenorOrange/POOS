@@ -4,3 +4,5 @@
 void setDoinker();
 
 //AUTON FUNCTIONS
+void lowerDoinker();
+void raiseDoinker();

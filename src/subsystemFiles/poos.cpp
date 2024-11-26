@@ -101,7 +101,7 @@ while(1){
     redAWP = false;
     skillsAuton = false;
 
-    flip = -1;
+    flip = 1;
     }
 
     //Select Blue Minus
@@ -193,7 +193,7 @@ while(1){
     redAWP = false;
     skillsAuton = false;
 
-    flip = 1;
+    flip = -1;
     }
 
     //Select Red Minus

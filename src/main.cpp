@@ -50,14 +50,9 @@ void autonomous() {
     rush();
     }
 
-    //Negative Side Basic
-    if (blueMinusSide == true || redMinusSide == true) {
+    //Basic Corners
+    if (blueMinusSide == true || redMinusSide == true || bluePlusSide == true || redPlusSide == true) {
     minusSide();
-    }
-
-    //Positive Side Basic
-    if (bluePlusSide == true || redPlusSide == true) {
-    plusSide();
     }
 
     //Skills

@@ -15,3 +15,10 @@ void setDoinker() {
 }
 
 //AUTON FUNCTIONS
+void lowerDoinker() {
+  doinker.set_value(true);
+}
+
+void raiseDoinker() {
+  doinker.set_value(false);
+}
