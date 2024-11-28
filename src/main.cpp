@@ -18,7 +18,7 @@
 
 
 void initialize() {
-    chassis.calibrate(); // calibrate sensors
+    //chassis.calibrate(); // calibrate sensors
     drawGUI();
 }
 
@@ -31,7 +31,7 @@ void disabled() {}
  * runs after initialize if the robot is connected to field control
  */
 void competition_initialize() {
-    autonSelector();
+    //autonSelector();
 }
 
 // get a path used for pure pursuit

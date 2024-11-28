@@ -1,4 +1,5 @@
 #include "main.h"
+#include "liblvgl/lvgl.h"
 #include "pros/colors.h"
 #include "pros/screen.h"
 #include "pros/screen.hpp"
@@ -15,45 +16,20 @@ bool redRush = false;
 bool redAWP = false;
 bool skillsAuton = false;
 
+
+lv_obj_t * myButton;
+
 //Used to switch which side the auton is on to fix the asymmetrical field layout
 int flip = 1;
 
 //POOS FUNCTIONS
 void drawGUI() {
 
-    //Blue Boxes
-    pros::screen::set_pen(pros::c::COLOR_BLUE);
-    pros::screen::fill_rect(5,5,95,120);
-    pros::screen::fill_rect(100,5,190,120);
-    pros::screen::fill_rect(195,5,285,120);
-    pros::screen::fill_rect(290,5,380,120);
-    //Blue Text
-    pros::screen::set_pen(pros::c::COLOR_WHITE);
-    pros::screen::print(pros::E_TEXT_MEDIUM, 32, 55, "Plus");
-    pros::screen::print(pros::E_TEXT_MEDIUM, 120, 55, "Minus");
-    pros::screen::print(pros::E_TEXT_MEDIUM, 220, 55, "Rush");
-    pros::screen::print(pros::E_TEXT_MEDIUM, 320, 55, "AWP");
-
-    //Red Boxes
-    pros::screen::set_pen(pros::c::COLOR_RED);
-    pros::screen::fill_rect(5,125,95,235);
-    pros::screen::fill_rect(100,125,190,235);
-    pros::screen::fill_rect(195,125,285,235);
-    pros::screen::fill_rect(290,125,380,235);
-    //Red Text
-    pros::screen::set_pen(pros::c::COLOR_WHITE);
-    pros::screen::print(pros::E_TEXT_MEDIUM, 32, 170, "Plus");
-    pros::screen::print(pros::E_TEXT_MEDIUM, 120, 170, "Minus");
-    pros::screen::print(pros::E_TEXT_MEDIUM, 220, 170, "Rush");
-    pros::screen::print(pros::E_TEXT_MEDIUM, 320, 170, "AWP");
-
-    //Skills Box
-    pros::screen::set_pen(pros::c::COLOR_WHITE_SMOKE);
-    pros::screen::fill_rect(385,5,475,235);
-    //Skills Text
-    pros::screen::set_pen(pros::c::COLOR_WHITE);
-    pros::screen::print(pros::E_TEXT_MEDIUM, 406, 103, "Auton");
-    pros::screen::print(pros::E_TEXT_MEDIUM, 401, 125, "Skills");
+    myButton = lv_btn_create(lv_scr_act()); //create button, lv_scr_act() is deafult screen object
+    lv_obj_set_style_border_color(myButton, lv_color_black(), LV_STATE_ANY);
+    //lv_label_set_text(myButton, "Hello World");
+    lv_obj_set_size(myButton, 200, 100); //set the button size
+    lv_obj_align(myButton, LV_ALIGN_TOP_LEFT, 10, 10); //set the position to top mid
 
 }
 
