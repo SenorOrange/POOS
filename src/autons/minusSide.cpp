@@ -6,6 +6,8 @@
 #include "subsystemHeaders/mogoMech.hpp"
 #include "subsystemHeaders/ladyBrown.hpp"
 #include "subsystemHeaders/poos.hpp"
+#include "subsystemHeaders/doinker.hpp"
+
 
 //Code for the minus side but really just code for all the basic 4 corner autons.
 void minusSide() {

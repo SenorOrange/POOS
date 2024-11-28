@@ -6,12 +6,131 @@
 #include "subsystemHeaders/mogoMech.hpp"
 #include "subsystemHeaders/ladyBrown.hpp"
 #include "subsystemHeaders/poos.hpp"
+#include "subsystemHeaders/doinker.hpp"
 
 
 
 void skills() {
 
-    //Red Positive Corner
+        //First Section
+        //Consists of Right Wall Stake, Full Mogo and Corner
+        chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
+        chassis.setPose(72, 16, 180);
+        chassis.moveToPoint(72, 24, 2000, {.forwards=false, .maxSpeed=150});
+        chassis.turnToHeading(-90, 2000, {.maxSpeed=150});
+        chassis.moveToPoint(96, 24, 2000, {.forwards=false, .maxSpeed=50});
+        chassis.waitUntilDone();
+        pros::delay(1000);
+        clamp();
+        spinIntake();
+        chassis.turnToHeading(0, 1000);
+        chassis.moveToPoint(96, 48, 1000);
+        chassis.turnToHeading(45, 1000);
+        chassis.moveToPoint(110, 72, 1000);
+        chassis.waitUntilDone();
+        ladyBrownPrime();
+        chassis.moveToPoint(120, 96, 1000);
+        chassis.moveToPoint(110, 86, 1000, {.forwards=false});
+        stopIntake();
+        chassis.moveToPoint(120, 72, 1000);
+        chassis.turnToHeading(90, 1000);
+        chassis.moveToPoint(144, 72, 1000);
+        chassis.waitUntilDone();
+        ladyBrownScore();
+        spinIntake();
+        pros::delay(1000);
+        chassis.moveToPoint(120, 72, 1000, {.forwards=false});
+        chassis.turnToHeading(180, 1000);
+        chassis.waitUntilDone();
+        ladyBrownLower();
+        chassis.moveToPoint(120, 16, 1000);
+        chassis.moveToPoint(132, 24, 1000);
+        chassis.moveToPoint(132, 12, 1000, {.forwards=false, .maxSpeed=150});
+        chassis.waitUntilDone();
+        unclamp();
+        stopIntake();
+        
+        //Second Section
+        //Consists of Blue Goal in Corner and Half Fill Empty Mogo
+        chassis.moveToPoint(108, 120, 1000, {.forwards=false});
+        chassis.turnToHeading(135, 1000);
+        chassis.moveToPoint(96, 132, 1000, {.forwards=false, .maxSpeed=150});
+        chassis.waitUntilDone();
+        pros::delay(1000);
+        clamp();
+        chassis.moveToPoint(120, 132, 1000);
+        chassis.waitUntilDone();
+        lowerDoinker();
+        chassis.turnToHeading(180, 1000);
+        pros::delay(1000);
+        raiseDoinker();
+        chassis.turnToHeading(-90, 1000);
+        chassis.moveToPoint(132, 132, 1000, {.forwards=false});
+        chassis.waitUntilDone();
+        unclamp();
+        chassis.moveToPoint(96, 120, 1000, {.forwards=false, .maxSpeed=150});
+        chassis.waitUntilDone();
+        pros::delay(1000);
+        clamp();
+        spinIntake();
+        chassis.moveToPoint(96, 96, 1000);
+        chassis.turnToHeading(135, 1000);
+
+
+        //Third Section
+        //Consists of Traveling Under Tower, Filling Up Mogo, Corner, Pick Up Empty Mogo and Score Left Wall Stake
+        chassis.moveToPoint(48, 48, 1000);
+        chassis.turnToHeading(-90, 1000);
+        chassis.moveToPoint(24, 48, 1000);
+        chassis.turnToHeading(180, 1000);
+        chassis.moveToPoint(24, 16, 1000);
+        chassis.turnToHeading(-45, 1000);
+        chassis.waitUntilDone();
+        pros::delay(1000);
+        ladyBrownPrime();
+        chassis.moveToPoint(12, 24, 1000);
+        chassis.moveToPoint(12, 12, 1000, {.forwards=false});
+        chassis.waitUntilDone();
+        unclamp();
+        stopIntake();
+        chassis.moveToPoint(48, 24, 1000, {.forwards=false, .maxSpeed=150});
+        chassis.waitUntilDone();
+        pros::delay(1000);
+        clamp();
+        chassis.moveToPoint(24, 72, 1000);
+        chassis.turnToHeading(-90, 1000);
+        chassis.moveToPoint(0, 72, 1000);
+        chassis.waitUntilDone();
+        ladyBrownScore();
+        spinIntake();
+
+
+        //Final Section
+        //Consists of Filling Up Final Mogo and Putting it in the corner
+        chassis.moveToPoint(24, 96, 1000);
+        chassis.turnToHeading(90, 1000);
+        ladyBrownLower();
+        chassis.moveToPoint(48, 96, 1000);
+        chassis.turnToHeading(-45, 1000);
+        chassis.moveToPoint(24, 120, 1000);
+        chassis.turnToHeading(0, 1000);
+        chassis.moveToPoint(24, 132, 1000);
+        chassis.turnToHeading(-135, 1000);
+        chassis.moveToPoint(12, 120, 1000);
+        chassis.moveToPoint(12, 132, 1000);
+        chassis.waitUntilDone();
+        lowerDoinker();
+        chassis.turnToHeading(90, 1000);
+        pros::delay(1000);
+        raiseDoinker();
+        chassis.moveToPoint(12, 132, 1000, {.forwards=false});
+        chassis.waitUntilDone();
+        unclamp();
+
+}
+
+//Old Version of Skills
+/*//Red Positive Corner
     chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
     chassis.setPose(72, 16, 180);
     chassis.moveToPoint(72, 24, 2000, {.forwards=false, .maxSpeed=150});
@@ -122,6 +241,4 @@ void skills() {
     chassis.moveToPoint(132, 72, 2000, {.maxSpeed=150});
     chassis.turnToHeading(0, 2000, {.maxSpeed=150});
     chassis.moveToPoint(132, 120, 2000, {.maxSpeed=150});
-
-
-}
+*/
