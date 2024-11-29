@@ -18,7 +18,7 @@
 
 
 void initialize() {
-    //chassis.calibrate(); // calibrate sensors
+    chassis.calibrate(); // calibrate sensors
     drawGUI();
 }
 
