@@ -18,6 +18,10 @@ bool skillsAuton = false;
 
 
 lv_obj_t * myButton;
+lv_obj_t * myButtonLabel;
+lv_obj_t * myLabel;
+
+
 
 //Used to switch which side the auton is on to fix the asymmetrical field layout
 int flip = 1;
@@ -26,11 +30,14 @@ int flip = 1;
 void drawGUI() {
 
     myButton = lv_btn_create(lv_scr_act()); //create button, lv_scr_act() is deafult screen object
-    lv_obj_set_style_border_color(myButton, lv_color_black(), LV_STATE_ANY);
-    //lv_label_set_text(myButton, "Hello World");
+    myLabel = lv_label_create(myButton);
+
+    lv_label_set_text(myLabel, "Hello World");
+    lv_obj_set_style_text_color(myLabel, lv_palette_main(LV_PALETTE_ORANGE), LV_STATE_ANY);
+    lv_obj_set_style_bg_color(myButton, lv_color_make(255, 153, 0), LV_STATE_ANY);
     lv_obj_set_size(myButton, 200, 100); //set the button size
     lv_obj_align(myButton, LV_ALIGN_TOP_LEFT, 10, 10); //set the position to top mid
-
+    lv_obj_align(myLabel, LV_ALIGN_CENTER, 0, 0);
 }
 
 void touchTester() {
