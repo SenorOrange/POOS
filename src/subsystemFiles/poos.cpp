@@ -21,10 +21,13 @@ lv_obj_t * myButton;
 lv_obj_t * myButtonLabel;
 lv_obj_t * myLabel;
 
-
-
 //Used to switch which side the auton is on to fix the asymmetrical field layout
 int flip = 1;
+
+//Color Sort Variables
+int Ring_Hue;
+int Blue = 240;
+int Red = 0;
 
 //POOS FUNCTIONS
 void drawGUI() {

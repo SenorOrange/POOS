@@ -18,5 +18,10 @@ extern bool redMinusSide;
 extern bool redRush;
 extern bool redAWP;
 extern bool skillsAuton;
+
 extern int flip;
+
+extern int Ring_Hue;
+extern int Red;
+extern int Blue;
 

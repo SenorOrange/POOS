@@ -25,6 +25,9 @@ void setIntakeMotors() {
             intake.move_velocity(400);
         } else {
             intake.move_velocity(600);
+            if (colorSensor.get_hue() == Ring_Hue) {
+                intake.move_velocity(0);
+            }
         }
 
         x = !x;
@@ -66,6 +69,9 @@ void slowIntake() {
 
 void spinIntake() {
     intake.move_velocity(600);
+    if (colorSensor.get_hue() == Ring_Hue) {
+        intake.move_velocity(0);
+    }
 }
 
 void stopIntake() {

@@ -15,7 +15,10 @@ void skills() {
         //First Section
         //Consists of Right Wall Stake, Full Mogo and Corner
         chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
-        chassis.setPose(72, 16, 180);
+        chassis.setPose(72, 16, 0);
+        chassis.moveToPoint(72, 10, 1000, {.forwards=false});
+        spinIntake();
+        chassis.turnToHeading(0, 1000);
         chassis.moveToPoint(72, 24, 2000, {.forwards=false, .maxSpeed=150});
         chassis.turnToHeading(-90, 2000, {.maxSpeed=150});
         chassis.moveToPoint(96, 24, 2000, {.forwards=false, .maxSpeed=50});
