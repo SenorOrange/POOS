@@ -17,9 +17,13 @@ bool redAWP = false;
 bool skillsAuton = false;
 
 
-lv_obj_t * myButton;
+lv_obj_t * bluePos;
+lv_obj_t * blueNeg;
 lv_obj_t * myButtonLabel;
 lv_obj_t * myLabel;
+lv_obj_t * mySwitch;
+lv_obj_t * Slider;
+
 
 //Used to switch which side the auton is on to fix the asymmetrical field layout
 int flip = 1;
@@ -32,15 +36,66 @@ int Red = 0;
 //POOS FUNCTIONS
 void drawGUI() {
 
-    myButton = lv_btn_create(lv_scr_act()); //create button, lv_scr_act() is deafult screen object
-    myLabel = lv_label_create(myButton);
+    //Not Pressed Style
+    static lv_style_t style;
+    lv_style_init(&style);
 
-    lv_label_set_text(myLabel, "Hello World");
-    lv_obj_set_style_text_color(myLabel, lv_palette_main(LV_PALETTE_ORANGE), LV_STATE_ANY);
-    lv_obj_set_style_bg_color(myButton, lv_color_make(255, 153, 0), LV_STATE_ANY);
-    lv_obj_set_size(myButton, 200, 100); //set the button size
-    lv_obj_align(myButton, LV_ALIGN_TOP_LEFT, 10, 10); //set the position to top mid
+    lv_style_set_radius(&style, 3);
+
+    lv_style_set_bg_opa(&style, LV_OPA_100);
+    lv_style_set_bg_color(&style, lv_palette_main(LV_PALETTE_BLUE));
+    lv_style_set_bg_grad_color(&style, lv_palette_darken(LV_PALETTE_BLUE, 2));
+    lv_style_set_bg_grad_dir(&style, LV_GRAD_DIR_VER);
+
+    lv_style_set_border_opa(&style, LV_OPA_40);
+    lv_style_set_border_width(&style, 2);
+    lv_style_set_border_color(&style, lv_palette_main(LV_PALETTE_GREY));
+
+    lv_style_set_shadow_width(&style, 3);
+    lv_style_set_shadow_color(&style, lv_palette_main(LV_PALETTE_GREY));
+    lv_style_set_shadow_ofs_y(&style, 8);
+
+    lv_style_set_outline_opa(&style, LV_OPA_COVER);
+    lv_style_set_outline_color(&style, lv_palette_main(LV_PALETTE_BLUE));
+
+    lv_style_set_text_color(&style, lv_color_white());
+    lv_style_set_pad_all(&style, 10);
+
+    //pressed Style
+    static lv_style_t style_pr;
+    lv_style_init(&style_pr);
+
+    /*Add a large outline when pressed*/
+    lv_style_set_outline_width(&style_pr, 30);
+    lv_style_set_outline_opa(&style_pr, LV_OPA_TRANSP);
+
+    lv_style_set_translate_y(&style_pr, 5);
+    lv_style_set_shadow_ofs_y(&style_pr, 3);
+    lv_style_set_bg_color(&style_pr, lv_palette_darken(LV_PALETTE_BLUE, 2));
+    lv_style_set_bg_grad_color(&style_pr, lv_palette_darken(LV_PALETTE_BLUE, 4));
+
+
+    //Creating Objects
+    bluePos = lv_btn_create(lv_scr_act()); //create button, lv_scr_act() is deafult screen object
+    blueNeg = lv_btn_create(lv_scr_act());
+    myLabel = lv_label_create(bluePos);
+    mySwitch = lv_switch_create(lv_scr_act());
+
+    lv_label_set_text(myLabel, "Blue Positive");
+    lv_obj_add_style(bluePos, &style, 0);
+    lv_obj_add_style(bluePos, &style_pr, LV_STATE_PRESSED);
+    lv_obj_set_size(bluePos, 120, 70); //set the button size
+    lv_obj_align(bluePos, LV_ALIGN_TOP_LEFT, 10, 10); //set the position to top mid
+
+
+    lv_label_set_text(myLabel, "Blue Positive");
+    lv_obj_add_style(blueNeg, &style, 0);
+    lv_obj_add_style(blueNeg, &style_pr, LV_STATE_PRESSED);
+    lv_obj_set_size(blueNeg, 120, 70); //set the button size
+    lv_obj_align(blueNeg, LV_ALIGN_LEFT_MID, 10, 10); //set the position to top mid
+
     lv_obj_align(myLabel, LV_ALIGN_CENTER, 0, 0);
+    lv_obj_align(mySwitch, LV_ALIGN_TOP_MID, 0, 0);
 }
 
 void touchTester() {
