@@ -19,10 +19,12 @@ bool skillsAuton = false;
 
 lv_obj_t * bluePos;
 lv_obj_t * blueNeg;
+lv_obj_t * redPos;
+lv_obj_t * redNeg;
 lv_obj_t * myButtonLabel;
-lv_obj_t * myLabel;
-lv_obj_t * mySwitch;
-lv_obj_t * Slider;
+lv_obj_t * allianceSwitch;
+lv_obj_t * cornerSwitch;
+lv_obj_t * obj;
 
 
 //Used to switch which side the auton is on to fix the asymmetrical field layout
@@ -36,66 +38,164 @@ int Red = 0;
 //POOS FUNCTIONS
 void drawGUI() {
 
-    //Not Pressed Style
-    static lv_style_t style;
-    lv_style_init(&style);
+    //Not Pressed Blue Style
+    static lv_style_t styleBlue;
+    lv_style_init(&styleBlue);
 
-    lv_style_set_radius(&style, 3);
+    lv_style_set_radius(&styleBlue, 3);
 
-    lv_style_set_bg_opa(&style, LV_OPA_100);
-    lv_style_set_bg_color(&style, lv_palette_main(LV_PALETTE_BLUE));
-    lv_style_set_bg_grad_color(&style, lv_palette_darken(LV_PALETTE_BLUE, 2));
-    lv_style_set_bg_grad_dir(&style, LV_GRAD_DIR_VER);
+    lv_style_set_bg_opa(&styleBlue, LV_OPA_100);
+    lv_style_set_bg_color(&styleBlue, lv_palette_main(LV_PALETTE_BLUE));
+    lv_style_set_bg_grad_color(&styleBlue, lv_palette_darken(LV_PALETTE_BLUE, 2));
+    lv_style_set_bg_grad_dir(&styleBlue, LV_GRAD_DIR_VER);
 
-    lv_style_set_border_opa(&style, LV_OPA_40);
-    lv_style_set_border_width(&style, 2);
-    lv_style_set_border_color(&style, lv_palette_main(LV_PALETTE_GREY));
+    lv_style_set_border_opa(&styleBlue, LV_OPA_40);
+    lv_style_set_border_width(&styleBlue, 2);
+    lv_style_set_border_color(&styleBlue, lv_palette_main(LV_PALETTE_GREY));
 
-    lv_style_set_shadow_width(&style, 3);
-    lv_style_set_shadow_color(&style, lv_palette_main(LV_PALETTE_GREY));
-    lv_style_set_shadow_ofs_y(&style, 8);
+    lv_style_set_shadow_width(&styleBlue, 3);
+    lv_style_set_shadow_color(&styleBlue, lv_palette_main(LV_PALETTE_GREY));
+    lv_style_set_shadow_ofs_y(&styleBlue, 8);
 
-    lv_style_set_outline_opa(&style, LV_OPA_COVER);
-    lv_style_set_outline_color(&style, lv_palette_main(LV_PALETTE_BLUE));
+    lv_style_set_outline_opa(&styleBlue, LV_OPA_COVER);
+    lv_style_set_outline_color(&styleBlue, lv_palette_main(LV_PALETTE_BLUE));
 
-    lv_style_set_text_color(&style, lv_color_white());
-    lv_style_set_pad_all(&style, 10);
+    lv_style_set_text_color(&styleBlue, lv_color_white());
+    lv_style_set_pad_all(&styleBlue, 10);
 
-    //pressed Style
-    static lv_style_t style_pr;
-    lv_style_init(&style_pr);
+    //pressed blue Style
+    static lv_style_t styleBlue_pr;
+    lv_style_init(&styleBlue_pr);
 
     /*Add a large outline when pressed*/
-    lv_style_set_outline_width(&style_pr, 30);
-    lv_style_set_outline_opa(&style_pr, LV_OPA_TRANSP);
+    lv_style_set_outline_width(&styleBlue_pr, 30);
+    lv_style_set_outline_opa(&styleBlue_pr, LV_OPA_TRANSP);
 
-    lv_style_set_translate_y(&style_pr, 5);
-    lv_style_set_shadow_ofs_y(&style_pr, 3);
-    lv_style_set_bg_color(&style_pr, lv_palette_darken(LV_PALETTE_BLUE, 2));
-    lv_style_set_bg_grad_color(&style_pr, lv_palette_darken(LV_PALETTE_BLUE, 4));
+    lv_style_set_translate_y(&styleBlue_pr, 5);
+    lv_style_set_shadow_ofs_y(&styleBlue_pr, 3);
+    lv_style_set_bg_color(&styleBlue_pr, lv_palette_darken(LV_PALETTE_BLUE, 2));
+    lv_style_set_bg_grad_color(&styleBlue_pr, lv_palette_darken(LV_PALETTE_BLUE, 4));
+
+    //Not Pressed Red Style
+    static lv_style_t styleRed;
+    lv_style_init(&styleRed);
+
+    lv_style_set_radius(&styleRed, 3);
+
+    lv_style_set_bg_opa(&styleRed, LV_OPA_100);
+    lv_style_set_bg_color(&styleRed, lv_palette_main(LV_PALETTE_RED));
+    lv_style_set_bg_grad_color(&styleRed, lv_palette_darken(LV_PALETTE_RED, 2));
+    lv_style_set_bg_grad_dir(&styleRed, LV_GRAD_DIR_VER);
+
+    lv_style_set_border_opa(&styleRed, LV_OPA_40);
+    lv_style_set_border_width(&styleRed, 2);
+    lv_style_set_border_color(&styleRed, lv_palette_main(LV_PALETTE_GREY));
+
+    lv_style_set_shadow_width(&styleRed, 3);
+    lv_style_set_shadow_color(&styleRed, lv_palette_main(LV_PALETTE_GREY));
+    lv_style_set_shadow_ofs_y(&styleRed, 8);
+
+    lv_style_set_outline_opa(&styleRed, LV_OPA_COVER);
+    lv_style_set_outline_color(&styleRed, lv_palette_main(LV_PALETTE_RED));
+
+    lv_style_set_text_color(&styleRed, lv_color_white());
+    lv_style_set_pad_all(&styleRed, 10);
+
+    //pressed Red Style
+    static lv_style_t styleRed_pr;
+    lv_style_init(&styleRed_pr);
+
+    /*Add a large outline when pressed*/
+    lv_style_set_outline_width(&styleRed_pr, 30);
+    lv_style_set_outline_opa(&styleRed_pr, LV_OPA_TRANSP);
+
+    lv_style_set_translate_y(&styleRed_pr, 5);
+    lv_style_set_shadow_ofs_y(&styleRed_pr, 3);
+    lv_style_set_bg_color(&styleRed_pr, lv_palette_darken(LV_PALETTE_RED, 2));
+    lv_style_set_bg_grad_color(&styleRed_pr, lv_palette_darken(LV_PALETTE_RED, 4));
+
+    static lv_style_t redToggle;
+    lv_style_init(&redToggle);
+
+    lv_style_set_bg_color(&redToggle, lv_palette_main(LV_PALETTE_RED));
+    lv_style_set_bg_grad_color(&redToggle, lv_palette_darken(LV_PALETTE_RED, 2));
+
+    static lv_style_t blueToggle;
+    lv_style_init(&blueToggle);
+
+    lv_style_set_bg_color(&blueToggle, lv_palette_main(LV_PALETTE_BLUE));
+    lv_style_set_bg_grad_color(&blueToggle, lv_palette_darken(LV_PALETTE_BLUE, 2));
+    
+    static lv_style_t posToggle;
+    lv_style_init(&posToggle);
+
+    lv_style_set_bg_color(&posToggle, lv_palette_main(LV_PALETTE_GREY));
+    lv_style_set_bg_grad_color(&posToggle, lv_palette_darken(LV_PALETTE_GREY, 4));
+    obj = lv_label_create(lv_scr_act());
+    lv_obj_align(obj, LV_ALIGN_CENTER, 0, 0);
+    lv_style_set_text_color(&posToggle, lv_palette_main(LV_PALETTE_ORANGE));
+    lv_label_set_text(obj, "text");
+
+    static lv_style_t negToggle;
+    lv_style_init(&negToggle);
+
+    lv_style_set_bg_color(&negToggle, lv_palette_main(LV_PALETTE_GREY));
+    lv_style_set_bg_grad_color(&negToggle, lv_palette_darken(LV_PALETTE_GREY, 4));
+    obj = lv_label_create(lv_scr_act());
+    lv_obj_align(obj, LV_ALIGN_CENTER, 0, 0);
+    lv_style_set_text_color(&negToggle, lv_palette_main(LV_PALETTE_ORANGE));
+    lv_label_set_text(obj, "text");
+
+
+
 
 
     //Creating Objects
     bluePos = lv_btn_create(lv_scr_act()); //create button, lv_scr_act() is deafult screen object
     blueNeg = lv_btn_create(lv_scr_act());
-    myLabel = lv_label_create(bluePos);
-    mySwitch = lv_switch_create(lv_scr_act());
+    redPos = lv_btn_create(lv_scr_act()); //create button, lv_scr_act() is deafult screen object
+    redNeg = lv_btn_create(lv_scr_act());
+    bluePos = lv_label_create(lv_scr_act());
+    allianceSwitch = lv_switch_create(lv_scr_act());
+    cornerSwitch = lv_switch_create(lv_scr_act());
 
-    lv_label_set_text(myLabel, "Blue Positive");
-    lv_obj_add_style(bluePos, &style, 0);
-    lv_obj_add_style(bluePos, &style_pr, LV_STATE_PRESSED);
+    lv_label_set_text(bluePos, "Blue Positive");
+    lv_obj_add_style(bluePos, &styleBlue, 0);
+    lv_obj_add_style(bluePos, &styleBlue_pr, LV_STATE_PRESSED);
     lv_obj_set_size(bluePos, 120, 70); //set the button size
     lv_obj_align(bluePos, LV_ALIGN_TOP_LEFT, 10, 10); //set the position to top mid
 
 
-    lv_label_set_text(myLabel, "Blue Positive");
-    lv_obj_add_style(blueNeg, &style, 0);
-    lv_obj_add_style(blueNeg, &style_pr, LV_STATE_PRESSED);
+    //lv_label_set_text(myLabel, "Blue Positive");
+    lv_obj_add_style(blueNeg, &styleBlue, 0);
+    lv_obj_add_style(blueNeg, &styleBlue_pr, LV_STATE_PRESSED);
     lv_obj_set_size(blueNeg, 120, 70); //set the button size
     lv_obj_align(blueNeg, LV_ALIGN_LEFT_MID, 10, 10); //set the position to top mid
 
-    lv_obj_align(myLabel, LV_ALIGN_CENTER, 0, 0);
-    lv_obj_align(mySwitch, LV_ALIGN_TOP_MID, 0, 0);
+    //lv_label_set_text(myLabel, "Blue Positive");
+    lv_obj_add_style(redPos, &styleRed, 0);
+    lv_obj_add_style(redPos, &styleRed_pr, LV_STATE_PRESSED);
+    lv_obj_set_size(redPos, 120, 70); //set the button size
+    lv_obj_align(redPos, LV_ALIGN_TOP_LEFT, 140, 10); //set the position to top mid
+
+
+    //lv_label_set_text(myLabel, "Blue Positive");
+    lv_obj_add_style(redNeg, &styleRed, 0);
+    lv_obj_add_style(redNeg, &styleRed_pr, LV_STATE_PRESSED);
+    lv_obj_set_size(redNeg, 120, 70); //set the button size
+    lv_obj_align(redNeg, LV_ALIGN_LEFT_MID, 140, 10); //set the position to top mid
+
+
+    lv_obj_add_style(allianceSwitch, &blueToggle, LV_STATE_CHECKED);
+    lv_obj_add_style(allianceSwitch, &redToggle, LV_STATE_DEFAULT);
+    lv_obj_set_size(allianceSwitch, 100, 50);
+    lv_obj_align(allianceSwitch, LV_ALIGN_BOTTOM_LEFT, 10, -10);
+    
+    lv_obj_add_style(cornerSwitch, &posToggle, LV_STATE_CHECKED);
+    lv_obj_add_style(cornerSwitch, &negToggle, LV_STATE_DEFAULT);
+    lv_obj_set_size(cornerSwitch, 100, 50);
+    lv_obj_align(cornerSwitch, LV_ALIGN_BOTTOM_LEFT, 150, -10);
+
 }
 
 void touchTester() {
