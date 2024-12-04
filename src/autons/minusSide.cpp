@@ -15,19 +15,21 @@ void minusSide() {
     chassis.setPose(flip * 48, 16, 180);
     chassis.turnToHeading(flip * -90, 1000);
     chassis.moveToPoint(flip * 72, 16, 1000, {.forwards=false});
-    chassis.turnToHeading(flip * 180, 1000);
+    chassis.turnToHeading(flip * 0, 1000);
     chassis.moveToPoint(flip * 72, 10, 1000, {.forwards=false});
     spinIntake();
-    chassis.turnToHeading(flip * 27, 1000);
+    chassis.turnToHeading(flip * 30, 1000);
     stopIntake();
-    chassis.moveToPoint(flip * 48, 38, 1000, {.forwards=false, .maxSpeed=150});
+    chassis.moveToPoint(flip * 46, 56, 1000, {.forwards=false, .maxSpeed=100});
     chassis.waitUntilDone();
     pros::delay(1000);
     clamp();
     spinIntake();
     pros::delay(1000);
+    chassis.turnToHeading(flip * 0, 1000);
+    chassis.moveToPoint(flip * 48, 48, 1000);
     chassis.turnToHeading(flip * -90, 1000);
-    chassis.moveToPoint(flip * 24, 48, 1000);
+    chassis.moveToPoint(flip * 20, 48, 1000);
     chassis.turnToHeading(flip * 180, 1000);
     
 
@@ -63,5 +65,5 @@ void minusSide() {
     pros::delay(1000);
     stopIntake();
     chassis.turnToHeading(flip * 45, 1000);
-    chassis.moveToPoint(flip * 72, 48, 1000, {.maxSpeed=150});
+    chassis.moveToPoint(flip * 68, 48, 1000, {.maxSpeed=150});
 }
