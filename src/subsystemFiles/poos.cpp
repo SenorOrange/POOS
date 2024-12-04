@@ -17,14 +17,28 @@ bool redAWP = false;
 bool skillsAuton = false;
 
 
-lv_obj_t * bluePos;
-lv_obj_t * blueNeg;
-lv_obj_t * redPos;
-lv_obj_t * redNeg;
+lv_group_t * bluePos;
+lv_group_t * blueNeg;
+lv_group_t * redPos;
+lv_group_t * redNeg;
+lv_group_t * skillsb;
+
+lv_obj_t * bluePosBtn;
+lv_obj_t * bluePosLabel;
+lv_obj_t * blueNegBtn;
+lv_obj_t * blueNegLabel;
+lv_obj_t * redPosBtn;
+lv_obj_t * redPosLabel;
+lv_obj_t * redNegBtn;
+lv_obj_t * redNegLabel;
+lv_obj_t * skillsBtn;
+lv_obj_t * skillsLabel;
+
 lv_obj_t * myButtonLabel;
 lv_obj_t * allianceSwitch;
 lv_obj_t * cornerSwitch;
 lv_obj_t * obj;
+lv_obj_t * testImg;
 
 
 //Used to switch which side the auton is on to fix the asymmetrical field layout
@@ -42,7 +56,7 @@ void drawGUI() {
     static lv_style_t styleBlue;
     lv_style_init(&styleBlue);
 
-    lv_style_set_radius(&styleBlue, 3);
+    lv_style_set_radius(&styleBlue, 1);
 
     lv_style_set_bg_opa(&styleBlue, LV_OPA_100);
     lv_style_set_bg_color(&styleBlue, lv_palette_main(LV_PALETTE_BLUE));
@@ -80,7 +94,7 @@ void drawGUI() {
     static lv_style_t styleRed;
     lv_style_init(&styleRed);
 
-    lv_style_set_radius(&styleRed, 3);
+    lv_style_set_radius(&styleRed, 1);
 
     lv_style_set_bg_opa(&styleRed, LV_OPA_100);
     lv_style_set_bg_color(&styleRed, lv_palette_main(LV_PALETTE_RED));
@@ -144,58 +158,94 @@ void drawGUI() {
     obj = lv_label_create(lv_scr_act());
     lv_obj_align(obj, LV_ALIGN_CENTER, 0, 0);
     lv_style_set_text_color(&negToggle, lv_palette_main(LV_PALETTE_ORANGE));
-    lv_label_set_text(obj, "text");
 
 
 
 
+
+    //Creating Groups
+    bluePos = lv_group_create();
+    blueNeg = lv_group_create();
+    redPos = lv_group_create();
+    redNeg = lv_group_create();
+    skillsb = lv_group_create();
 
     //Creating Objects
-    bluePos = lv_btn_create(lv_scr_act()); //create button, lv_scr_act() is deafult screen object
-    blueNeg = lv_btn_create(lv_scr_act());
-    redPos = lv_btn_create(lv_scr_act()); //create button, lv_scr_act() is deafult screen object
-    redNeg = lv_btn_create(lv_scr_act());
-    bluePos = lv_label_create(lv_scr_act());
     allianceSwitch = lv_switch_create(lv_scr_act());
     cornerSwitch = lv_switch_create(lv_scr_act());
+    testImg = lv_img_create(lv_scr_act());
 
-    lv_label_set_text(bluePos, "Blue Positive");
-    lv_obj_add_style(bluePos, &styleBlue, 0);
-    lv_obj_add_style(bluePos, &styleBlue_pr, LV_STATE_PRESSED);
-    lv_obj_set_size(bluePos, 120, 70); //set the button size
-    lv_obj_align(bluePos, LV_ALIGN_TOP_LEFT, 10, 10); //set the position to top mid
-
-
-    //lv_label_set_text(myLabel, "Blue Positive");
-    lv_obj_add_style(blueNeg, &styleBlue, 0);
-    lv_obj_add_style(blueNeg, &styleBlue_pr, LV_STATE_PRESSED);
-    lv_obj_set_size(blueNeg, 120, 70); //set the button size
-    lv_obj_align(blueNeg, LV_ALIGN_LEFT_MID, 10, 10); //set the position to top mid
-
-    //lv_label_set_text(myLabel, "Blue Positive");
-    lv_obj_add_style(redPos, &styleRed, 0);
-    lv_obj_add_style(redPos, &styleRed_pr, LV_STATE_PRESSED);
-    lv_obj_set_size(redPos, 120, 70); //set the button size
-    lv_obj_align(redPos, LV_ALIGN_TOP_LEFT, 140, 10); //set the position to top mid
+    bluePosBtn = lv_btn_create(lv_scr_act());
+    bluePosLabel = lv_label_create(bluePosBtn);
+    blueNegBtn = lv_btn_create(lv_scr_act());
+    blueNegLabel = lv_label_create(blueNegBtn);
+    redPosBtn = lv_btn_create(lv_scr_act());
+    redPosLabel = lv_label_create(redPosBtn);
+    redNegBtn = lv_btn_create(lv_scr_act());
+    redNegLabel = lv_label_create(redNegBtn);
+    skillsBtn = lv_btn_create(lv_scr_act());
+    skillsLabel = lv_label_create(skillsBtn);
 
 
-    //lv_label_set_text(myLabel, "Blue Positive");
-    lv_obj_add_style(redNeg, &styleRed, 0);
-    lv_obj_add_style(redNeg, &styleRed_pr, LV_STATE_PRESSED);
-    lv_obj_set_size(redNeg, 120, 70); //set the button size
-    lv_obj_align(redNeg, LV_ALIGN_LEFT_MID, 140, 10); //set the position to top mid
+    //Assigning Objects into Groups
+    lv_group_add_obj(bluePos, bluePosBtn);
+    lv_group_add_obj(blueNeg, blueNegBtn);
+    lv_group_add_obj(redPos, redPosBtn);
+    lv_group_add_obj(redNeg, redNegBtn);
+    lv_group_add_obj(skillsb, skillsBtn);
+
+    lv_group_add_obj(bluePos, bluePosLabel);
+    lv_group_add_obj(blueNeg, blueNegLabel);
+    lv_group_add_obj(redPos, redPosLabel);
+    lv_group_add_obj(redNeg, redPosLabel);
+    lv_group_add_obj(skillsb, skillsLabel);
+    
+
+
+    lv_label_set_text(bluePosLabel, "Blue\nPositive");
+    lv_obj_add_style(bluePosBtn, &styleBlue, 0);
+    lv_obj_add_style(bluePosBtn, &styleBlue_pr, LV_STATE_PRESSED);
+    lv_obj_set_size(bluePosBtn, 70, 70);
+    lv_obj_align(bluePosBtn, LV_ALIGN_TOP_LEFT, 10, 10);
+
+    lv_label_set_text(blueNegLabel, "Blue\nNegative");
+    lv_obj_add_style(blueNegBtn, &styleBlue, 0);
+    lv_obj_add_style(blueNegBtn, &styleBlue_pr, LV_STATE_PRESSED);
+    lv_obj_set_size(blueNegBtn, 70, 70);
+    lv_obj_align(blueNegBtn, LV_ALIGN_LEFT_MID, 10, 10);
+
+    lv_label_set_text(redPosLabel, "Red\nPositive");
+    lv_obj_add_style(redPosBtn, &styleRed, 0);
+    lv_obj_add_style(redPosBtn, &styleRed_pr, LV_STATE_PRESSED);
+    lv_obj_set_size(redPosBtn, 70, 70);
+    lv_obj_align(redPosBtn, LV_ALIGN_TOP_LEFT, 90, 10);
+
+    lv_label_set_text(redNegLabel, "Red\nNegative");
+    lv_obj_add_style(redNegBtn, &styleRed, 0);
+    lv_obj_add_style(redNegBtn, &styleRed_pr, LV_STATE_PRESSED);
+    lv_obj_set_size(redNegBtn, 70, 70);
+    lv_obj_align(redNegBtn, LV_ALIGN_LEFT_MID, 90, 10);
+
+    lv_label_set_text(skillsLabel, "Skills\nAuton");
+    lv_obj_add_style(skillsBtn, &styleRed, 0);
+    lv_obj_add_style(skillsBtn, &styleRed_pr, LV_STATE_PRESSED);
+    lv_obj_set_size(skillsBtn, 70, 155);
+    lv_obj_align(skillsBtn, LV_ALIGN_TOP_LEFT, 170, 10);
 
 
     lv_obj_add_style(allianceSwitch, &blueToggle, LV_STATE_CHECKED);
     lv_obj_add_style(allianceSwitch, &redToggle, LV_STATE_DEFAULT);
     lv_obj_set_size(allianceSwitch, 100, 50);
-    lv_obj_align(allianceSwitch, LV_ALIGN_BOTTOM_LEFT, 10, -10);
+    lv_obj_align(allianceSwitch, LV_ALIGN_BOTTOM_LEFT, 20, -10);
     
     lv_obj_add_style(cornerSwitch, &posToggle, LV_STATE_CHECKED);
     lv_obj_add_style(cornerSwitch, &negToggle, LV_STATE_DEFAULT);
     lv_obj_set_size(cornerSwitch, 100, 50);
-    lv_obj_align(cornerSwitch, LV_ALIGN_BOTTOM_LEFT, 150, -10);
+    lv_obj_align(cornerSwitch, LV_ALIGN_BOTTOM_LEFT, 130, -10);
 
+
+    lv_img_set_src(testImg, "F:POOS/lvgl/kung-fu-panda.bmp");
+    lv_obj_center(testImg);
 }
 
 void touchTester() {
