@@ -22,6 +22,7 @@ lv_group_t * blueNeg;
 lv_group_t * redPos;
 lv_group_t * redNeg;
 lv_group_t * skillsb;
+lv_group_t * cornerSw;
 
 lv_obj_t * bluePosBtn;
 lv_obj_t * bluePosLabel;
@@ -143,21 +144,14 @@ void drawGUI() {
     static lv_style_t posToggle;
     lv_style_init(&posToggle);
 
-    lv_style_set_bg_color(&posToggle, lv_palette_main(LV_PALETTE_GREY));
-    lv_style_set_bg_grad_color(&posToggle, lv_palette_darken(LV_PALETTE_GREY, 4));
-    obj = lv_label_create(lv_scr_act());
-    lv_obj_align(obj, LV_ALIGN_CENTER, 0, 0);
-    lv_style_set_text_color(&posToggle, lv_palette_main(LV_PALETTE_ORANGE));
-    lv_label_set_text(obj, "text");
+    lv_style_set_bg_color(&posToggle, lv_palette_main(LV_PALETTE_BLUE_GREY));
+    lv_style_set_bg_grad_color(&posToggle, lv_palette_darken(LV_PALETTE_BLUE_GREY, 2));
 
     static lv_style_t negToggle;
     lv_style_init(&negToggle);
 
-    lv_style_set_bg_color(&negToggle, lv_palette_main(LV_PALETTE_GREY));
-    lv_style_set_bg_grad_color(&negToggle, lv_palette_darken(LV_PALETTE_GREY, 4));
-    obj = lv_label_create(lv_scr_act());
-    lv_obj_align(obj, LV_ALIGN_CENTER, 0, 0);
-    lv_style_set_text_color(&negToggle, lv_palette_main(LV_PALETTE_ORANGE));
+    lv_style_set_bg_color(&negToggle, lv_palette_main(LV_PALETTE_BLUE));
+    lv_style_set_bg_grad_color(&negToggle, lv_palette_darken(LV_PALETTE_BLUE, 2));
 
 
 
@@ -169,11 +163,13 @@ void drawGUI() {
     redPos = lv_group_create();
     redNeg = lv_group_create();
     skillsb = lv_group_create();
+    cornerSw = lv_group_create();
 
     //Creating Objects
     allianceSwitch = lv_switch_create(lv_scr_act());
     cornerSwitch = lv_switch_create(lv_scr_act());
     testImg = lv_img_create(lv_scr_act());
+    //obj = lv_label_create(cornerSwitch);
 
     bluePosBtn = lv_btn_create(lv_scr_act());
     bluePosLabel = lv_label_create(bluePosBtn);
@@ -199,53 +195,60 @@ void drawGUI() {
     lv_group_add_obj(redPos, redPosLabel);
     lv_group_add_obj(redNeg, redPosLabel);
     lv_group_add_obj(skillsb, skillsLabel);
+
+    lv_group_add_obj(cornerSw, cornerSwitch);
+    //lv_group_add_obj(cornerSw, obj);
+
+
+
+
     
-
-
     lv_label_set_text(bluePosLabel, "Blue\nPositive");
+    lv_obj_center(bluePosLabel);
     lv_obj_add_style(bluePosBtn, &styleBlue, 0);
     lv_obj_add_style(bluePosBtn, &styleBlue_pr, LV_STATE_PRESSED);
     lv_obj_set_size(bluePosBtn, 70, 70);
     lv_obj_align(bluePosBtn, LV_ALIGN_TOP_LEFT, 10, 10);
 
     lv_label_set_text(blueNegLabel, "Blue\nNegative");
+    lv_obj_center(blueNegLabel);
     lv_obj_add_style(blueNegBtn, &styleBlue, 0);
     lv_obj_add_style(blueNegBtn, &styleBlue_pr, LV_STATE_PRESSED);
     lv_obj_set_size(blueNegBtn, 70, 70);
     lv_obj_align(blueNegBtn, LV_ALIGN_LEFT_MID, 10, 10);
 
     lv_label_set_text(redPosLabel, "Red\nPositive");
+    lv_obj_center(redPosLabel);
     lv_obj_add_style(redPosBtn, &styleRed, 0);
     lv_obj_add_style(redPosBtn, &styleRed_pr, LV_STATE_PRESSED);
     lv_obj_set_size(redPosBtn, 70, 70);
     lv_obj_align(redPosBtn, LV_ALIGN_TOP_LEFT, 90, 10);
 
     lv_label_set_text(redNegLabel, "Red\nNegative");
+    lv_obj_center(redNegLabel);
     lv_obj_add_style(redNegBtn, &styleRed, 0);
     lv_obj_add_style(redNegBtn, &styleRed_pr, LV_STATE_PRESSED);
     lv_obj_set_size(redNegBtn, 70, 70);
     lv_obj_align(redNegBtn, LV_ALIGN_LEFT_MID, 90, 10);
 
     lv_label_set_text(skillsLabel, "Skills\nAuton");
+    lv_obj_center(skillsLabel);
     lv_obj_add_style(skillsBtn, &styleRed, 0);
     lv_obj_add_style(skillsBtn, &styleRed_pr, LV_STATE_PRESSED);
     lv_obj_set_size(skillsBtn, 70, 155);
     lv_obj_align(skillsBtn, LV_ALIGN_TOP_LEFT, 170, 10);
 
-
-    lv_obj_add_style(allianceSwitch, &blueToggle, LV_STATE_CHECKED);
     lv_obj_add_style(allianceSwitch, &redToggle, LV_STATE_DEFAULT);
+    lv_obj_add_style(allianceSwitch, &blueToggle, LV_STATE_CHECKED);
     lv_obj_set_size(allianceSwitch, 100, 50);
     lv_obj_align(allianceSwitch, LV_ALIGN_BOTTOM_LEFT, 20, -10);
     
-    lv_obj_add_style(cornerSwitch, &posToggle, LV_STATE_CHECKED);
-    lv_obj_add_style(cornerSwitch, &negToggle, LV_STATE_DEFAULT);
+    lv_obj_add_style(cornerSwitch, &posToggle, LV_STATE_DEFAULT);
+    lv_obj_add_style(cornerSwitch, &negToggle, LV_STATE_CHECKED);
     lv_obj_set_size(cornerSwitch, 100, 50);
     lv_obj_align(cornerSwitch, LV_ALIGN_BOTTOM_LEFT, 130, -10);
+    
 
-
-    lv_img_set_src(testImg, "F:POOS/lvgl/kung-fu-panda.bmp");
-    lv_obj_center(testImg);
 }
 
 void touchTester() {
