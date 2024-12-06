@@ -18,8 +18,7 @@ void skills() {
         chassis.setPose(72, 16, 0);
         chassis.moveToPoint(72, 10, 1000, {.forwards=false});
         spinIntake();
-        chassis.turnToHeading(0, 1000);
-        chassis.moveToPoint(72, 24, 2000, {.forwards=false, .maxSpeed=150});
+        chassis.moveToPoint(72, 24, 2000);
         chassis.turnToHeading(-90, 2000, {.maxSpeed=150});
         chassis.moveToPoint(96, 24, 2000, {.forwards=false, .maxSpeed=50});
         chassis.waitUntilDone();
@@ -31,24 +30,21 @@ void skills() {
         chassis.turnToHeading(45, 1000);
         chassis.moveToPoint(110, 72, 1000);
         chassis.waitUntilDone();
-        ladyBrownPrime();
         chassis.moveToPoint(120, 96, 1000);
         chassis.moveToPoint(110, 86, 1000, {.forwards=false});
         stopIntake();
         chassis.moveToPoint(120, 72, 1000);
         chassis.turnToHeading(90, 1000);
-        chassis.moveToPoint(144, 72, 1000);
         chassis.waitUntilDone();
-        ladyBrownScore();
         spinIntake();
         pros::delay(1000);
         chassis.moveToPoint(120, 72, 1000, {.forwards=false});
         chassis.turnToHeading(180, 1000);
         chassis.waitUntilDone();
-        ladyBrownLower();
         chassis.moveToPoint(120, 16, 1000);
         chassis.moveToPoint(132, 24, 1000);
-        chassis.moveToPoint(132, 12, 1000, {.forwards=false, .maxSpeed=150});
+        chassis.moveToPoint(144, 0, 1000, {.forwards=false, .maxSpeed=150});
+
         chassis.waitUntilDone();
         unclamp();
         stopIntake();

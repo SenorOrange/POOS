@@ -13,21 +13,20 @@
 void minusSide() {
     chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
     chassis.setPose(flip * 48, 16, 180);
-    chassis.turnToHeading(flip * -90, 1000);
-    chassis.moveToPoint(flip * 72, 16, 1000, {.forwards=false});
-    chassis.turnToHeading(flip * 0, 1000);
-    chassis.moveToPoint(flip * 72, 10, 1000, {.forwards=false});
+    chassis.turnToHeading(flip * -90, 2000);
+    chassis.moveToPoint(flip * 72, 16, 2000, {.forwards=false});
+    chassis.turnToHeading(flip * 0, 2000);
+    chassis.moveToPoint(flip * 72, 10, 2000, {.forwards=false});
     spinIntake();
-    chassis.moveToPoint(flip * 72, 24, 1000);
-    chassis.turnToHeading(flip * 135, 1000);
+    chassis.moveToPoint(flip * 72, 24, 2000);
+    chassis.turnToHeading(flip * 135, 2000);
     stopIntake();
-    chassis.moveToPoint(flip * 54, 42, 2000, {.forwards=false, .maxSpeed=100});
+    chassis.moveToPoint(flip * 48, 48, 4000, {.forwards=false, .maxSpeed=50});
     chassis.waitUntilDone();
     pros::delay(1000);
     clamp();
     spinIntake();
     pros::delay(1000);
-    chassis.moveToPoint(flip * 48, 48, 1000, {.forwards=false});
     chassis.turnToHeading(flip * -90, 1000);
     chassis.moveToPoint(flip * 20, 48, 1000);
     chassis.turnToHeading(flip * 180, 1000);
@@ -36,10 +35,10 @@ void minusSide() {
     //If on red minus & blue plus
     //For Clearing Corner
     if (flip == 1) {
-        chassis.moveToPoint(flip * 10, 15, 1000);
-        chassis.turnToHeading(flip * -135, 1000);
+        chassis.moveToPoint(flip * 12, 12, 1000);
+        chassis.turnToHeading(flip * -100, 1000);
         chassis.waitUntilDone();
-        pros::delay(1000);
+        pros::delay(2000);
         lowerDoinker();
         chassis.turnToHeading(0, 1000);
         pros::delay(1000);
@@ -65,5 +64,5 @@ void minusSide() {
     pros::delay(1000);
     stopIntake();
     chassis.turnToHeading(flip * 45, 1000);
-    chassis.moveToPoint(flip * 68, 48, 2000, {.maxSpeed=150});
+    chassis.moveToPoint(flip * 68, 48, 2000, {.maxSpeed=50});
 }
