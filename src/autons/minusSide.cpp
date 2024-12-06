@@ -18,16 +18,16 @@ void minusSide() {
     chassis.turnToHeading(flip * 0, 1000);
     chassis.moveToPoint(flip * 72, 10, 1000, {.forwards=false});
     spinIntake();
-    chassis.turnToHeading(flip * 30, 1000);
+    chassis.moveToPoint(flip * 72, 24, 1000);
+    chassis.turnToHeading(flip * 135, 1000);
     stopIntake();
-    chassis.moveToPoint(flip * 46, 56, 1000, {.forwards=false, .maxSpeed=100});
+    chassis.moveToPoint(flip * 54, 42, 2000, {.forwards=false, .maxSpeed=100});
     chassis.waitUntilDone();
     pros::delay(1000);
     clamp();
     spinIntake();
     pros::delay(1000);
-    chassis.turnToHeading(flip * 0, 1000);
-    chassis.moveToPoint(flip * 48, 48, 1000);
+    chassis.moveToPoint(flip * 48, 48, 1000, {.forwards=false});
     chassis.turnToHeading(flip * -90, 1000);
     chassis.moveToPoint(flip * 20, 48, 1000);
     chassis.turnToHeading(flip * 180, 1000);
@@ -36,7 +36,7 @@ void minusSide() {
     //If on red minus & blue plus
     //For Clearing Corner
     if (flip == 1) {
-        chassis.moveToPoint(flip * 14, 18, 1000);
+        chassis.moveToPoint(flip * 10, 15, 1000);
         chassis.turnToHeading(flip * -135, 1000);
         chassis.waitUntilDone();
         pros::delay(1000);
@@ -61,9 +61,9 @@ void minusSide() {
     
     chassis.waitUntilDone();
     raiseDoinker();
-    chassis.moveToPoint(flip * 14, 14, 1000);
+    chassis.moveToPoint(flip * 5, 5, 1000);
     pros::delay(1000);
     stopIntake();
     chassis.turnToHeading(flip * 45, 1000);
-    chassis.moveToPoint(flip * 68, 48, 1000, {.maxSpeed=150});
+    chassis.moveToPoint(flip * 68, 48, 2000, {.maxSpeed=150});
 }
