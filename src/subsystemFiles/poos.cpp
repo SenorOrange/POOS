@@ -24,6 +24,19 @@ lv_group_t * redNeg;
 lv_group_t * skillsb;
 lv_group_t * cornerSw;
 
+lv_event_cb_t  bluePosClick;
+lv_event_cb_t * blueNegClick;
+lv_event_cb_t * redPosClick;
+lv_event_cb_t * redNegClick;
+lv_event_cb_t * skillsClick;
+
+lv_event_cb_t  bluePosReleased;
+lv_event_cb_t * blueNegReleased;
+lv_event_cb_t * redPosReleased;
+lv_event_cb_t * redNegReleased;
+lv_event_cb_t * skillsReleased;
+
+
 lv_obj_t * bluePosBtn;
 lv_obj_t * bluePosLabel;
 lv_obj_t * blueNegBtn;
@@ -41,6 +54,8 @@ lv_obj_t * cornerSwitch;
 lv_obj_t * obj;
 lv_obj_t * testImg;
 
+//Used to determine what Auton is selected by rotating the number
+int auton = 0;
 
 //Used to switch which side the auton is on to fix the asymmetrical field layout
 int flip = 1;
@@ -49,6 +64,58 @@ int flip = 1;
 int Ring_Hue;
 int Blue = 240;
 int Red = 0;
+
+
+static void event_bp(lv_event_t * bluePosClick) {
+    std::cout << "Blue Plus Side: " << bluePlusSide << "\n";
+    lv_label_set_text(bluePosLabel, "Clicked");
+    flip = 1;
+}
+
+static void event_bpr(lv_event_t * bluePosReleased) {
+    lv_label_set_text(bluePosLabel, "Blue\nPositive");
+}
+
+static void event_bn(lv_event_t * blueNegClick) {
+    std::cout << "Blue Neg Side: " << blueMinusSide << "\n";
+    lv_label_set_text(blueNegLabel, "Clicked");
+    flip = -1;
+}
+
+static void event_bnr(lv_event_t * blueNegReleased) {
+    lv_label_set_text(blueNegLabel, "Blue\nNegative");
+}
+
+static void event_rp(lv_event_t * redPosClick) {
+    std::cout << "Red Pos Side: " << redPlusSide << "\n";
+    lv_label_set_text(redPosLabel, "Clicked");
+    flip = -1;
+}
+
+static void event_rpr(lv_event_t * redPosReleased) {
+    lv_label_set_text(redPosLabel, "Red\nPositive");
+}
+
+static void event_rn(lv_event_t * redNegClick) {
+    std::cout << "Red Neg Side: " << redMinusSide << "\n";
+    lv_label_set_text(redNegLabel, "Clicked");
+    flip = 1;
+}
+
+static void event_rnr(lv_event_t * redNegReleased) {
+    lv_label_set_text(redNegLabel, "Red\nNegative");
+}
+
+static void event_s(lv_event_t * skillsClick) {
+    std::cout << "Skills: " << skillsAuton << "\n";
+    lv_label_set_text(skillsLabel, "Clicked");
+    flip = 1;
+}
+
+static void event_sr(lv_event_t * skillsReleased) {
+    lv_label_set_text(skillsLabel, "Skills\nAuton");
+}
+
 
 //POOS FUNCTIONS
 void drawGUI() {
@@ -209,6 +276,8 @@ void drawGUI() {
     lv_obj_add_style(bluePosBtn, &styleBlue_pr, LV_STATE_PRESSED);
     lv_obj_set_size(bluePosBtn, 70, 70);
     lv_obj_align(bluePosBtn, LV_ALIGN_TOP_LEFT, 10, 10);
+    lv_obj_add_event_cb(bluePosBtn, event_bp, LV_EVENT_PRESSED, NULL);
+    lv_obj_add_event_cb(bluePosBtn, event_bpr, LV_EVENT_RELEASED, NULL);
 
     lv_label_set_text(blueNegLabel, "Blue\nNegative");
     lv_obj_center(blueNegLabel);
@@ -216,6 +285,8 @@ void drawGUI() {
     lv_obj_add_style(blueNegBtn, &styleBlue_pr, LV_STATE_PRESSED);
     lv_obj_set_size(blueNegBtn, 70, 70);
     lv_obj_align(blueNegBtn, LV_ALIGN_LEFT_MID, 10, 10);
+    lv_obj_add_event_cb(blueNegBtn, event_bn, LV_EVENT_PRESSED, NULL);
+    lv_obj_add_event_cb(blueNegBtn, event_bnr, LV_EVENT_RELEASED, NULL);
 
     lv_label_set_text(redPosLabel, "Red\nPositive");
     lv_obj_center(redPosLabel);
@@ -223,6 +294,8 @@ void drawGUI() {
     lv_obj_add_style(redPosBtn, &styleRed_pr, LV_STATE_PRESSED);
     lv_obj_set_size(redPosBtn, 70, 70);
     lv_obj_align(redPosBtn, LV_ALIGN_TOP_LEFT, 90, 10);
+    lv_obj_add_event_cb(redPosBtn, event_rp, LV_EVENT_PRESSED, NULL);
+    lv_obj_add_event_cb(redPosBtn, event_rpr, LV_EVENT_RELEASED, NULL);
 
     lv_label_set_text(redNegLabel, "Red\nNegative");
     lv_obj_center(redNegLabel);
@@ -230,6 +303,8 @@ void drawGUI() {
     lv_obj_add_style(redNegBtn, &styleRed_pr, LV_STATE_PRESSED);
     lv_obj_set_size(redNegBtn, 70, 70);
     lv_obj_align(redNegBtn, LV_ALIGN_LEFT_MID, 90, 10);
+    lv_obj_add_event_cb(redNegBtn, event_rn, LV_EVENT_PRESSED, NULL);
+    lv_obj_add_event_cb(redNegBtn, event_rnr, LV_EVENT_RELEASED, NULL);
 
     lv_label_set_text(skillsLabel, "Skills\nAuton");
     lv_obj_center(skillsLabel);
@@ -237,6 +312,8 @@ void drawGUI() {
     lv_obj_add_style(skillsBtn, &styleRed_pr, LV_STATE_PRESSED);
     lv_obj_set_size(skillsBtn, 70, 155);
     lv_obj_align(skillsBtn, LV_ALIGN_TOP_LEFT, 170, 10);
+    lv_obj_add_event_cb(skillsBtn, event_s, LV_EVENT_PRESSED, NULL);
+    lv_obj_add_event_cb(skillsBtn, event_sr, LV_EVENT_RELEASED, NULL);
 
     lv_obj_add_style(allianceSwitch, &redToggle, LV_STATE_DEFAULT);
     lv_obj_add_style(allianceSwitch, &blueToggle, LV_STATE_CHECKED);
@@ -249,6 +326,7 @@ void drawGUI() {
     lv_obj_align(cornerSwitch, LV_ALIGN_BOTTOM_LEFT, 130, -10);
     
 
+    
 }
 
 void touchTester() {
