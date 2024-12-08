@@ -19,7 +19,7 @@ void intakePauseTask() {
         if (hue >= ringHueMin && hue <= ringHueMax) { 
             if (x) {
                 // If intake is running, pause and then resume
-                pros::delay(100);
+                pros::delay(150);
                 intake.move_velocity(0);   // Stop intake
                 pros::delay(300);          // Pause for 300ms
                 intake.move_velocity(600); // Resume previous speed

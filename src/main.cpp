@@ -22,6 +22,7 @@ void initialize() {
     chassis.calibrate(); // calibrate sensors
     colorSensor.set_led_pwm(100);
     drawGUI();
+    
 }
 
 /**

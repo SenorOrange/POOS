@@ -66,7 +66,7 @@ int ringHueMax;
 int BlueMin = 190;
 int BlueMax = 260;
 int RedMin = 0;
-int RedMax = 0;
+int RedMax = 80;
 
 
 static void event_bp(lv_event_t * bluePosClick) {
