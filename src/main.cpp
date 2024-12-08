@@ -4,6 +4,7 @@
 #include "pros/misc.h"
 #include "subsystemHeaders/poos.hpp"
 #include "subsystemHeaders/globals.hpp"
+#include "pros/rtos.hpp"
 
 
 
@@ -19,7 +20,7 @@
 
 void initialize() {
     chassis.calibrate(); // calibrate sensors
-    colorSensor.set_led_pwm(50);
+    colorSensor.set_led_pwm(100);
     drawGUI();
 }
 
@@ -62,9 +63,9 @@ void autonomous() {
     }
 }
 
-/**
- * Runs in driver control
- */
+// Declare the async task globally
+pros::Task intakePause([] { intakePauseTask(); });
+
 void opcontrol() {
 
     while (true) {

@@ -34,7 +34,11 @@ extern int auton;
 
 extern int flip;
 
-extern int Ring_Hue;
-extern int Red;
-extern int Blue;
+//Color Sort Variables
+extern int ringHueMin;
+extern int ringHueMax;
+extern int RedMin;
+extern int RedMax;
+extern int BlueMin;
+extern int BlueMax;
 

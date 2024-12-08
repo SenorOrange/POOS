@@ -61,15 +61,22 @@ int auton = 0;
 int flip = 1;
 
 //Color Sort Variables
-int Ring_Hue;
-int Blue = 240;
-int Red = 0;
+int ringHueMin;
+int ringHueMax;
+int BlueMin = 190;
+int BlueMax = 260;
+int RedMin = 0;
+int RedMax = 0;
 
 
 static void event_bp(lv_event_t * bluePosClick) {
     std::cout << "Blue Plus Side: " << bluePlusSide << "\n";
     lv_label_set_text(bluePosLabel, "Clicked");
     flip = 1;
+
+    //Switch Ring Sort Colour To Red
+    ringHueMin = RedMin;
+    ringHueMax = RedMax;
 }
 
 static void event_bpr(lv_event_t * bluePosReleased) {
@@ -80,6 +87,10 @@ static void event_bn(lv_event_t * blueNegClick) {
     std::cout << "Blue Neg Side: " << blueMinusSide << "\n";
     lv_label_set_text(blueNegLabel, "Clicked");
     flip = -1;
+
+    //Switch Ring Sort Colour To Red
+    ringHueMin = RedMin;
+    ringHueMax = RedMax;
 }
 
 static void event_bnr(lv_event_t * blueNegReleased) {
@@ -90,6 +101,10 @@ static void event_rp(lv_event_t * redPosClick) {
     std::cout << "Red Pos Side: " << redPlusSide << "\n";
     lv_label_set_text(redPosLabel, "Clicked");
     flip = -1;
+
+    //Switch Ring Sort Colour To Blue
+    ringHueMin = BlueMin;
+    ringHueMax = BlueMax;
 }
 
 static void event_rpr(lv_event_t * redPosReleased) {
@@ -100,6 +115,10 @@ static void event_rn(lv_event_t * redNegClick) {
     std::cout << "Red Neg Side: " << redMinusSide << "\n";
     lv_label_set_text(redNegLabel, "Clicked");
     flip = 1;
+
+    //Switch Ring Sort Colour To Blue
+    ringHueMin = BlueMin;
+    ringHueMax = BlueMax;
 }
 
 static void event_rnr(lv_event_t * redNegReleased) {
@@ -110,6 +129,10 @@ static void event_s(lv_event_t * skillsClick) {
     std::cout << "Skills: " << skillsAuton << "\n";
     lv_label_set_text(skillsLabel, "Clicked");
     flip = 1;
+
+    //Switch Ring Sort Colour To Blue
+    ringHueMin = BlueMin;
+    ringHueMax = BlueMax;
 }
 
 static void event_sr(lv_event_t * skillsReleased) {

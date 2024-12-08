@@ -11,6 +11,24 @@
 
 bool x = false;
 
+// Async task for intake pause logic
+void intakePauseTask() {
+    while (true) {
+        // Check the hue for a blue ring
+        int hue = colorSensor.get_hue();
+        if (hue >= ringHueMin && hue <= ringHueMax) { 
+            if (x) {
+                // If intake is running, pause and then resume
+                pros::delay(100);
+                intake.move_velocity(0);   // Stop intake
+                pros::delay(300);          // Pause for 300ms
+                intake.move_velocity(600); // Resume previous speed
+            }
+        }
+        pros::delay(20); // Short delay to avoid excessive CPU usage
+    }
+}
+
 //DRIVER CONTROL FUNCTIONS
 void setIntakeMotors() {
 
@@ -72,9 +90,6 @@ void slowIntake() {
 
 void spinIntake() {
     intake.move_velocity(600);
-    if (colorSensor.get_hue() == Blue) {
-        intake.move_velocity(0);
-    }
 }
 
 void stopIntake() {

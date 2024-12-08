@@ -1,6 +1,7 @@
 #include "main.h"
 
 //DRIVER CONTROL FUNCTIONS
+void intakePauseTask();
 void setIntakeMotors();
 
 void slowIntake();
