@@ -4,9 +4,6 @@
 //POOS FUNCTIONS
 
 void drawGUI();
-void touchTester();
-void autonSelector();
-void testBools();
 
 static void event_bp();
 static void event_bn();

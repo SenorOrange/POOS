@@ -22,7 +22,6 @@ void initialize() {
     chassis.calibrate(); // calibrate sensors
     colorSensor.set_led_pwm(100);
     drawGUI();
-    
 }
 
 /**
@@ -43,10 +42,6 @@ ASSET(example_txt); // '.' replaced with "_" to make c++ happy
 
 void autonomous() {
 
-    //Auto Win Point
-    if (blueAWP == true || redAWP == true) {
-    AWP();
-    }
 
     //Mogo Rush
     if (blueRush == true || redRush == true) {

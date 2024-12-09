@@ -1,17 +1,26 @@
+#include "liblvgl/core/lv_disp.h"
+#include "liblvgl/core/lv_group.h"
+#include "liblvgl/core/lv_obj.h"
+#include "liblvgl/core/lv_obj_pos.h"
+#include "liblvgl/core/lv_obj_style.h"
+#include "liblvgl/font/lv_font.h"
+#include "liblvgl/misc/lv_area.h"
+#include "liblvgl/misc/lv_color.h"
+#include "liblvgl/misc/lv_style.h"
+#include "liblvgl/widgets/lv_canvas.h"
+#include "liblvgl/widgets/lv_img.h"
+#include "liblvgl/widgets/lv_label.h"
 #include "main.h"
 #include "liblvgl/lvgl.h"
-#include "pros/colors.h"
-#include "pros/screen.h"
-#include "pros/screen.hpp"
 #include "subsystemHeaders/poos.hpp"
 
 
-bool bluePlusSide = false;
+bool bluePlusSide = true;
 bool blueMinusSide = false;
 bool blueRush = false;
 bool blueAWP = false;
 bool redPlusSide = false;
-bool redMinusSide = true;
+bool redMinusSide = false;
 bool redRush = false;
 bool redAWP = false;
 bool skillsAuton = false;
@@ -23,6 +32,7 @@ lv_group_t * redPos;
 lv_group_t * redNeg;
 lv_group_t * skillsb;
 lv_group_t * cornerSw;
+lv_group_t * autonInfo;
 
 lv_event_cb_t  bluePosClick;
 lv_event_cb_t * blueNegClick;
@@ -52,7 +62,15 @@ lv_obj_t * myButtonLabel;
 lv_obj_t * allianceSwitch;
 lv_obj_t * cornerSwitch;
 lv_obj_t * obj;
-lv_obj_t * testImg;
+lv_obj_t * autonPoints;
+lv_obj_t * autonTime;
+lv_obj_t * autonBox;
+lv_obj_t * colorSort;
+lv_obj_t * autonTimeEdit;
+lv_obj_t * autonPointsEdit;
+lv_obj_t * colorSortEdit;
+lv_obj_t * autonName;
+
 
 //Used to determine what Auton is selected by rotating the number
 int auton = 0;
@@ -72,6 +90,8 @@ int RedMax = 80;
 static void event_bp(lv_event_t * bluePosClick) {
     std::cout << "Blue Plus Side: " << bluePlusSide << "\n";
     lv_label_set_text(bluePosLabel, "Clicked");
+    lv_label_set_text(autonName, "Blue Positive\nCorner SAWP");
+    lv_label_set_text(autonTimeEdit, "13 Seconds");
     flip = 1;
 
     //Switch Ring Sort Colour To Red
@@ -86,6 +106,8 @@ static void event_bpr(lv_event_t * bluePosReleased) {
 static void event_bn(lv_event_t * blueNegClick) {
     std::cout << "Blue Neg Side: " << blueMinusSide << "\n";
     lv_label_set_text(blueNegLabel, "Clicked");
+    lv_label_set_text(autonName, "Blue Negative\nCorner SAWP");
+    lv_label_set_text(autonTimeEdit, "13 Seconds");
     flip = -1;
 
     //Switch Ring Sort Colour To Red
@@ -100,6 +122,8 @@ static void event_bnr(lv_event_t * blueNegReleased) {
 static void event_rp(lv_event_t * redPosClick) {
     std::cout << "Red Pos Side: " << redPlusSide << "\n";
     lv_label_set_text(redPosLabel, "Clicked");
+    lv_label_set_text(autonName, "Red Positive\nCorner SAWP");
+    lv_label_set_text(autonTimeEdit, "13 Seconds");
     flip = -1;
 
     //Switch Ring Sort Colour To Blue
@@ -114,6 +138,8 @@ static void event_rpr(lv_event_t * redPosReleased) {
 static void event_rn(lv_event_t * redNegClick) {
     std::cout << "Red Neg Side: " << redMinusSide << "\n";
     lv_label_set_text(redNegLabel, "Clicked");
+    lv_label_set_text(autonName, "Red Negative\nCorner SAWP");
+    lv_label_set_text(autonTimeEdit, "13 Seconds");
     flip = 1;
 
     //Switch Ring Sort Colour To Blue
@@ -128,6 +154,8 @@ static void event_rnr(lv_event_t * redNegReleased) {
 static void event_s(lv_event_t * skillsClick) {
     std::cout << "Skills: " << skillsAuton << "\n";
     lv_label_set_text(skillsLabel, "Clicked");
+    lv_label_set_text(autonName, "Skills Auton");
+    lv_label_set_text(autonTimeEdit, "60 Seconds");
     flip = 1;
 
     //Switch Ring Sort Colour To Blue
@@ -142,7 +170,7 @@ static void event_sr(lv_event_t * skillsReleased) {
 
 //POOS FUNCTIONS
 void drawGUI() {
-
+  
     //Not Pressed Blue Style
     static lv_style_t styleBlue;
     lv_style_init(&styleBlue);
@@ -243,9 +271,18 @@ void drawGUI() {
     lv_style_set_bg_color(&negToggle, lv_palette_main(LV_PALETTE_BLUE));
     lv_style_set_bg_grad_color(&negToggle, lv_palette_darken(LV_PALETTE_BLUE, 2));
 
+    //Auton Box Style
+    static lv_style_t boxStyle;
+    lv_style_init(&boxStyle);
 
+    lv_style_set_bg_color(&boxStyle, lv_palette_darken(LV_PALETTE_GREY, 4));
+    lv_style_set_border_color(&boxStyle, lv_color_white());
+    
+    //Big Text
+    static lv_style_t bigText;
+    lv_style_init(&bigText);
 
-
+    lv_style_set_text_font(&bigText, &lv_font_montserrat_20);
 
     //Creating Groups
     bluePos = lv_group_create();
@@ -254,12 +291,19 @@ void drawGUI() {
     redNeg = lv_group_create();
     skillsb = lv_group_create();
     cornerSw = lv_group_create();
+    autonInfo = lv_group_create();
 
     //Creating Objects
     allianceSwitch = lv_switch_create(lv_scr_act());
     cornerSwitch = lv_switch_create(lv_scr_act());
-    testImg = lv_img_create(lv_scr_act());
-    //obj = lv_label_create(cornerSwitch);
+    autonBox = lv_obj_create(lv_scr_act());
+    autonTime = lv_label_create(autonBox);
+    autonPoints = lv_label_create(autonBox);
+    colorSort = lv_label_create(autonBox);
+    autonName = lv_label_create(autonBox);
+    autonPointsEdit = lv_label_create(autonBox);
+    autonTimeEdit = lv_label_create(autonBox);
+    colorSortEdit = lv_label_create(autonBox);
 
     bluePosBtn = lv_btn_create(lv_scr_act());
     bluePosLabel = lv_label_create(bluePosBtn);
@@ -287,8 +331,13 @@ void drawGUI() {
     lv_group_add_obj(skillsb, skillsLabel);
 
     lv_group_add_obj(cornerSw, cornerSwitch);
-    //lv_group_add_obj(cornerSw, obj);
-
+    lv_group_add_obj(autonInfo, autonBox);
+    lv_group_add_obj(autonInfo, autonTime);
+    lv_group_add_obj(autonInfo, autonPoints);
+    lv_group_add_obj(autonInfo, colorSort);
+    lv_group_add_obj(autonInfo, autonTimeEdit);
+    lv_group_add_obj(autonInfo, autonPointsEdit);
+    lv_group_add_obj(autonInfo, colorSortEdit);
 
 
 
@@ -349,253 +398,32 @@ void drawGUI() {
     lv_obj_align(cornerSwitch, LV_ALIGN_BOTTOM_LEFT, 130, -10);
     
 
+    //Create Box To Show Auton Info
+    lv_obj_add_style(autonBox, &boxStyle, LV_STATE_DEFAULT);
+    lv_obj_set_size(autonBox, 230, 230);
+    lv_obj_align(autonBox, LV_ALIGN_CENTER, 120, 0);
     
-}
 
-void touchTester() {
-    int i = 0;
-    pros::screen_touch_status_s_t status;
-    while(1){
-       status = pros::c::screen_touch_status();
+    //Create Time Display For Autons
+    lv_obj_align(autonTime, LV_ALIGN_CENTER, 0, -50);
+    lv_obj_align(autonTimeEdit, LV_ALIGN_CENTER, 0, 0);
+    lv_obj_add_style(autonTimeEdit, &bigText, 0);
+    lv_label_set_text(autonTime, "Time To Complete Auton:");
 
-       // Will print various information about the last touch
-       pros::screen::print(pros::E_TEXT_MEDIUM, 1, "Touch Status (Type): %d", status.touch_status);
-       pros::screen::print(pros::E_TEXT_MEDIUM, 2, "Last X: %hd", status.x);
-       pros::screen::print(pros::E_TEXT_MEDIUM, 3, "Last Y: %hd", status.y);
-       pros::screen::print(pros::E_TEXT_MEDIUM, 4, "Press Count: %d", status.press_count);
-       pros::screen::print(pros::E_TEXT_MEDIUM, 5, "Release Count: %d", status.release_count);
-       pros::delay(20);
-    }
-}
+    //Create Points Breakdown For Autons
+    lv_obj_align(autonPoints, LV_ALIGN_CENTER, 0, 80);
+    lv_obj_align(autonPointsEdit, LV_ALIGN_CENTER, 0, 130);
+    lv_obj_add_style(autonPointsEdit, &bigText, 0);
+    lv_label_set_text(autonPoints, "Points Break Down:");
 
-void autonSelector() {
+    //Create Colour Sort Info For Autons
+    lv_obj_align(colorSort, LV_ALIGN_CENTER, 0, 210);
+    lv_obj_align(colorSortEdit, LV_ALIGN_CENTER, 0, 260);
+    lv_obj_add_style(colorSortEdit, &bigText, 0);
+    lv_label_set_text(colorSort, "Colour Sorting");
 
-
-
-pros::screen_touch_status_s_t status;
-while(1){
-    status = pros::c::screen_touch_status();
-
-    //Select Blue Plus
-    if (status.x >= 5 && status.y >= 5 && status.x <= 95 && status.y <= 120 && status.touch_status) {
-    drawGUI();
-    //Edit GUI
-    pros::screen::set_pen(pros::c::COLOR_DARK_BLUE);
-    pros::screen::fill_rect(5,5,95,120);
-    pros::screen::set_pen(pros::c::COLOR_WHITE);
-    pros::screen::print(pros::E_TEXT_MEDIUM, 32, 55, "Plus");
-
-    //Adjust Bools
-    bluePlusSide = true;
-    blueMinusSide = false;
-    blueRush = false;
-    blueAWP = false;
-    redPlusSide = false;
-    redMinusSide = false;
-    redRush = false;
-    redAWP = false;
-    skillsAuton = false;
-
-    flip = 1;
-    }
-
-    //Select Blue Minus
-    if (status.x >= 100 && status.y >= 5 && status.x <= 190 && status.y <= 120 && status.touch_status) {
-    drawGUI();
-    //Edit GUI
-    pros::screen::set_pen(pros::c::COLOR_DARK_BLUE);
-    pros::screen::fill_rect(100,5,190,120);
-    pros::screen::set_pen(pros::c::COLOR_WHITE);
-    pros::screen::print(pros::E_TEXT_MEDIUM, 120, 55, "Minus");
-
-    //Adjust Bools
-    bluePlusSide = false;
-    blueMinusSide = true;
-    blueRush = false;
-    blueAWP = false;
-    redPlusSide = false;
-    redMinusSide = false;
-    redRush = false;
-    redAWP = false;
-    skillsAuton = false;
-
-    flip = -1;
-    }
-
-    //Select Blue Rush
-    if (status.x >= 195 && status.y >= 5 && status.x <= 285 && status.y <= 120 && status.touch_status) {
-    drawGUI();
-    //Edit GUI
-    pros::screen::set_pen(pros::c::COLOR_DARK_BLUE);
-    pros::screen::fill_rect(195,5,285,120);
-    pros::screen::set_pen(pros::c::COLOR_WHITE);
-    pros::screen::print(pros::E_TEXT_MEDIUM, 220, 55, "Rush");
-
-    //Adjust Bools
-    bluePlusSide = false;
-    blueMinusSide = false;
-    blueRush = true;
-    blueAWP = false;
-    redPlusSide = false;
-    redMinusSide = false;
-    redRush = false;
-    redAWP = false;
-    skillsAuton = false;
-
-    flip = -1;
-    }
-
-    //Select Blue AWP
-    if (status.x >= 290 && status.y >= 5 && status.x <= 380 && status.y <= 120 && status.touch_status) {
-    drawGUI();
-    //Edit GUI
-    pros::screen::set_pen(pros::c::COLOR_DARK_BLUE);
-    pros::screen::fill_rect(290,5,380,120);
-    pros::screen::set_pen(pros::c::COLOR_WHITE);
-    pros::screen::print(pros::E_TEXT_MEDIUM, 320, 55, "AWP");
-
-    //Adjust Bools
-    bluePlusSide = false;
-    blueMinusSide = false;
-    blueRush = false;
-    blueAWP = true;
-    redPlusSide = false;
-    redMinusSide = false;
-    redRush = false;
-    redAWP = false;
-    skillsAuton = false;
-
-    flip = -1;
-    }
-
-    //Select Red Plus
-    if (status.x >= 5 && status.y >= 125 && status.x <= 95 && status.y <= 235 && status.touch_status) {
-    drawGUI();
-    //Edit GUI
-    pros::screen::set_pen(pros::c::COLOR_DARK_RED);
-    pros::screen::fill_rect(5,125,95,235);
-    pros::screen::set_pen(pros::c::COLOR_WHITE);
-    pros::screen::print(pros::E_TEXT_MEDIUM, 32, 170, "Plus");
-
-    //Adjust Bools
-    bluePlusSide = false;
-    blueMinusSide = false;
-    blueRush = false;
-    blueAWP = false;
-    redPlusSide = true;
-    redMinusSide = false;
-    redRush = false;
-    redAWP = false;
-    skillsAuton = false;
-
-    flip = -1;
-    }
-
-    //Select Red Minus
-    if (status.x >= 100 && status.y >= 125 && status.x <= 190 && status.y <= 235 && status.touch_status) {
-    drawGUI();
-    //Edit GUI
-    pros::screen::set_pen(pros::c::COLOR_DARK_RED);
-    pros::screen::fill_rect(100,125,190,235);
-    pros::screen::set_pen(pros::c::COLOR_WHITE);
-    pros::screen::print(pros::E_TEXT_MEDIUM, 120, 170, "Minus");
-
-    //Adjust Bools
-    bluePlusSide = false;
-    blueMinusSide = false;
-    blueRush = false;
-    blueAWP = false;
-    redPlusSide = false;
-    redMinusSide = true;
-    redRush = false;
-    redAWP = false;
-    skillsAuton = false;
-
-    flip = 1;
-    }
-
-    //Select Red Rush
-    if (status.x >= 195 && status.y >= 125 && status.x <= 285 && status.y <= 235 && status.touch_status) {
-    drawGUI();
-    //Edit GUI
-    pros::screen::set_pen(pros::c::COLOR_DARK_RED);
-    pros::screen::fill_rect(195,125,285,235);
-    pros::screen::set_pen(pros::c::COLOR_WHITE);
-    pros::screen::print(pros::E_TEXT_MEDIUM, 220, 170, "Rush");
-
-    //Adjust Bools
-    bluePlusSide = false;
-    blueMinusSide = false;
-    blueRush = false;
-    blueAWP = false;
-    redPlusSide = false;
-    redMinusSide = false;
-    redRush = true;
-    redAWP = false;
-    skillsAuton = false;
-
-    flip = 1;
-    }
-
-    //Select Red AWP
-    if (status.x >= 290 && status.y >= 125 && status.x <= 380 && status.y <= 235 && status.touch_status) {
-    drawGUI();
-    //Edit GUI
-    pros::screen::set_pen(pros::c::COLOR_DARK_RED);
-    pros::screen::fill_rect(290,125,380,235);
-    pros::screen::set_pen(pros::c::COLOR_WHITE);
-    pros::screen::print(pros::E_TEXT_MEDIUM, 320, 170, "AWP");
-
-    //Adjust Bools
-    bluePlusSide = false;
-    blueMinusSide = false;
-    blueRush = false;
-    blueAWP = false;
-    redPlusSide = false;
-    redMinusSide = false;
-    redRush = false;
-    redAWP = true;
-    skillsAuton = false;
-
-    flip = 1;
-    }
-
-    //Select Auton Skills
-    if (status.x >= 385 && status.y >= 5 && status.x <= 475 && status.y <= 235 && status.touch_status) {
-    drawGUI();
-    //Edit GUI
-    pros::screen::set_pen(pros::c::COLOR_DARK_GRAY);
-    pros::screen::fill_rect(385,5,475,235);
-    pros::screen::set_pen(pros::c::COLOR_WHITE);
-    pros::screen::print(pros::E_TEXT_MEDIUM, 406, 103, "Auton");
-    pros::screen::print(pros::E_TEXT_MEDIUM, 401, 125, "Skills");
-
-    //Adjust Bools
-    bluePlusSide = false;
-    blueMinusSide = false;
-    blueRush = false;
-    blueAWP = false;
-    redPlusSide = false;
-    redMinusSide = false;
-    redRush = false;
-    redAWP = false;
-    skillsAuton = true;
-    }
-  }
-    pros::delay(10); // Small delay to prevent overwhelming the CPU
-
-}
-
-void testBools() {
-    // Print the current states of the boolean variables
-    std::cout << "Testing Bool States:\n";
-    std::cout << "Blue Plus Side: " << bluePlusSide << "\n";
-    std::cout << "Blue Minus Side: " << blueMinusSide << "\n";
-    std::cout << "Blue Rush: " << blueRush << "\n";
-    std::cout << "Blue AWP: " << blueAWP << "\n";
-    std::cout << "Red Plus Side: " << redPlusSide << "\n";
-    std::cout << "Red Minus Side: " << redMinusSide << "\n";
-    std::cout << "Red Rush: " << redRush << "\n";
-    std::cout << "Red AWP: " << redAWP << "\n";
-    std::cout << "Skills Auton: " << skillsAuton << "\n";
+    //Create Name For The Auton Info
+    lv_obj_align(autonName, LV_ALIGN_CENTER, 0, -90);
+    lv_obj_add_style(autonName, &bigText, 0);
+    lv_label_set_text(autonName, "Auton Name:");
 }
