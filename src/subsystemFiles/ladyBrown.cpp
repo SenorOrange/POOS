@@ -11,7 +11,7 @@ void setLadyBrown() {
     //SCORE POSITION (A)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
 
-        ladyBrown.move_absolute(820, 200);
+        ladyBrown.move_absolute(620, 200);
         primePosition = false;
         firstRing = true;
 
@@ -34,7 +34,7 @@ void setLadyBrown() {
         }
 
         if (firstRing == true) {
-            ladyBrown.move_absolute(265, 200);
+            ladyBrown.move_absolute(180, 200);
             firstRing = true;
         } /*else {
             ladyBrown.move_absolute(280, 150);
