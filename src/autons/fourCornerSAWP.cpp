@@ -38,11 +38,12 @@ void minusSide() {
         chassis.moveToPoint(flip * 12, 12, 1000);
         chassis.turnToHeading(flip * -100, 1000);
         chassis.waitUntilDone();
-        pros::delay(2000);
+        pros::delay(4000);
         lowerDoinker();
         chassis.turnToHeading(0, 1000);
-        pros::delay(1000);
-        chassis.turnToHeading(-135, 1000);
+        pros::delay(2000);
+        raiseDoinker();
+        chassis.waitUntilDone();
     }
 
     //If on blue minus & red plus
@@ -54,15 +55,14 @@ void minusSide() {
         pros::delay(1000);
         lowerDoinker();
         chassis.turnToHeading(-90, 1000);
-        pros::delay(1000);
-        chassis.turnToHeading(135, 1000);
+        pros::delay(2000);
+        raiseDoinker();
+        chassis.waitUntilDone();
     }
     
-    chassis.waitUntilDone();
-    raiseDoinker();
-    chassis.moveToPoint(flip * 5, 5, 1000);
     pros::delay(1000);
     stopIntake();
+    raiseLadyBrown();
     chassis.turnToHeading(flip * 45, 1000);
-    chassis.moveToPoint(flip * 68, 48, 2000, {.maxSpeed=50});
+    chassis.moveToPoint(flip * 60, 60, 2000, {.maxSpeed=50});
 }

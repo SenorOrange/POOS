@@ -86,13 +86,18 @@ int BlueMax = 260;
 int RedMin = 0;
 int RedMax = 80;
 
+static void event_rc(lv_event_t * redChecked) {
+
+}
 
 static void event_bp(lv_event_t * bluePosClick) {
     std::cout << "Blue Plus Side: " << bluePlusSide << "\n";
-    lv_label_set_text(bluePosLabel, "Clicked");
     lv_label_set_text(autonName, "Blue Positive\nCorner SAWP");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
+    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
+    lv_label_set_text(colorSortEdit, "Sorting Red Rings");
     flip = 1;
+    auton = 1;
 
     //Switch Ring Sort Colour To Red
     ringHueMin = RedMin;
@@ -105,10 +110,12 @@ static void event_bpr(lv_event_t * bluePosReleased) {
 
 static void event_bn(lv_event_t * blueNegClick) {
     std::cout << "Blue Neg Side: " << blueMinusSide << "\n";
-    lv_label_set_text(blueNegLabel, "Clicked");
     lv_label_set_text(autonName, "Blue Negative\nCorner SAWP");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
+    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
+    lv_label_set_text(colorSortEdit, "Sorting Red Rings");
     flip = -1;
+    auton = 1;
 
     //Switch Ring Sort Colour To Red
     ringHueMin = RedMin;
@@ -121,10 +128,12 @@ static void event_bnr(lv_event_t * blueNegReleased) {
 
 static void event_rp(lv_event_t * redPosClick) {
     std::cout << "Red Pos Side: " << redPlusSide << "\n";
-    lv_label_set_text(redPosLabel, "Clicked");
     lv_label_set_text(autonName, "Red Positive\nCorner SAWP");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
+    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
+    lv_label_set_text(colorSortEdit, "Sorting Blue Rings");
     flip = -1;
+    auton = 1;
 
     //Switch Ring Sort Colour To Blue
     ringHueMin = BlueMin;
@@ -137,10 +146,12 @@ static void event_rpr(lv_event_t * redPosReleased) {
 
 static void event_rn(lv_event_t * redNegClick) {
     std::cout << "Red Neg Side: " << redMinusSide << "\n";
-    lv_label_set_text(redNegLabel, "Clicked");
     lv_label_set_text(autonName, "Red Negative\nCorner SAWP");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
+    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
+    lv_label_set_text(colorSortEdit, "Sorting Blue Rings");
     flip = 1;
+    auton = 1;
 
     //Switch Ring Sort Colour To Blue
     ringHueMin = BlueMin;
@@ -153,10 +164,12 @@ static void event_rnr(lv_event_t * redNegReleased) {
 
 static void event_s(lv_event_t * skillsClick) {
     std::cout << "Skills: " << skillsAuton << "\n";
-    lv_label_set_text(skillsLabel, "Clicked");
     lv_label_set_text(autonName, "Skills Auton");
     lv_label_set_text(autonTimeEdit, "60 Seconds");
+    lv_label_set_text(autonPointsEdit, "x2 Alliance Stake = 6\nx2 Full Mogo = 16\nx4 Corner = 20\n\nTotal = 42");
+    lv_label_set_text(colorSortEdit, "Sorting Blue Rings");
     flip = 1;
+    auton = 2;
 
     //Switch Ring Sort Colour To Blue
     ringHueMin = BlueMin;
@@ -412,15 +425,15 @@ void drawGUI() {
 
     //Create Points Breakdown For Autons
     lv_obj_align(autonPoints, LV_ALIGN_CENTER, 0, 80);
-    lv_obj_align(autonPointsEdit, LV_ALIGN_CENTER, 0, 130);
+    lv_obj_align(autonPointsEdit, LV_ALIGN_CENTER, 0, 150);
     lv_obj_add_style(autonPointsEdit, &bigText, 0);
     lv_label_set_text(autonPoints, "Points Break Down:");
 
     //Create Colour Sort Info For Autons
-    lv_obj_align(colorSort, LV_ALIGN_CENTER, 0, 210);
+    lv_obj_align(colorSort, LV_ALIGN_CENTER, 0, 230);
     lv_obj_align(colorSortEdit, LV_ALIGN_CENTER, 0, 260);
     lv_obj_add_style(colorSortEdit, &bigText, 0);
-    lv_label_set_text(colorSort, "Colour Sorting");
+    lv_label_set_text(colorSort, "Colour Sorting:");
 
     //Create Name For The Auton Info
     lv_obj_align(autonName, LV_ALIGN_CENTER, 0, -90);

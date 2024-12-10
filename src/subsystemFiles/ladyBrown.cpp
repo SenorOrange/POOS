@@ -66,7 +66,7 @@ void setLadyBrown() {
 
 //AUTON FUNCTIONS
 void raiseLadyBrown() {
-    ladyBrown.move_absolute(700, 200);
+    ladyBrown.move_absolute(620, 200);
 }
 
 void allianceStakePosition() {
@@ -74,18 +74,6 @@ void allianceStakePosition() {
 }
 
 void allianceScorePosition() {
-    ladyBrown.move_absolute(700, 200);
+    ladyBrown.move_absolute(620, 200);
 }
 
-//SKILLS FUNCTIONS
-void ladyBrownLower() {
-    ladyBrown.move_absolute(0, 200);
-}
-
-void ladyBrownPrime() {
-    ladyBrown.move_absolute(260, 200);
-}
-
-void ladyBrownScore() {
-    ladyBrown.move_absolute(820, 200);
-}

@@ -85,7 +85,7 @@ void opcontrol(void);
 
 
 #include "autons/AWP.hpp"
-#include "autons/minusSide.hpp"
+#include "autons/fourCornerSAWP.hpp"
 #include "autons/plusSide.hpp"
 #include "autons/rush.hpp"
 #include "autons/skillsAuton.hpp"
