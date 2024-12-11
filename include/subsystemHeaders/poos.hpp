@@ -4,6 +4,7 @@
 //POOS FUNCTIONS
 
 void drawGUI();
+void loading();
 
 static void event_bp();
 static void event_bn();
@@ -16,16 +17,6 @@ static void event_bnr();
 static void event_rpr();
 static void event_rnr();
 static void event_sr();
-
-extern bool bluePlusSide;
-extern bool blueMinusSide;
-extern bool blueRush;
-extern bool blueAWP;
-extern bool redPlusSide;
-extern bool redMinusSide;
-extern bool redRush;
-extern bool redAWP;
-extern bool skillsAuton;
 
 extern int auton;
 

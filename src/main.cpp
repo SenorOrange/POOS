@@ -19,7 +19,9 @@
 
 
 void initialize() {
+    loading();
     chassis.calibrate(); // calibrate sensors
+    pros::delay(2000);
     colorSensor.set_led_pwm(100);
     drawGUI();
 }
@@ -33,7 +35,6 @@ void disabled() {}
  * runs after initialize if the robot is connected to field control
  */
 void competition_initialize() {
-    //autonSelector();
 }
 
 // get a path used for pure pursuit
@@ -43,18 +44,13 @@ ASSET(example_txt); // '.' replaced with "_" to make c++ happy
 void autonomous() {
 
 
-    //Mogo Rush
-    if (blueRush == true || redRush == true) {
-    rush();
-    }
-
-    //Basic Corners
-    if (blueMinusSide == true || redMinusSide == true || bluePlusSide == true || redPlusSide == true) {
-    minusSide();
+    //Four Corner SAWP
+    if (auton == 1) {
+    cornerSAWP();
     }
 
     //Skills
-    if (skillsAuton == true) {
+    if (auton == 2) {
     skills();
     }
 }

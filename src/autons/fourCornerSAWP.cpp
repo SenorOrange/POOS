@@ -10,7 +10,7 @@
 
 
 //Code for the minus side but really just code for all the basic 4 corner autons.
-void minusSide() {
+void cornerSAWP() {
     chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
     chassis.setPose(flip * 48, 16, 180);
     chassis.turnToHeading(flip * -90, 2000);

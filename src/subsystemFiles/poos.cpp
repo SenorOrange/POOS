@@ -15,17 +15,6 @@
 #include "subsystemHeaders/poos.hpp"
 
 
-bool bluePlusSide = true;
-bool blueMinusSide = false;
-bool blueRush = false;
-bool blueAWP = false;
-bool redPlusSide = false;
-bool redMinusSide = false;
-bool redRush = false;
-bool redAWP = false;
-bool skillsAuton = false;
-
-
 lv_group_t * bluePos;
 lv_group_t * blueNeg;
 lv_group_t * redPos;
@@ -70,6 +59,8 @@ lv_obj_t * autonTimeEdit;
 lv_obj_t * autonPointsEdit;
 lv_obj_t * colorSortEdit;
 lv_obj_t * autonName;
+lv_obj_t * poosVerLabel;
+lv_obj_t * spinner;
 
 
 //Used to determine what Auton is selected by rotating the number
@@ -91,7 +82,6 @@ static void event_rc(lv_event_t * redChecked) {
 }
 
 static void event_bp(lv_event_t * bluePosClick) {
-    std::cout << "Blue Plus Side: " << bluePlusSide << "\n";
     lv_label_set_text(autonName, "Blue Positive\nCorner SAWP");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
     lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
@@ -109,7 +99,6 @@ static void event_bpr(lv_event_t * bluePosReleased) {
 }
 
 static void event_bn(lv_event_t * blueNegClick) {
-    std::cout << "Blue Neg Side: " << blueMinusSide << "\n";
     lv_label_set_text(autonName, "Blue Negative\nCorner SAWP");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
     lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
@@ -127,7 +116,6 @@ static void event_bnr(lv_event_t * blueNegReleased) {
 }
 
 static void event_rp(lv_event_t * redPosClick) {
-    std::cout << "Red Pos Side: " << redPlusSide << "\n";
     lv_label_set_text(autonName, "Red Positive\nCorner SAWP");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
     lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
@@ -145,7 +133,6 @@ static void event_rpr(lv_event_t * redPosReleased) {
 }
 
 static void event_rn(lv_event_t * redNegClick) {
-    std::cout << "Red Neg Side: " << redMinusSide << "\n";
     lv_label_set_text(autonName, "Red Negative\nCorner SAWP");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
     lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
@@ -163,7 +150,6 @@ static void event_rnr(lv_event_t * redNegReleased) {
 }
 
 static void event_s(lv_event_t * skillsClick) {
-    std::cout << "Skills: " << skillsAuton << "\n";
     lv_label_set_text(autonName, "Skills Auton");
     lv_label_set_text(autonTimeEdit, "60 Seconds");
     lv_label_set_text(autonPointsEdit, "x2 Alliance Stake = 6\nx2 Full Mogo = 16\nx4 Corner = 20\n\nTotal = 42");
@@ -303,12 +289,12 @@ void drawGUI() {
     redPos = lv_group_create();
     redNeg = lv_group_create();
     skillsb = lv_group_create();
-    cornerSw = lv_group_create();
+    //cornerSw = lv_group_create();
     autonInfo = lv_group_create();
 
     //Creating Objects
-    allianceSwitch = lv_switch_create(lv_scr_act());
-    cornerSwitch = lv_switch_create(lv_scr_act());
+    //allianceSwitch = lv_switch_create(lv_scr_act());
+    //cornerSwitch = lv_switch_create(lv_scr_act());
     autonBox = lv_obj_create(lv_scr_act());
     autonTime = lv_label_create(autonBox);
     autonPoints = lv_label_create(autonBox);
@@ -317,6 +303,7 @@ void drawGUI() {
     autonPointsEdit = lv_label_create(autonBox);
     autonTimeEdit = lv_label_create(autonBox);
     colorSortEdit = lv_label_create(autonBox);
+    poosVerLabel = lv_label_create(lv_scr_act());
 
     bluePosBtn = lv_btn_create(lv_scr_act());
     bluePosLabel = lv_label_create(bluePosBtn);
@@ -343,7 +330,7 @@ void drawGUI() {
     lv_group_add_obj(redNeg, redPosLabel);
     lv_group_add_obj(skillsb, skillsLabel);
 
-    lv_group_add_obj(cornerSw, cornerSwitch);
+    //lv_group_add_obj(cornerSw, cornerSwitch);
     lv_group_add_obj(autonInfo, autonBox);
     lv_group_add_obj(autonInfo, autonTime);
     lv_group_add_obj(autonInfo, autonPoints);
@@ -400,7 +387,7 @@ void drawGUI() {
     lv_obj_add_event_cb(skillsBtn, event_s, LV_EVENT_PRESSED, NULL);
     lv_obj_add_event_cb(skillsBtn, event_sr, LV_EVENT_RELEASED, NULL);
 
-    lv_obj_add_style(allianceSwitch, &redToggle, LV_STATE_DEFAULT);
+    /*lv_obj_add_style(allianceSwitch, &redToggle, LV_STATE_DEFAULT);
     lv_obj_add_style(allianceSwitch, &blueToggle, LV_STATE_CHECKED);
     lv_obj_set_size(allianceSwitch, 100, 50);
     lv_obj_align(allianceSwitch, LV_ALIGN_BOTTOM_LEFT, 20, -10);
@@ -408,8 +395,12 @@ void drawGUI() {
     lv_obj_add_style(cornerSwitch, &posToggle, LV_STATE_DEFAULT);
     lv_obj_add_style(cornerSwitch, &negToggle, LV_STATE_CHECKED);
     lv_obj_set_size(cornerSwitch, 100, 50);
-    lv_obj_align(cornerSwitch, LV_ALIGN_BOTTOM_LEFT, 130, -10);
+    lv_obj_align(cornerSwitch, LV_ALIGN_BOTTOM_LEFT, 130, -10);*/
     
+    //Text To Display Poos Version
+    lv_label_set_text(poosVerLabel, "POOS V2.1");
+    lv_obj_add_style(poosVerLabel, &bigText, 0);
+    lv_obj_align(poosVerLabel, LV_ALIGN_BOTTOM_LEFT, 70, -25);
 
     //Create Box To Show Auton Info
     lv_obj_add_style(autonBox, &boxStyle, LV_STATE_DEFAULT);
@@ -439,4 +430,12 @@ void drawGUI() {
     lv_obj_align(autonName, LV_ALIGN_CENTER, 0, -90);
     lv_obj_add_style(autonName, &bigText, 0);
     lv_label_set_text(autonName, "Auton Name:");
+    
+}
+
+void loading() {
+    spinner = lv_spinner_create(lv_scr_act(), 1500, 50);
+    lv_obj_set_size(spinner, 60, 60);
+    lv_obj_align(spinner, LV_ALIGN_CENTER, 0, 0);
+    lv_obj_del_delayed(spinner, 2000);
 }

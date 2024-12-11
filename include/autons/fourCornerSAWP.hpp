@@ -1,4 +1,4 @@
 #include "main.h"
 
 //Auton
-void minusSide();
+void cornerSAWP();
