@@ -68,10 +68,10 @@ lv_obj_t * spinner;
 
 
 //Used to determine what Auton is selected by rotating the number
-int auton = 2;
+int auton = 1;
 
 //Used to switch which side the auton is on to fix the asymmetrical field layout
-int flip = 1;
+int flip = -1;
 
 //Color Sort Variables
 int ringHueMin;

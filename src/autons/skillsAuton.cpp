@@ -15,22 +15,22 @@ void skills() {
         //First Section
         //Consists of Red Wall Stake, Full Mogo and Corner
         chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
-        chassis.setPose(71, 18, 0);
+        chassis.setPose(72, 18, 0);
         chassis.moveToPoint(72, 12, 500, {.forwards=false});
         spinIntake();
         chassis.moveToPoint(72, 24, 500);
         chassis.turnToHeading(-90, 500);
         chassis.moveToPoint(96, 24, 1000, {.forwards=false, .maxSpeed=50});
         chassis.waitUntilDone();
-        pros::delay(500);
+        //pros::delay(1000);
         clamp();
         spinIntake();
         chassis.turnToHeading(0, 500);
-        chassis.moveToPoint(96, 48, 1000);
+        chassis.moveToPoint(96, 52, 2000, {.maxSpeed=50});
         chassis.turnToHeading(90, 500);
-        chassis.moveToPoint(120, 48, 1000);
+        chassis.moveToPoint(120, 52, 1000);
         chassis.turnToHeading(180, 500);
-        chassis.moveToPoint(120, 12, 1000);
+        chassis.moveToPoint(120, 12, 4000, {.maxSpeed=50});
         chassis.turnToHeading(45, 500);
         chassis.moveToPoint(136, 24, 1000, {.maxSpeed=50});
         chassis.waitUntilDone();

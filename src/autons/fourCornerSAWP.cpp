@@ -52,8 +52,8 @@ void cornerSAWP() {
     //If on blue minus & red plus
     //For Clearing Corner
     if (flip == -1) {
-        chassis.moveToPoint(flip * 18, 14, 1000);
-        chassis.turnToHeading(flip * -135, 1000);
+        chassis.moveToPoint(flip * 9, 16, 1000);
+        //chassis.turnToHeading(flip * -135, 1000);
         chassis.waitUntilDone();
         pros::delay(1000);
         lowerDoinker();

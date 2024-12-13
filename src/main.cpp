@@ -24,6 +24,10 @@ void initialize() {
     pros::delay(2000);
     colorSensor.set_led_pwm(100);
     drawGUI();
+
+    //color sort blue
+    ringHueMin = BlueMin;
+    ringHueMax = BlueMax;
 }
 
 /**
