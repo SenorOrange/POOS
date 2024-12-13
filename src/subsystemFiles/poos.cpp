@@ -80,7 +80,7 @@ int RedMax = 80;
 static void event_rc(lv_event_t * redChecked) {
 
 }
-
+// Blue Positive Event
 static void event_bp(lv_event_t * bluePosClick) {
     lv_label_set_text(autonName, "Blue Positive\nCorner SAWP");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
@@ -341,7 +341,7 @@ void drawGUI() {
 
 
 
-    
+    //Creating Blue Positive Button
     lv_label_set_text(bluePosLabel, "Blue\nPositive");
     lv_obj_center(bluePosLabel);
     lv_obj_add_style(bluePosBtn, &styleBlue, 0);
