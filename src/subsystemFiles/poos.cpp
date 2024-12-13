@@ -64,7 +64,7 @@ lv_obj_t * spinner;
 
 
 //Used to determine what Auton is selected by rotating the number
-int auton = 0;
+int auton = 2;
 
 //Used to switch which side the auton is on to fix the asymmetrical field layout
 int flip = 1;
