@@ -59,6 +59,10 @@ lv_obj_t * autonTimeEdit;
 lv_obj_t * autonPointsEdit;
 lv_obj_t * colorSortEdit;
 lv_obj_t * autonName;
+lv_obj_t * robotSetup;
+lv_obj_t * robotSetupEdit;
+lv_obj_t * robotPath;
+lv_obj_t * robotPathEdit;
 lv_obj_t * poosVerLabel;
 lv_obj_t * spinner;
 
@@ -86,6 +90,8 @@ static void event_bp(lv_event_t * bluePosClick) {
     lv_label_set_text(autonTimeEdit, "13 Seconds");
     lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
     lv_label_set_text(colorSortEdit, "Sorting Red Rings");
+    lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
+    lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the left side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles");
     flip = 1;
     auton = 1;
 
@@ -103,6 +109,8 @@ static void event_bn(lv_event_t * blueNegClick) {
     lv_label_set_text(autonTimeEdit, "13 Seconds");
     lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
     lv_label_set_text(colorSortEdit, "Sorting Red Rings");
+    lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
+    lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the right side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles");
     flip = -1;
     auton = 1;
 
@@ -120,6 +128,8 @@ static void event_rp(lv_event_t * redPosClick) {
     lv_label_set_text(autonTimeEdit, "13 Seconds");
     lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
     lv_label_set_text(colorSortEdit, "Sorting Blue Rings");
+    lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
+    lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the right side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles");
     flip = -1;
     auton = 1;
 
@@ -137,6 +147,8 @@ static void event_rn(lv_event_t * redNegClick) {
     lv_label_set_text(autonTimeEdit, "13 Seconds");
     lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
     lv_label_set_text(colorSortEdit, "Sorting Blue Rings");
+    lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
+    lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the left side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles 1&2 from you");
     flip = 1;
     auton = 1;
 
@@ -154,6 +166,8 @@ static void event_s(lv_event_t * skillsClick) {
     lv_label_set_text(autonTimeEdit, "60 Seconds");
     lv_label_set_text(autonPointsEdit, "x2 Alliance Stake = 6\nx2 Full Mogo = 16\nx4 Corner = 20\n\nTotal = 42");
     lv_label_set_text(colorSortEdit, "Sorting Blue Rings");
+    lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
+    lv_label_set_text(robotSetupEdit, "Place robot between tile\n3&4, have pre-rollers face\noutward, pre-rollers on gap\nbetween tiles 1&2\nfrom you");
     flip = 1;
     auton = 2;
 
@@ -300,9 +314,14 @@ void drawGUI() {
     autonPoints = lv_label_create(autonBox);
     colorSort = lv_label_create(autonBox);
     autonName = lv_label_create(autonBox);
+    robotPath = lv_label_create(autonBox);
+    robotSetup = lv_label_create(autonBox);
     autonPointsEdit = lv_label_create(autonBox);
     autonTimeEdit = lv_label_create(autonBox);
     colorSortEdit = lv_label_create(autonBox);
+    robotPathEdit = lv_label_create(autonBox);
+    robotSetupEdit = lv_label_create(autonBox);
+
     poosVerLabel = lv_label_create(lv_scr_act());
 
     bluePosBtn = lv_btn_create(lv_scr_act());
@@ -335,9 +354,13 @@ void drawGUI() {
     lv_group_add_obj(autonInfo, autonTime);
     lv_group_add_obj(autonInfo, autonPoints);
     lv_group_add_obj(autonInfo, colorSort);
+    lv_group_add_obj(autonInfo, robotPath);
+    lv_group_add_obj(autonInfo, robotSetup);
     lv_group_add_obj(autonInfo, autonTimeEdit);
     lv_group_add_obj(autonInfo, autonPointsEdit);
     lv_group_add_obj(autonInfo, colorSortEdit);
+    lv_group_add_obj(autonInfo, robotPathEdit);
+    lv_group_add_obj(autonInfo, robotSetupEdit);
 
 
 
@@ -407,7 +430,6 @@ void drawGUI() {
     lv_obj_set_size(autonBox, 230, 230);
     lv_obj_align(autonBox, LV_ALIGN_CENTER, 120, 0);
     
-
     //Create Time Display For Autons
     lv_obj_align(autonTime, LV_ALIGN_CENTER, 0, -50);
     lv_obj_align(autonTimeEdit, LV_ALIGN_CENTER, 0, 0);
@@ -431,6 +453,16 @@ void drawGUI() {
     lv_obj_add_style(autonName, &bigText, 0);
     lv_label_set_text(autonName, "Auton Name:");
     
+    //Create Robot Path For Autons
+    lv_obj_align(robotPath, LV_ALIGN_CENTER, 0, 300);
+    lv_obj_align(robotPathEdit, LV_ALIGN_CENTER, 0, 360);
+    lv_label_set_text(robotPath, "Robot Path:");
+
+    //Create Robot Setup For Autons
+    lv_obj_align(robotSetup, LV_ALIGN_CENTER, 0, 430);
+    lv_obj_align(robotSetupEdit, LV_ALIGN_CENTER, 0, 500);
+    lv_label_set_text(robotSetup, "Where To Set Up Robot:");
+
 }
 
 void loading() {
