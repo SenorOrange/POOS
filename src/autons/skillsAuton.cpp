@@ -26,9 +26,9 @@ void skills() {
         clamp();
         spinIntake();
         chassis.turnToHeading(0, 500);
-        chassis.moveToPoint(96, 52, 2000, {.maxSpeed=50});
+        chassis.moveToPoint(96, 55, 1000, {.maxSpeed=50});
         chassis.turnToHeading(90, 500);
-        chassis.moveToPoint(120, 52, 1000);
+        chassis.moveToPoint(120, 55, 1000);
         chassis.turnToHeading(180, 500);
         chassis.moveToPoint(120, 12, 4000, {.maxSpeed=50});
         chassis.turnToHeading(45, 500);
@@ -44,16 +44,16 @@ void skills() {
         //Consists of Full Mogo and Corner
         chassis.moveToPoint(120, 24, 1000);
         chassis.turnToHeading(90, 500);
-        chassis.moveToPoint(48, 24, 5000, {.forwards=false, .maxSpeed=50});
+        chassis.moveToPoint(48, 24, 1000, {.forwards=false, .maxSpeed=50});
         chassis.waitUntilDone();
-        pros::delay(500);
+        //pros::delay(1000);
         clamp();
         chassis.turnToHeading(0, 500);
-        chassis.moveToPoint(48, 48, 1000);
+        chassis.moveToPoint(48, 55, 1000, {.maxSpeed=50});
         chassis.turnToHeading(-90, 500);
-        chassis.moveToPoint(24, 48, 1000);
+        chassis.moveToPoint(24, 55, 1000);
         chassis.turnToHeading(180, 500);
-        chassis.moveToPoint(24, 12, 1000);
+        chassis.moveToPoint(24, 12, 4000, {.maxSpeed=50});
         chassis.turnToHeading(-45, 500);
         chassis.moveToPoint(8, 24, 1000, {.maxSpeed=50});
         chassis.waitUntilDone();

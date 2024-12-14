@@ -35,6 +35,8 @@ void cornerSAWP() {
     //If on red minus & blue plus
     //For Clearing Corner
     if (flip == 1) {
+        chassis.waitUntilDone();
+        stopIntake();
         chassis.moveToPoint(flip * 20, 14, 1000);
         chassis.turnToHeading(flip * -100, 1000);
         chassis.waitUntilDone();
@@ -52,6 +54,8 @@ void cornerSAWP() {
     //If on blue minus & red plus
     //For Clearing Corner
     if (flip == -1) {
+        chassis.waitUntilDone();
+        stopIntake();
         chassis.moveToPoint(flip * 9, 16, 1000);
         //chassis.turnToHeading(flip * -135, 1000);
         chassis.waitUntilDone();
