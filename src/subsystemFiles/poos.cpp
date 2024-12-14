@@ -68,10 +68,10 @@ lv_obj_t * spinner;
 
 
 //Used to determine what Auton is selected by rotating the number
-int auton = 1;
+int auton = 0;
 
 //Used to switch which side the auton is on to fix the asymmetrical field layout
-int flip = -1;
+int flip = 1;
 
 //Color Sort Variables
 int ringHueMin;
@@ -88,7 +88,7 @@ static void event_rc(lv_event_t * redChecked) {
 static void event_bp(lv_event_t * bluePosClick) {
     lv_label_set_text(autonName, "Blue Positive\nCorner SAWP");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
-    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
+    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 3\n\nTotal = 6 + AWP");
     lv_label_set_text(colorSortEdit, "Sorting Red Rings");
     lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
     lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the left side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles");
@@ -107,7 +107,7 @@ static void event_bpr(lv_event_t * bluePosReleased) {
 static void event_bn(lv_event_t * blueNegClick) {
     lv_label_set_text(autonName, "Blue Negative\nCorner SAWP");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
-    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
+    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 3\n\nTotal = 6 + AWP");
     lv_label_set_text(colorSortEdit, "Sorting Red Rings");
     lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
     lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the right side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles");
@@ -126,7 +126,7 @@ static void event_bnr(lv_event_t * blueNegReleased) {
 static void event_rp(lv_event_t * redPosClick) {
     lv_label_set_text(autonName, "Red Positive\nCorner SAWP");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
-    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
+    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 3\n\nTotal = 6 + AWP");
     lv_label_set_text(colorSortEdit, "Sorting Blue Rings");
     lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
     lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the right side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles");
@@ -145,7 +145,7 @@ static void event_rpr(lv_event_t * redPosReleased) {
 static void event_rn(lv_event_t * redNegClick) {
     lv_label_set_text(autonName, "Red Negative\nCorner SAWP");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
-    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 6\n\nTotal = 9 + AWP");
+    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx1 Mogo = 3\n\nTotal = 6 + AWP");
     lv_label_set_text(colorSortEdit, "Sorting Blue Rings");
     lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
     lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the left side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles 1&2 from you");
@@ -164,9 +164,9 @@ static void event_rnr(lv_event_t * redNegReleased) {
 static void event_s(lv_event_t * skillsClick) {
     lv_label_set_text(autonName, "Skills Auton");
     lv_label_set_text(autonTimeEdit, "60 Seconds");
-    lv_label_set_text(autonPointsEdit, "x2 Alliance Stake = 6\nx2 Full Mogo = 16\nx4 Corner = 20\n\nTotal = 42");
+    lv_label_set_text(autonPointsEdit, "x2 Alliance Stake = 6\nx2 5 Ring Mogo = 16\nx4 Corner = 20\n\nTotal = 40");
     lv_label_set_text(colorSortEdit, "Sorting Blue Rings");
-    lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
+    lv_label_set_text(robotPathEdit, "1) Score Alliance Stake\n2) Fill Right Goal\n3) Fill Left Goal\n4) Back Goals\n5) Back Alliance Stake");
     lv_label_set_text(robotSetupEdit, "Place robot between tile\n3&4, have pre-rollers face\noutward, pre-rollers on gap\nbetween tiles 1&2\nfrom you");
     flip = 1;
     auton = 2;
