@@ -30,7 +30,6 @@ void cornerSAWP() {
     chassis.turnToHeading(flip * -90, 500);
     chassis.moveToPoint(flip * 20, 48, 500);
     chassis.turnToHeading(flip * 180, 500);
-    
 
     //If on red minus & blue plus
     //For Clearing Corner

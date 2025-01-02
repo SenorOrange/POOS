@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/abstract_motor.hpp"
 #include "pros/adi.hpp"
 #include "pros/misc.hpp"
 #include "pros/motors.hpp"
@@ -7,10 +8,11 @@
 
 
 //MOTORS
-pros::Motor ladyBrown(-5, pros::v5::MotorGears::green);
-pros::Motor intake(-21, pros::v5::MotorGears::blue);
-pros::MotorGroup leftMotors({-2, -1, -3}, pros::MotorGearset::blue); 
-pros::MotorGroup rightMotors({8, 7, 10}, pros::MotorGearset::blue); 
+pros::Motor ladyBrown(-5, pros::MotorGears::green);
+pros::Motor HookStage(21, pros::MotorGears::blue);
+pros::Motor PreRoller(-6, pros::MotorGears::green);
+pros::MotorGroup leftMotors({-11, -1, -14}, pros::MotorGearset::blue); 
+pros::MotorGroup rightMotors({12, 15, 16}, pros::MotorGearset::blue); 
 
 
 //Pneumatics
@@ -21,19 +23,26 @@ pros::adi::DigitalOut doinker ('B');
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
 //SENSORS
-pros::Imu imu(16);
+pros::Imu imu(2);
 pros::Optical colorSensor(4);
 
+// horizontal tracking wheel encoder
+pros::adi::Encoder horizontal_encoder('E', 'F');
+// vertical tracking wheel encoder
+pros::adi::Encoder vertical_encoder('C', 'D');
+// horizontal tracking wheel
+lemlib::TrackingWheel horizontal_tracking_wheel(&horizontal_encoder, lemlib::Omniwheel::NEW_275, -2);
+// vertical tracking wheel
+lemlib::TrackingWheel vertical_tracking_wheel(&vertical_encoder, lemlib::Omniwheel::NEW_275, -1);
 // drivetrain settings
 lemlib::Drivetrain drivetrain(&leftMotors,
                               &rightMotors, 
-                              13.5,
+                              11.5,
                               lemlib::Omniwheel::NEW_275,
                               450,
                               2
 );
 
-// lateral motion controller
 lemlib::ControllerSettings linearController(10, // proportional gain (kP)
                                               0, // integral gain (kI)
                                               3, // derivative gain (kD)
@@ -45,24 +54,23 @@ lemlib::ControllerSettings linearController(10, // proportional gain (kP)
                                               20 // maximum acceleration (slew)
 );
 
-// angular motion controller
 lemlib::ControllerSettings angularController(2, // proportional gain (kP)
                                               0, // integral gain (kI)
-                                              10, // derivative gain (kD)
-                                              3, // anti windup
-                                              1, // small error range, in inches
-                                              100, // small error range timeout, in milliseconds
-                                              3, // large error range, in inches
-                                              500, // large error range timeout, in milliseconds
+                                              11, // derivative gain (kD)
+                                              0, // anti windup
+                                              0, // small error range, in inches
+                                              0, // small error range timeout, in milliseconds
+                                              0, // large error range, in inches
+                                              0, // large error range timeout, in milliseconds
                                               0 // maximum acceleration (slew)
 );
 
 // sensors for odometry
-lemlib::OdomSensors sensors(nullptr, 
-                            nullptr, 
-                            nullptr, 
-                            nullptr, 
-                            &imu 
+lemlib::OdomSensors sensors(&vertical_tracking_wheel, // vertical tracking wheel 1, set to null
+                            nullptr, // vertical tracking wheel 2, set to nullptr as we are using IMEs
+                            &horizontal_tracking_wheel, // horizontal tracking wheel 1
+                            nullptr, // horizontal tracking wheel 2, set to nullptr as we don't have a second one
+                            &imu // inertial sensor
 );
 
 // input curve for throttle input during driver control

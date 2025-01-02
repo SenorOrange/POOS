@@ -17,17 +17,35 @@
  */
 
 
-
-void initialize() {
+//Competition initialize
+/*void initialize() {
     loading();
     chassis.calibrate(); // calibrate sensors
     pros::delay(2000);
     colorSensor.set_led_pwm(100);
     drawGUI();
 
-    /*/color sort blue
+    /color sort blue
     ringHueMin = BlueMin;
-    ringHueMax = BlueMax;*/
+    ringHueMax = BlueMax;
+}*/
+
+
+//Testing initialize
+void initialize() {
+    pros::lcd::initialize(); // initialize brain screen
+    chassis.calibrate(); // calibrate sensors
+    // print position to brain screen
+    pros::Task screen_task([&]() {
+        while (true) {
+            // print robot location to the brain screen
+            pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
+            pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
+            pros::lcd::print(2, "Theta: %f", chassis.getPose().theta); // heading
+            // delay to save resources
+            pros::delay(20);
+        }
+    });
 }
 
 /**
@@ -71,10 +89,14 @@ void opcontrol() {
 
         chassis.curvature(leftY, leftX);
 
-        setIntakeMotors();
+        /*setIntakeMotors();
         setMogoMech();
         setLadyBrown();
-        setDoinker();
+        setDoinker();*/
+
+        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+            chassis.moveToPose(5, 30, 45, 1000);
+        }
 
         pros::delay(10);
     }

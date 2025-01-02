@@ -19,10 +19,12 @@ void intakePauseTask() {
         if (hue >= ringHueMin && hue <= ringHueMax) { 
             if (x) {
                 // If intake is running, pause and then resume
-                pros::delay(90);
-                intake.move_velocity(0);   // Stop intake
+                pros::delay(50);
+                HookStage.move_velocity(0);   // Stop intake
+                PreRoller.move_velocity(0);
                 pros::delay(300);          // Pause for 300ms
-                intake.move_velocity(600); // Resume previous speed
+                HookStage.move_velocity(600); // Resume previous speed
+                PreRoller.move_velocity(600);
             }
         }
         pros::delay(20); // Short delay to avoid excessive CPU usage
@@ -34,7 +36,8 @@ void setIntakeMotors() {
 
     //FORWARD INTAKE ON/OFF (R1)
     if (colorSensor.get_hue() < 10){
-        intake.move_velocity(0);
+        HookStage.move_velocity(0);
+        PreRoller.move_velocity(0);
     } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
         // Wait for R1 to be released to avoid multiple state changes on one press
         while (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
@@ -43,12 +46,15 @@ void setIntakeMotors() {
 
         if (x == true) {
 
-            intake.move_velocity(0);
+            HookStage.move_velocity(0);
+            PreRoller.move_velocity(0);
         } else if (primePosition == true) {
 
-            intake.move_velocity(400);
+            HookStage.move_velocity(400);
+            PreRoller.move_velocity(400);
         } else {
-            intake.move_velocity(600);
+            HookStage.move_velocity(600);
+            PreRoller.move_velocity(600);
         }
 
         x = !x;
@@ -64,9 +70,11 @@ void setIntakeMotors() {
 
         if (x == true) {
 
-            intake.move_velocity(0);
+            HookStage.move_velocity(0);
+            PreRoller.move_velocity(0);
         } else {
-            intake.move_velocity(-400);
+            HookStage.move_velocity(-600);
+            PreRoller.move_velocity(-600);
         }
 
         x = !x;
@@ -76,29 +84,23 @@ void setIntakeMotors() {
     
 }
 
-void slowIntake() {
-    while (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1) == true) {
-        intake.move_velocity(300);
-        }
-
-        while (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1) == true) {
-        intake.move_velocity(-300);
-        }
-}
 
 //AUTON FUNCTIONS
 
 void spinIntake() {
-    intake.move_velocity(600);
+    HookStage.move_velocity(600);
+    PreRoller.move_velocity(600);   
     x = true;
 }
 
 void stopIntake() {
-    intake.move_velocity(0);
+    HookStage.move_velocity(0);
+    PreRoller.move_velocity(0);
     x = false;
 }
 
 void reverseIntake() {
-    intake.move_velocity(-600);
+    HookStage.move_velocity(-600);
+    PreRoller.move_velocity(-600);
     x = true;
 }

@@ -79,7 +79,7 @@ int ringHueMax;
 int BlueMin = 190;
 int BlueMax = 260;
 int RedMin = 0;
-int RedMax = 80;
+int RedMax = 40;
 
 static void event_rc(lv_event_t * redChecked) {
 
