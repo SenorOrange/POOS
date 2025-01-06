@@ -5,6 +5,7 @@
 #include "pros/motors.hpp"
 #include "lemlib/api.hpp" // IWYU pragma: keep
 #include "pros/optical.hpp"
+#include "pros/rotation.hpp"
 
 
 //MOTORS
@@ -25,6 +26,7 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 //SENSORS
 pros::Imu imu(2);
 pros::Optical colorSensor(4);
+pros::Rotation rotSensor(7);
 
 // horizontal tracking wheel encoder
 pros::adi::Encoder horizontal_encoder('E', 'F');

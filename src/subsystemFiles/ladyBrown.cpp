@@ -2,67 +2,79 @@
 #include "pros/misc.h"
 #include "pros/motors.hpp"
 
-bool primePosition = false;
-bool firstRing = true;
+
 
 //DRIVER CONTROL FUNCTIONS
 void setLadyBrown() {
 
     //SCORE POSITION (A)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+        if (rotSensor.get_position() < 180) {
 
-        ladyBrown.move_absolute(620, 200);
-        primePosition = false;
-        firstRing = true;
+        ladyBrown.move_velocity(200);
+
+        } else if (rotSensor.get_position() > 180) {
+
+        ladyBrown.move_velocity(-200);
+
+        } else {
+        
+        ladyBrown.move_velocity(0);
+        }
 
         }
 
     //DOWN POSITION (Left)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+        if (rotSensor.get_position() < 0) {
+
+        ladyBrown.move_velocity(200);
+
+        } else if (rotSensor.get_position() > 0) {
+
+        ladyBrown.move_velocity(-200);
+
+        } else {
         
-        ladyBrown.move_absolute(0, 200);
-        primePosition = false;
-        firstRing = true;
+        ladyBrown.move_velocity(0);
+        }
 
         }
 
     //PRIME POSITION (R2)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+        if (rotSensor.get_position() < 20) {
 
-        while (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-            pros::delay(20);
-        }
+        ladyBrown.move_velocity(200);
 
-        if (firstRing == true) {
-            ladyBrown.move_absolute(180, 200);
-            firstRing = true;
-        } /*else {
-            ladyBrown.move_absolute(280, 150);
-            firstRing = true;
-        }*/
+        } else if (rotSensor.get_position() > 20) {
 
-        primePosition = true;
+        ladyBrown.move_velocity(-200);
+
+        } else {
         
+        ladyBrown.move_velocity(0);
+        }
 
         }
+
 }
 
-//MOTOR POSITION
-/*void displayMotorPosition() {
-    while (true) {
-        // Get the motor position in ticks (degrees)
-        double position = ladyBrown.get_position();
+void rotateLadyBrown() {
+    int rightY = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 
-        // Clear the screen
-        pros::lcd::clear();
-
-        // Print the motor position to the LCD screen
-        pros::lcd::print(5, "Motor position: %.2f ticks", position);
-
-        // Delay to prevent excessive CPU usage (refresh every 100ms)
-        pros::delay(100);
+    if (abs(rightY) < 10) {
+        ladyBrown.move(0);
     }
-}*/
+
+    if (rotSensor.get_position() >= 200 || rotSensor.get_position() <= 0) {
+
+        ladyBrown.move(0);
+    } else {
+
+        ladyBrown.move(rightY);
+    }
+}
 
 //AUTON FUNCTIONS
 void raiseLadyBrown() {

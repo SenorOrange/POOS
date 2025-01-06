@@ -18,20 +18,21 @@
 
 
 //Competition initialize
-/*void initialize() {
+void initialize() {
     loading();
     chassis.calibrate(); // calibrate sensors
     pros::delay(2000);
     colorSensor.set_led_pwm(100);
+    rotSensor.reset_position();
     drawGUI();
 
-    /color sort blue
+    /*color sort blue
     ringHueMin = BlueMin;
-    ringHueMax = BlueMax;
-}*/
+    ringHueMax = BlueMax;*/
+}
 
 
-//Testing initialize
+/*//Testing initialize
 void initialize() {
     pros::lcd::initialize(); // initialize brain screen
     chassis.calibrate(); // calibrate sensors
@@ -46,7 +47,7 @@ void initialize() {
             pros::delay(20);
         }
     });
-}
+}*/
 
 /**
  * Runs while the robot is disabled
@@ -89,14 +90,20 @@ void opcontrol() {
 
         chassis.curvature(leftY, leftX);
 
-        /*setIntakeMotors();
-        setMogoMech();
-        setLadyBrown();
-        setDoinker();*/
+        //Make Intake Go intaky
+        setIntakeMotors();
 
-        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-            chassis.moveToPose(0, 24, 45, 1000);
-        }
+        //Clamp go pinch
+        setMogoMech();
+
+        //Moving Arms
+        setLadyBrown();
+        rotateLadyBrown();
+
+        //Doinky
+        setDoinker();
+
+        
 
         pros::delay(10);
     }
