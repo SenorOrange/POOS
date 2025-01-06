@@ -95,7 +95,7 @@ void opcontrol() {
         setDoinker();*/
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-            chassis.moveToPose(5, 30, 45, 1000);
+            chassis.moveToPose(0, 24, 45, 1000);
         }
 
         pros::delay(10);
