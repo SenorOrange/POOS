@@ -77,6 +77,7 @@ void opcontrol(void);
 #ifdef __cplusplus
 #include "subsystemHeaders/globals.hpp"
 #include "subsystemHeaders/intake.hpp"
+#include "subsystemHeaders/intakeLift.hpp"
 #include "subsystemHeaders/ladyBrown.hpp"
 #include "subsystemHeaders/mogoMech.hpp"
 #include "subsystemHeaders/poos.hpp"

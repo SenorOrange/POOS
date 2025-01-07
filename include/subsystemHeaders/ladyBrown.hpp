@@ -12,11 +12,6 @@ extern bool primePosition;
 extern bool firstRing;
 
 //AUTON FUNCTIONS
-void raiseLadyBrown();
-void allianceStakePosition();
-void allianceScorePosition();
-
-//SKILLS FUNCTIONS
 void ladyBrownLower();
 void ladyBrownPrime();
 void ladyBrownScore();

@@ -48,10 +48,7 @@ void setIntakeMotors() {
 
             HookStage.move_velocity(0);
             PreRoller.move_velocity(0);
-        } else if (primePosition == true) {
 
-            HookStage.move_velocity(400);
-            PreRoller.move_velocity(400);
         } else {
             HookStage.move_velocity(600);
             PreRoller.move_velocity(600);

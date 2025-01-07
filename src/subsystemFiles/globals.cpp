@@ -19,6 +19,7 @@ pros::MotorGroup rightMotors({12, 15, 16}, pros::MotorGearset::blue);
 //Pneumatics
 pros::adi::DigitalOut mogoMech ('A');
 pros::adi::DigitalOut doinker ('B');
+pros::adi::DigitalOut liftIntake ('G');
 
 //CONTROLLER
 pros::Controller controller(pros::E_CONTROLLER_MASTER);

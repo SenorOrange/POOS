@@ -9,55 +9,57 @@ void setLadyBrown() {
 
     //SCORE POSITION (A)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
-        if (rotSensor.get_position() < 180) {
 
-        ladyBrown.move_velocity(200);
+        while (abs(rotSensor.get_position() - 180) > 0.5) {
+            
+            if (rotSensor.get_position() < 180) {
 
-        } else if (rotSensor.get_position() > 180) {
+                ladyBrown.move_velocity(200);
+            } else if (rotSensor.get_position() > 180) {
 
-        ladyBrown.move_velocity(-200);
-
-        } else {
-        
-        ladyBrown.move_velocity(0);
+                ladyBrown.move_velocity(-200);
+            }
         }
 
+        ladyBrown.move_velocity(0);
+        
         }
 
     //DOWN POSITION (Left)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
-        if (rotSensor.get_position() < 0) {
 
-        ladyBrown.move_velocity(200);
+        while (abs(rotSensor.get_position() - 0) > 0.5) {
+            
+            if (rotSensor.get_position() < 0) {
 
-        } else if (rotSensor.get_position() > 0) {
+                ladyBrown.move_velocity(200);
+            } else if (rotSensor.get_position() > 0) {
 
-        ladyBrown.move_velocity(-200);
-
-        } else {
-        
-        ladyBrown.move_velocity(0);
+                ladyBrown.move_velocity(-200);
+            }
         }
 
+        ladyBrown.move_velocity(0);
+        
         }
 
     //PRIME POSITION (R2)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-        if (rotSensor.get_position() < 20) {
 
-        ladyBrown.move_velocity(200);
+        while (abs(rotSensor.get_position() - 20) > 0.5) {
 
-        } else if (rotSensor.get_position() > 20) {
+            if (rotSensor.get_position() < 20) {
 
-        ladyBrown.move_velocity(-200);
+                ladyBrown.move_velocity(200);
+            } else if (rotSensor.get_position() > 20) {
 
-        } else {
-        
+                ladyBrown.move_velocity(-200);
+            }
+        }
+
         ladyBrown.move_velocity(0);
+        
         }
-
-        }
-
 }
 
 void rotateLadyBrown() {
@@ -77,15 +79,60 @@ void rotateLadyBrown() {
 }
 
 //AUTON FUNCTIONS
-void raiseLadyBrown() {
-    ladyBrown.move_absolute(620, 200);
+void ladyBrownPrime() {
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+
+        while (abs(rotSensor.get_position() - 20) > 0.5) {
+
+            if (rotSensor.get_position() < 20) {
+
+                ladyBrown.move_velocity(200);
+            } else if (rotSensor.get_position() > 20) {
+
+                ladyBrown.move_velocity(-200);
+            }
+        }
+
+        ladyBrown.move_velocity(0);
+        
+        }
 }
 
-void allianceStakePosition() {
-    ladyBrown.move_absolute(260, 200);
+void ladyBrownLower() {
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+
+        while (abs(rotSensor.get_position() - 0) > 0.5) {
+            
+            if (rotSensor.get_position() < 0) {
+
+                ladyBrown.move_velocity(200);
+            } else if (rotSensor.get_position() > 0) {
+
+                ladyBrown.move_velocity(-200);
+            }
+        }
+
+        ladyBrown.move_velocity(0);
+        
+        }
 }
 
-void allianceScorePosition() {
-    ladyBrown.move_absolute(620, 200);
+void ladyBrownScore() {
+if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+
+        while (abs(rotSensor.get_position() - 180) > 0.5) {
+            
+            if (rotSensor.get_position() < 180) {
+
+                ladyBrown.move_velocity(200);
+            } else if (rotSensor.get_position() > 180) {
+
+                ladyBrown.move_velocity(-200);
+            }
+        }
+
+        ladyBrown.move_velocity(0);
+        
+        }
 }
 

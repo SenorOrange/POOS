@@ -36,7 +36,6 @@ void AWP() {
     spinIntake();
     chassis.turnToHeading(flip * 90, 1000);
     chassis.moveToPoint(flip * 120, 48, 1000);
-    raiseLadyBrown();
     chassis.turnToHeading(flip * 135, 1000);
     chassis.moveToPoint(flip * 72, 72, 1000, {.forwards=false});
 

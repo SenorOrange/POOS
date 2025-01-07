@@ -18,6 +18,7 @@ extern pros::MotorGroup rightMotors;
 //3 WIRE
 extern pros::adi::DigitalOut mogoMech;
 extern pros::adi::DigitalOut doinker;
+extern pros::adi::DigitalOut liftIntake;
 
 
 //CONTROLLER
