@@ -103,8 +103,9 @@ void opcontrol() {
         //Doinky
         setDoinker();
 
+        //Make Intake Fly
+        //setIntakeLift();
         
-
         pros::delay(10);
     }
 

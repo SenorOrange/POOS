@@ -21,8 +21,9 @@ void rush() {
     chassis.moveToPose(flip * 24, 48, 90, 1000);
     chassis.moveToPose(flip * 72, 24, -90, 1000);
     ladyBrownPrime();
-    //Raise Intake
+    intakeUp();
     chassis.waitUntilDone();
+    intakeDown();
     pros::delay(500); //needs to be tuned till ring is in lady brown
     chassis.moveToPose(flip * 72, 12, 180, 1000);
     chassis.waitUntilDone();

@@ -89,6 +89,8 @@ void opcontrol(void);
 #include "autons/fourCornerSAWP.hpp"
 #include "autons/plusSide.hpp"
 #include "autons/rush.hpp"
+#include "autons/stackRushRed.hpp"
+#include "autons/stackRushBlue.hpp"
 #include "autons/skillsAuton.hpp"
 
 
