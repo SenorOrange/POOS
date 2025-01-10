@@ -9,7 +9,7 @@
 
 
 //MOTORS
-pros::Motor ladyBrown(-10, pros::MotorGears::green);
+pros::Motor ladyBrown(10, pros::MotorGears::green);
 pros::Motor HookStage(21, pros::MotorGears::blue);
 pros::Motor PreRoller(-6, pros::MotorGears::green);
 pros::MotorGroup leftMotors({-11, -1, -14}, pros::MotorGearset::blue); 
