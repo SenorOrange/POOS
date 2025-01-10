@@ -9,7 +9,7 @@
 
 
 //MOTORS
-pros::Motor ladyBrown(-5, pros::MotorGears::green);
+pros::Motor ladyBrown(-10, pros::MotorGears::green);
 pros::Motor HookStage(21, pros::MotorGears::blue);
 pros::Motor PreRoller(-6, pros::MotorGears::green);
 pros::MotorGroup leftMotors({-11, -1, -14}, pros::MotorGearset::blue); 
@@ -27,7 +27,7 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 //SENSORS
 pros::Imu imu(2);
 pros::Optical colorSensor(4);
-pros::Rotation rotSensor(7);
+pros::Rotation rotSensor(19);
 
 // horizontal tracking wheel encoder
 pros::adi::Encoder horizontal_encoder('E', 'F');

@@ -65,17 +65,8 @@ void setLadyBrown() {
 void rotateLadyBrown() {
     int rightY = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 
-    if (abs(rightY) < 10) {
-        ladyBrown.move(0);
-    }
-
-    if (rotSensor.get_position() >= 200 || rotSensor.get_position() <= 0) {
-
-        ladyBrown.move(0);
-    } else {
-
         ladyBrown.move(rightY);
-    }
+    
 }
 
 //AUTON FUNCTIONS
