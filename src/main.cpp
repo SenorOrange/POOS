@@ -2,6 +2,7 @@
 #include "lemlib/api.hpp" // IWYU pragma: keep
 #include "pros/abstract_motor.hpp"
 #include "pros/misc.h"
+#include "pros/motors.h"
 #include "subsystemHeaders/poos.hpp"
 #include "subsystemHeaders/globals.hpp"
 #include "pros/rtos.hpp"
@@ -24,7 +25,7 @@ void initialize() {
     pros::delay(2000);
     colorSensor.set_led_pwm(100);
     rotSensor.reset_position();
-    ladyBrown.set_brake_mode(MOTOR_BRAKE_HOLD);
+    ladyBrown.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
     drawGUI();
 
     /*color sort blue
@@ -100,6 +101,7 @@ void opcontrol() {
         //Moving Arms
         setLadyBrown();
         rotateLadyBrown();
+        printRotSensor();
 
         //Doinky
         setDoinker();

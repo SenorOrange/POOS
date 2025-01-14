@@ -9,84 +9,112 @@ void setLadyBrown() {
 
     //SCORE POSITION (A)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
-        const double target_position = 180;
-        const double deadband = 1;
-        const double kP = 1.5;
-        const int max_velocity = 200;
 
-        while (std::abs(rotSensor.get_position() - target_position) > deadband) {
-            // Calculate error
-            double error = target_position - rotSensor.get_position();
+        const double target_position_deg = 145; // Target position in degrees
+        const int tolerance_cdeg = 500;      // Tolerance in centidegrees (±1 degree)
+        const double kP = 0.3;               // Proportional gain for smooth control
+        const int max_velocity = 200;        // Max motor velocity for safe movement
 
-            // Calculate velocity based on proportional control
-            double velocity = kP * error;
+        // Convert target position from degrees to centidegrees
+        const int target_position_cdeg = target_position_deg * 100;
 
-            // Clamp velocity to maximum limits
+        while (abs(rotSensor.get_position() - target_position_cdeg) > tolerance_cdeg) {
+            // Calculate error in centidegrees
+            int error_cdeg = target_position_cdeg - rotSensor.get_position();
+
+            // Proportional control for velocity
+            double velocity = kP * error_cdeg;
+
+            // Clamp the velocity to safe limits
             if (velocity > max_velocity) velocity = max_velocity;
             if (velocity < -max_velocity) velocity = -max_velocity;
 
-            // Move the motor
             ladyBrown.move_velocity(velocity);
 
-            pros::delay(20);
+            pros::delay(20);  // Small delay to stabilize the control loop
         }
 
+        // Stop the motor when target is reached
         ladyBrown.move_velocity(0);
+
     }
 
     //DOWN POSITION (Left)
      if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
-        const double target_position = 0;
-        const double deadband = 1;
-        const double kP = 1.5;
-        const int max_velocity = 200;
+        
+        const double target_position_deg = 5; // Target position in degrees
+        const int tolerance_cdeg = 500;      // Tolerance in centidegrees (±1 degree)
+        const double kP = 0.3;               // Proportional gain for smooth control
+        const int max_velocity = 200;        // Max motor velocity for safe movement
 
-        while (std::abs(rotSensor.get_position() - target_position) > deadband) {
-            // Calculate error
-            double error = target_position - rotSensor.get_position();
+        // Convert target position from degrees to centidegrees
+        const int target_position_cdeg = target_position_deg * 100;
 
-            // Calculate velocity based on proportional control
-            double velocity = kP * error;
+        while (abs(rotSensor.get_position() - target_position_cdeg) > tolerance_cdeg) {
+            // Calculate error in centidegrees
+            int error_cdeg = target_position_cdeg - rotSensor.get_position();
 
-            // Clamp velocity to maximum limits
+            // Proportional control for velocity
+            double velocity = kP * error_cdeg;
+
+            // Clamp the velocity to safe limits
             if (velocity > max_velocity) velocity = max_velocity;
             if (velocity < -max_velocity) velocity = -max_velocity;
 
-            // Move the motor
             ladyBrown.move_velocity(velocity);
 
-            pros::delay(20);
+            pros::delay(20);  // Small delay to stabilize the control loop
         }
 
+        // Stop the motor when target is reached
         ladyBrown.move_velocity(0);
+    
     }
 
     //PRIME POSITION (R2)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-        const double target_position = 20;
-        const double deadband = 1;
-        const double kP = 1.5;
-        const int max_velocity = 200;
+        
+        const double target_position_deg = 30; // Target position in degrees
+        const int tolerance_cdeg = 300;      // Tolerance in centidegrees (±1 degree)
+        const double kP = 0.3;               // Proportional gain for smooth control
+        const int max_velocity = 200;        // Max motor velocity for safe movement
 
-        while (std::abs(rotSensor.get_position() - target_position) > deadband) {
-            // Calculate error
-            double error = target_position - rotSensor.get_position();
+        // Convert target position from degrees to centidegrees
+        const int target_position_cdeg = target_position_deg * 100;
 
-            // Calculate velocity based on proportional control
-            double velocity = kP * error;
+        while (abs(rotSensor.get_position() - target_position_cdeg) > tolerance_cdeg) {
+            // Calculate error in centidegrees
+            int error_cdeg = target_position_cdeg - rotSensor.get_position();
 
-            // Clamp velocity to maximum limits
+            // Proportional control for velocity
+            double velocity = kP * error_cdeg;
+
+            // Clamp the velocity to safe limits
             if (velocity > max_velocity) velocity = max_velocity;
             if (velocity < -max_velocity) velocity = -max_velocity;
 
-            // Move the motor
             ladyBrown.move_velocity(velocity);
 
-            pros::delay(20);
+            pros::delay(20);  // Small delay to stabilize the control loop
         }
 
+        // Stop the motor when target is reached
         ladyBrown.move_velocity(0);
+    
     }
+}
+
+void printRotSensor() {
+    // Get the current position of the rotation sensor in centidegrees
+        int current_position_cdeg = rotSensor.get_position();
+
+        // Convert centidegrees to degrees
+        double current_position_deg = current_position_cdeg / 100.0;
+
+        // Display the position in degrees on the controller
+        controller.set_text(0, 0, "Pos: " + std::to_string(current_position_deg) + " deg");
+
+        pros::delay(100);  // Delay to avoid spamming updates
 }
 
 void rotateLadyBrown() {
@@ -95,6 +123,8 @@ void rotateLadyBrown() {
         ladyBrown.move(rightY);
     
 }
+
+
 
 //AUTON FUNCTIONS
 void ladyBrownPrime() {

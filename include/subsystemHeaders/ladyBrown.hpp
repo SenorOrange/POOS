@@ -4,6 +4,7 @@
 //DRIVER CONTROL FUNCTIONS
 void setLadyBrown();
 void rotateLadyBrown();
+void printRotSensor();
 
 //MOTOR POSITION
 void displayMotorPosition();
