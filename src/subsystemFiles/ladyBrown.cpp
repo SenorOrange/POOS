@@ -75,8 +75,8 @@ void setLadyBrown() {
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
         
         const double target_position_deg = 20; // Target position in degrees
-        const int tolerance_cdeg = 500;      // Tolerance in centidegrees (±1 degree)
-        const double kP = 0.1;               // Proportional gain for smooth control
+        const int tolerance_cdeg = 300;      // Tolerance in centidegrees (±1 degree)
+        const double kP = 0.3;               // Proportional gain for smooth control
         const int max_velocity = 200;        // Max motor velocity for safe movement
 
         // Convert target position from degrees to centidegrees
@@ -90,7 +90,7 @@ void setLadyBrown() {
             double velocity = kP * error_cdeg;
 
             // Clamp the velocity to safe limits
-            if (velocity > max_velocity) velocity = max_velocity;
+            if (velocity > max_velocity) velocity = max_velocity / 2;
             if (velocity < -max_velocity) velocity = -max_velocity;
 
             ladyBrown.move_velocity(velocity);
