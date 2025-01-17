@@ -10,8 +10,8 @@
 
 void rush() {
     
-    chassis.setPose(flip * 28, 16, 0);
-    chassis.moveToPose(flip * 24, 72, 30, 1000);
+    chassis.setPose(flip * 41, 9, 0);
+    chassis.moveToPose(flip * 32, 72, 30, 1000);
     pros::delay(500); //needs to be tuned to lower lady brown at the right time
     ladyBrownScore();
     chassis.moveToPose(flip * 48, 48, 45 ,1000, {.forwards=false});

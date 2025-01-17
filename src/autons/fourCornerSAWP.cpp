@@ -12,11 +12,13 @@
 //Code for the minus side but really just code for all the basic 4 corner autons.
 void cornerSAWP() {
     chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
-    chassis.setPose(flip * 48, 16, 180);
+    chassis.setPose(flip * 48, 14, 180);
+    chassis.moveToPoint(flip * 48, 20, 100, {.forwards=false});
     chassis.turnToHeading(flip * -90, 1000);
-    chassis.moveToPoint(flip * 72, 16, 1000, {.forwards=false});
+    chassis.moveToPoint(flip * 72, 20, 1000, {.forwards=false});
     chassis.turnToHeading(flip * 0, 1000);
     chassis.moveToPoint(flip * 72, 10, 1000, {.forwards=false});
+    pros::delay(80);
     spinIntake();
     chassis.moveToPoint(flip * 72, 24, 1000);
     chassis.turnToHeading(flip * 135, 1000);
@@ -30,7 +32,8 @@ void cornerSAWP() {
     chassis.turnToHeading(flip * -90, 500);
     chassis.moveToPoint(flip * 20, 48, 500);
     chassis.turnToHeading(flip * 180, 500);
-
+    
+    /*
     //If on red minus & blue plus
     //For Clearing Corner
     if (flip == 1) {
@@ -59,9 +62,9 @@ void cornerSAWP() {
         chassis.turnToHeading(-90, 500);
         pros::delay(500);
         raiseDoinker();
-    }
-    
-    stopIntake();
+    }*/
     chassis.turnToHeading(flip * 45, 500);
     chassis.moveToPoint(flip * 68, 68, 2000, {.maxSpeed=50});
+    pros::delay(1000);
+    stopIntake();
 }

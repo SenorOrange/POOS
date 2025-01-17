@@ -75,8 +75,8 @@ void setLadyBrown() {
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
         
         const double target_position_deg = 20; // Target position in degrees
-        const int tolerance_cdeg = 300;      // Tolerance in centidegrees (±1 degree)
-        const double kP = 0.3;               // Proportional gain for smooth control
+        const int tolerance_cdeg = 150;      // Tolerance in centidegrees (±1 degree)
+        const double kP = 0.2;               // Proportional gain for smooth control
         const int max_velocity = 200;        // Max motor velocity for safe movement
 
         // Convert target position from degrees to centidegrees
@@ -90,12 +90,11 @@ void setLadyBrown() {
             double velocity = kP * error_cdeg;
 
             // Clamp the velocity to safe limits
-            if (velocity > max_velocity) velocity = max_velocity / 2;
+            if (velocity > max_velocity) velocity = max_velocity / 3;
             if (velocity < -max_velocity) velocity = -max_velocity;
 
             ladyBrown.move_velocity(velocity);
 
-            pros::delay(20);  // Small delay to stabilize the control loop
         }
 
         // Stop the motor when target is reached
@@ -168,21 +167,32 @@ void ladyBrownLower() {
 }
 
 void ladyBrownScore() {
-if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
-
-        while (abs(rotSensor.get_position() - 180) > 0.5) {
-            
-            if (rotSensor.get_position() < 180) {
-
-                ladyBrown.move_velocity(200);
-            } else if (rotSensor.get_position() > 180) {
-
-                ladyBrown.move_velocity(-200);
-            }
-        }
-
-        ladyBrown.move_velocity(0);
         
+        const double target_position_deg = 210; // Target position in degrees
+        const int tolerance_cdeg = 500;      // Tolerance in centidegrees (±1 degree)
+        const double kP = 0.3;               // Proportional gain for smooth control
+        const int max_velocity = 200;        // Max motor velocity for safe movement
+
+        // Convert target position from degrees to centidegrees
+        const int target_position_cdeg = target_position_deg * 100;
+
+        while (abs(rotSensor.get_position() - target_position_cdeg) > tolerance_cdeg) {
+            // Calculate error in centidegrees
+            int error_cdeg = target_position_cdeg - rotSensor.get_position();
+
+            // Proportional control for velocity
+            double velocity = kP * error_cdeg;
+
+            // Clamp the velocity to safe limits
+            if (velocity > max_velocity) velocity = max_velocity;
+            if (velocity < -max_velocity) velocity = -max_velocity;
+
+            ladyBrown.move_velocity(velocity);
+
+            pros::delay(20);  // Small delay to stabilize the control loop
         }
+
+        // Stop the motor when target is reached
+        ladyBrown.move_velocity(0);
 }
 
