@@ -66,5 +66,5 @@ void cornerSAWP() {
     chassis.turnToHeading(flip * 45, 500);
     chassis.moveToPoint(flip * 68, 68, 2000, {.maxSpeed=50});
     pros::delay(1000);
-    stopIntake();
+    //stopIntake();
 }
