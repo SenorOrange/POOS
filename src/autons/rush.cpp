@@ -9,10 +9,11 @@
 
 
 void rush() {
-    
-    chassis.setPose(flip * 41, 9, 0);
-    chassis.moveToPose(flip * 32, 72, 30, 1000);
-    pros::delay(500); //needs to be tuned to lower lady brown at the right time
+    chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
+    chassis.setPose(-39, 21, -20);
+    chassis.moveToPose(-29, 61, 20, 2000, {.minSpeed = 500});
+    pros::delay(500);
+    /*pros::delay(500); //needs to be tuned to lower lady brown at the right time
     ladyBrownScore();
     chassis.moveToPose(flip * 48, 48, 45 ,1000, {.forwards=false});
     chassis.waitUntilDone();
@@ -36,6 +37,6 @@ void rush() {
     //Code for Elims
     chassis.moveToPose(flip * 24, 24, 135, 1000);
     ladyBrownLower();
-    lowerDoinker();
+    lowerDoinker();*/
 }
  

@@ -93,7 +93,7 @@ static void event_bp(lv_event_t * bluePosClick) {
     lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
     lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the left side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles");
     flip = 1;
-    auton = 1;
+    auton = 0;
 
     //Switch Ring Sort Colour To Red
     ringHueMin = RedMin;

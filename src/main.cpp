@@ -68,15 +68,16 @@ ASSET(example_txt); // '.' replaced with "_" to make c++ happy
 
 void autonomous() {
 //chassis.moveToPose(0, 48, 0, 1000);
-    //Four Corner SAWP
-    if (auton == 1) {
-    cornerSAWP();
+rush();
+    /*if (auton == 1) {
+    //cornerSAWP();
+    ladyBrownScore();
     }
 
     //Skills
     if (auton == 2) {
     skills();
-    }
+    }*/
 }
 
 // Declare the async task globally
