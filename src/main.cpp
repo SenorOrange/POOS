@@ -90,7 +90,7 @@ void opcontrol() {
         int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
         int leftX = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
 
-        chassis.curvature(leftY, leftX);
+        chassis.arcade(leftY, leftX);
 
         //Make Intake Go intaky
         setIntakeMotors();

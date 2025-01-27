@@ -10,9 +10,10 @@
 
 void rush() {
     chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
-    chassis.setPose(-39, 21, -20);
-    chassis.moveToPose(-29, 61, 20, 2000, {.minSpeed = 500});
+    chassis.setPose(-39, 21, 5);
+    chassis.moveToPose(-29, 61, 10, 2000, {.minSpeed = 500});
     pros::delay(500);
+    chassis.turnToHeading(90, 500);
     /*pros::delay(500); //needs to be tuned to lower lady brown at the right time
     ladyBrownScore();
     chassis.moveToPose(flip * 48, 48, 45 ,1000, {.forwards=false});
