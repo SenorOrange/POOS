@@ -21,8 +21,7 @@ void intakePauseTask() {
                 // If intake is running, pause and then resume
                 pros::delay(50);
                 HookStage.move_velocity(0);   // Stop intake
-                PreRoller.move_velocity(0);
-                pros::delay(300);          // Pause for 300ms
+                pros::delay(150);          // Pause for 300ms
                 HookStage.move_velocity(600); // Resume previous speed
                 PreRoller.move_velocity(600);
             }

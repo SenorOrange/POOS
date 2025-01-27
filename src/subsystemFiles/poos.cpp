@@ -76,10 +76,10 @@ int flip = 1;
 //Color Sort Variables
 int ringHueMin;
 int ringHueMax;
-int BlueMin = 190;
-int BlueMax = 260;
+int BlueMin = 200;
+int BlueMax = 225;
 int RedMin = 0;
-int RedMax = 40;
+int RedMax = 20;
 
 static void event_rc(lv_event_t * redChecked) {
 

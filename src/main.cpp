@@ -25,7 +25,7 @@ void initialize() {
     pros::delay(2000);
     colorSensor.set_led_pwm(100);
     rotSensor.reset_position();
-    ladyBrown.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+    ladyBrown.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     drawGUI();
 
     /*color sort blue
