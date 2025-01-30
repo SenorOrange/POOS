@@ -168,7 +168,7 @@ void ladyBrownLower() {
 
 void ladyBrownScore() {
         
-        const double target_position_deg = 180; // Target position in degrees
+        const double target_position_deg = 200; // Target position in degrees
         const int tolerance_cdeg = 500;      // Tolerance in centidegrees (±1 degree)
         const double kP = 0.3;               // Proportional gain for smooth control
         const int max_velocity = 200;        // Max motor velocity for safe movement
