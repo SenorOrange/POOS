@@ -74,7 +74,7 @@ void setLadyBrown() {
     //PRIME POSITION (R2)
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
         
-        const double target_position_deg = 20; // Target position in degrees
+        const double target_position_deg = 25; // Target position in degrees
         const int tolerance_cdeg = 150;      // Tolerance in centidegrees (±1 degree)
         const double kP = 0.2;               // Proportional gain for smooth control
         const int max_velocity = 200;        // Max motor velocity for safe movement
