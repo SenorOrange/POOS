@@ -21,16 +21,12 @@
 //Competition initialize
 void initialize() {
     loading();
-    chassis.calibrate(); // calibrate sensors
-    pros::delay(2000);
     colorSensor.set_led_pwm(100);
     rotSensor.reset_position();
     ladyBrown.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     drawGUI();
-
-    /*color sort blue
-    ringHueMin = BlueMin;
-    ringHueMax = BlueMax;*/
+    chassis.calibrate(); 
+    
 }
 
 
@@ -50,7 +46,7 @@ void competition_initialize() {
 ASSET(example_txt); // '.' replaced with "_" to make c++ happy
 
 void autonomous() {
-//chassis.moveToPose(0, 48, 0, 1000);
+//ringRush();
 rush();
     /*if (auton == 1) {
     //cornerSAWP();

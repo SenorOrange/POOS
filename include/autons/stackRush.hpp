@@ -1,4 +1,4 @@
 #include "main.h"
 
 //Auton
-void ringRushRed();
+void ringRush();
