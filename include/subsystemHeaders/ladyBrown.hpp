@@ -16,3 +16,4 @@ extern bool firstRing;
 void ladyBrownLower();
 void ladyBrownPrime();
 void ladyBrownScore();
+void ladyBrownIdle();

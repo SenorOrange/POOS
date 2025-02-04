@@ -46,9 +46,10 @@ void competition_initialize() {
 ASSET(example_txt); // '.' replaced with "_" to make c++ happy
 
 void autonomous() {
-    
+
+    ringRush();
     //Mogo Rush
-    if (auton == 1) {
+    /*if (auton == 1) {
         rush();
     }
 
@@ -60,7 +61,7 @@ void autonomous() {
     //Ring Side
     if (auton == 3) {
         ringRush();
-    }
+    }*/
 }
 
 // Declare the async task globally

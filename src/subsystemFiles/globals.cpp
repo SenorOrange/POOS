@@ -30,7 +30,7 @@ pros::Optical colorSensor(4);
 pros::Rotation rotSensor(10);
 
 // horizontal tracking wheel encoder
-pros::adi::Encoder horizontal_encoder('E', 'F');
+pros::adi::Encoder horizontal_encoder('F', 'E');
 // vertical tracking wheel encoder
 pros::adi::Encoder vertical_encoder('C', 'D');
 // horizontal tracking wheel

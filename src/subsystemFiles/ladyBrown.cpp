@@ -214,3 +214,32 @@ void ladyBrownScore() {
         ladyBrown.move_velocity(0);
 }
 
+void ladyBrownIdle() {
+        
+        const double target_position_deg = 60; // Target position in degrees
+        const int tolerance_cdeg = 500;      // Tolerance in centidegrees (±1 degree)
+        const double kP = 0.3;               // Proportional gain for smooth control
+        const int max_velocity = 200;        // Max motor velocity for safe movement
+
+        // Convert target position from degrees to centidegrees
+        const int target_position_cdeg = target_position_deg * 100;
+
+        while (abs(rotSensor.get_position() - target_position_cdeg) > tolerance_cdeg) {
+            // Calculate error in centidegrees
+            int error_cdeg = target_position_cdeg - rotSensor.get_position();
+
+            // Proportional control for velocity
+            double velocity = kP * error_cdeg;
+
+            // Clamp the velocity to safe limits
+            if (velocity > max_velocity) velocity = max_velocity;
+            if (velocity < -max_velocity) velocity = -max_velocity;
+
+            ladyBrown.move_velocity(velocity);
+
+            pros::delay(20);  // Small delay to stabilize the control loop
+        }
+
+        // Stop the motor when target is reached
+        ladyBrown.move_velocity(0);
+}
