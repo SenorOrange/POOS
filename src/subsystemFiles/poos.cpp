@@ -68,10 +68,14 @@ lv_obj_t * spinner;
 
 
 //Used to determine what Auton is selected by rotating the number
-int auton = 1;
+int auton = 0;
 
 //Used to switch which side the auton is on to fix the asymmetrical field layout
 int flip = 1;
+
+//Elims and Quals Bools
+bool Quals = false;
+bool Elims = false;
 
 //Color Sort Variables
 int ringHueMin;
@@ -86,31 +90,12 @@ static void event_rc(lv_event_t * redChecked) {
 }
 // Blue Positive Event
 static void event_bp(lv_event_t * bluePosClick) {
-    lv_label_set_text(autonName, "Blue Positive\nCorner SAWP");
+    lv_label_set_text(autonName, "Blue Positive\nMogo Rush");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
     lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 3\n\nTotal = 6 + AWP");
     lv_label_set_text(colorSortEdit, "Sorting Red Rings");
     lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
     lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the left side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles");
-    flip = 1;
-    auton = 0;
-
-    //Switch Ring Sort Colour To Red
-    ringHueMin = RedMin;
-    ringHueMax = RedMax;
-}
-
-static void event_bpr(lv_event_t * bluePosReleased) {
-    lv_label_set_text(bluePosLabel, "Blue\nPositive");
-}
-
-static void event_bn(lv_event_t * blueNegClick) {
-    lv_label_set_text(autonName, "Blue Negative\nCorner SAWP");
-    lv_label_set_text(autonTimeEdit, "13 Seconds");
-    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 3\n\nTotal = 6 + AWP");
-    lv_label_set_text(colorSortEdit, "Sorting Red Rings");
-    lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
-    lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the right side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles");
     flip = -1;
     auton = 1;
 
@@ -119,18 +104,37 @@ static void event_bn(lv_event_t * blueNegClick) {
     ringHueMax = RedMax;
 }
 
+static void event_bpr(lv_event_t * bluePosReleased) {
+    lv_label_set_text(bluePosLabel, "Blue\nMogo\nRush");
+}
+
+static void event_bn(lv_event_t * blueNegClick) {
+    lv_label_set_text(autonName, "Blue Negative\nRing Stack");
+    lv_label_set_text(autonTimeEdit, "13 Seconds");
+    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 3\n\nTotal = 6 + AWP");
+    lv_label_set_text(colorSortEdit, "Sorting Red Rings");
+    lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
+    lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the right side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles");
+    flip = -1;
+    auton = 3;
+
+    //Switch Ring Sort Colour To Red
+    ringHueMin = RedMin;
+    ringHueMax = RedMax;
+}
+
 static void event_bnr(lv_event_t * blueNegReleased) {
-    lv_label_set_text(blueNegLabel, "Blue\nNegative");
+    lv_label_set_text(blueNegLabel, "Blue\nRing\nStack");
 }
 
 static void event_rp(lv_event_t * redPosClick) {
-    lv_label_set_text(autonName, "Red Positive\nCorner SAWP");
+    lv_label_set_text(autonName, "Red Positive\nMogo Rush");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
     lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx4 Mogo = 3\n\nTotal = 6 + AWP");
     lv_label_set_text(colorSortEdit, "Sorting Blue Rings");
     lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
     lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the right side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles");
-    flip = -1;
+    flip = 1;
     auton = 1;
 
     //Switch Ring Sort Colour To Blue
@@ -139,18 +143,18 @@ static void event_rp(lv_event_t * redPosClick) {
 }
 
 static void event_rpr(lv_event_t * redPosReleased) {
-    lv_label_set_text(redPosLabel, "Red\nPositive");
+    lv_label_set_text(redPosLabel, "Red\nMogo\nRush");
 }
 
 static void event_rn(lv_event_t * redNegClick) {
-    lv_label_set_text(autonName, "Red Negative\nCorner SAWP");
+    lv_label_set_text(autonName, "Red Negative\nRing Stack");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
     lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx1 Mogo = 3\n\nTotal = 6 + AWP");
     lv_label_set_text(colorSortEdit, "Sorting Blue Rings");
     lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
     lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the left side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles 1&2 from you");
     flip = 1;
-    auton = 1;
+    auton = 3;
 
     //Switch Ring Sort Colour To Blue
     ringHueMin = BlueMin;
@@ -158,7 +162,7 @@ static void event_rn(lv_event_t * redNegClick) {
 }
 
 static void event_rnr(lv_event_t * redNegReleased) {
-    lv_label_set_text(redNegLabel, "Red\nNegative");
+    lv_label_set_text(redNegLabel, "Red\nRing\nStack");
 }
 
 static void event_s(lv_event_t * skillsClick) {
@@ -365,7 +369,7 @@ void drawGUI() {
 
 
     //Creating Blue Positive Button
-    lv_label_set_text(bluePosLabel, "Blue\nPositive");
+    lv_label_set_text(bluePosLabel, "Blue\nMogo\nRush");
     lv_obj_center(bluePosLabel);
     lv_obj_add_style(bluePosBtn, &styleBlue, 0);
     lv_obj_add_style(bluePosBtn, &styleBlue_pr, LV_STATE_PRESSED);
@@ -374,7 +378,7 @@ void drawGUI() {
     lv_obj_add_event_cb(bluePosBtn, event_bp, LV_EVENT_PRESSED, NULL);
     lv_obj_add_event_cb(bluePosBtn, event_bpr, LV_EVENT_RELEASED, NULL);
 
-    lv_label_set_text(blueNegLabel, "Blue\nNegative");
+    lv_label_set_text(blueNegLabel, "Blue\nRing\nStack");
     lv_obj_center(blueNegLabel);
     lv_obj_add_style(blueNegBtn, &styleBlue, 0);
     lv_obj_add_style(blueNegBtn, &styleBlue_pr, LV_STATE_PRESSED);
@@ -383,7 +387,7 @@ void drawGUI() {
     lv_obj_add_event_cb(blueNegBtn, event_bn, LV_EVENT_PRESSED, NULL);
     lv_obj_add_event_cb(blueNegBtn, event_bnr, LV_EVENT_RELEASED, NULL);
 
-    lv_label_set_text(redPosLabel, "Red\nPositive");
+    lv_label_set_text(redPosLabel, "Red\nMogo\nRush");
     lv_obj_center(redPosLabel);
     lv_obj_add_style(redPosBtn, &styleRed, 0);
     lv_obj_add_style(redPosBtn, &styleRed_pr, LV_STATE_PRESSED);
@@ -392,7 +396,7 @@ void drawGUI() {
     lv_obj_add_event_cb(redPosBtn, event_rp, LV_EVENT_PRESSED, NULL);
     lv_obj_add_event_cb(redPosBtn, event_rpr, LV_EVENT_RELEASED, NULL);
 
-    lv_label_set_text(redNegLabel, "Red\nNegative");
+    lv_label_set_text(redNegLabel, "Red\nRing\nStack");
     lv_obj_center(redNegLabel);
     lv_obj_add_style(redNegBtn, &styleRed, 0);
     lv_obj_add_style(redNegBtn, &styleRed_pr, LV_STATE_PRESSED);
@@ -421,7 +425,7 @@ void drawGUI() {
     lv_obj_align(cornerSwitch, LV_ALIGN_BOTTOM_LEFT, 130, -10);*/
     
     //Text To Display Poos Version
-    lv_label_set_text(poosVerLabel, "POOS V2.1");
+    lv_label_set_text(poosVerLabel, "POOS V3.1");
     lv_obj_add_style(poosVerLabel, &bigText, 0);
     lv_obj_align(poosVerLabel, LV_ALIGN_BOTTOM_LEFT, 70, -25);
 

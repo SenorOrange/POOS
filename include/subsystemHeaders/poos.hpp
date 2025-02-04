@@ -20,6 +20,9 @@ static void event_sr();
 
 extern int auton;
 
+extern bool Quals;
+extern bool Elims;
+
 extern int flip;
 
 //Color Sort Variables

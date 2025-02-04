@@ -19,9 +19,9 @@ void intakePauseTask() {
         if (hue >= ringHueMin && hue <= ringHueMax) { 
             if (x) {
                 // If intake is running, pause and then resume
-                pros::delay(50);
+                pros::delay(10);
                 HookStage.move_velocity(0);   // Stop intake
-                pros::delay(150);          // Pause for 300ms
+                pros::delay(200);          // Pause for 300ms
                 HookStage.move_velocity(600); // Resume previous speed
                 PreRoller.move_velocity(600);
             }

@@ -46,17 +46,21 @@ void competition_initialize() {
 ASSET(example_txt); // '.' replaced with "_" to make c++ happy
 
 void autonomous() {
-//ringRush();
-rush();
-    /*if (auton == 1) {
-    //cornerSAWP();
-    ladyBrownScore();
+    
+    //Mogo Rush
+    if (auton == 1) {
+        rush();
     }
 
     //Skills
     if (auton == 2) {
-    skills();
-    }*/
+        skills();
+    }
+
+    //Ring Side
+    if (auton == 3) {
+        ringRush();
+    }
 }
 
 // Declare the async task globally
