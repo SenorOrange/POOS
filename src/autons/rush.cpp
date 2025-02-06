@@ -17,7 +17,9 @@ void rush() {
     pros::delay(500);
     ladyBrownScore();
     chassis.waitUntilDone();
+    pros::delay(500);
     chassis.moveToPose(flip * -48, 47, flip * 90, 1500, {.forwards = false, .minSpeed = 40});
+    ladyBrownIdle();
     chassis.waitUntilDone();
     clamp();
     spinIntake();
@@ -39,7 +41,7 @@ void rush() {
     }
 
     //Elims Bit
-    else if (Elims == true) {
+    if (Elims == true) {
 
     }
 }

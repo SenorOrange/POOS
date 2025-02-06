@@ -73,9 +73,10 @@ int auton = 0;
 //Used to switch which side the auton is on to fix the asymmetrical field layout
 int flip = 1;
 
-//Elims and Quals Bools
+//Elims and Quals and SAWP Bools
 bool Quals = false;
 bool Elims = false;
+bool SAWP = false;
 
 //Color Sort Variables
 int ringHueMin;

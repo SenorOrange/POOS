@@ -22,6 +22,7 @@ extern int auton;
 
 extern bool Quals;
 extern bool Elims;
+extern bool SAWP;
 
 extern int flip;
 
