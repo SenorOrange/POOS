@@ -13,16 +13,16 @@
 void ringRush() {
     chassis.setBrakeMode(pros::E_MOTOR_BRAKE_BRAKE);
     chassis.setPose(flip * 48, 20, flip * 180);
-    chassis.moveToPoint(flip  * 48, 48, 2000, {.forwards = false, .maxSpeed = 50});
+    chassis.moveToPoint(flip  * 48, 48, 2000, {.forwards = false, .maxSpeed = 60});
     chassis.waitUntilDone();
     clamp();
     spinIntake();
     pros::delay(500);
-    chassis.moveToPose(flip * 31, 67, flip * -30, 2000, {.minSpeed = 50});
-    chassis.turnToHeading(flip * 180, 1000);
-    chassis.moveToPose(flip * 30, 30, flip * 180, 3000);
+    //chassis.moveToPose(flip * 31, 67, flip * -30, 2000, {.minSpeed = 50});
+    //chassis.turnToHeading(flip * 180, 1000);
+    chassis.moveToPose(flip * 18, 48, flip * 90, 3000);
     chassis.waitUntilDone();
-    chassis.moveToPose(flip * 80, 28, flip * -90, 2000);
+    chassis.moveToPose(flip * 70, 48, flip * 90, 3000);
     pros::delay(1500);
 
     //Quals Bit
