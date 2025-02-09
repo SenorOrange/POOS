@@ -78,11 +78,17 @@ void setLadyBrown() {
         const int tolerance_cdeg = 100;      // Tolerance in centidegrees (±1 degree)
         const double kP = 0.2;               // Proportional gain for smooth control
         const int max_velocity = 200;        // Max motor velocity for safe movement
+        const int timeout_ms = 1500;            // Timeout in milliseconds
 
         // Convert target position from degrees to centidegrees
         const int target_position_cdeg = target_position_deg * 100;
 
+        int start_time = pros::millis(); // Record the start time
+
         while (abs(rotSensor.get_position() - target_position_cdeg) > tolerance_cdeg) {
+            if (pros::millis() - start_time > timeout_ms) {
+            break; // Stop trying after 1 second
+            }
             // Calculate error in centidegrees
             int error_cdeg = target_position_cdeg - rotSensor.get_position();
 
@@ -132,10 +138,12 @@ void ladyBrownPrime() {
         const double kP = 0.3;               // Proportional gain for smooth control
         const int max_velocity = 200;        // Max motor velocity for safe movement
 
+
         // Convert target position from degrees to centidegrees
         const int target_position_cdeg = target_position_deg * 100;
 
         while (abs(rotSensor.get_position() - target_position_cdeg) > tolerance_cdeg) {
+
             // Calculate error in centidegrees
             int error_cdeg = target_position_cdeg - rotSensor.get_position();
 

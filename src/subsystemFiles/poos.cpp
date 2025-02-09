@@ -81,10 +81,10 @@ bool SAWP = false;
 //Color Sort Variables
 int ringHueMin;
 int ringHueMax;
-int BlueMin = 200;
+int BlueMin = 180;
 int BlueMax = 225;
 int RedMin = 0;
-int RedMax = 20;
+int RedMax = 40;
 
 static void event_rc(lv_event_t * redChecked) {
 

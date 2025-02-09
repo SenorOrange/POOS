@@ -21,7 +21,7 @@
 //Competition initialize
 void initialize() {
     loading();
-    colorSensor.set_led_pwm(100);
+    colorSensor.set_led_pwm(300);
     rotSensor.reset_position();
     ladyBrown.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     drawGUI();
@@ -47,6 +47,8 @@ ASSET(example_txt); // '.' replaced with "_" to make c++ happy
 
 void autonomous() {
 
+    /*chassis.setPose(0,0,0);
+    chassis.moveToPose(0, 20, 0, 5000);*/
     //Mogo Rush
     if (auton == 1) {
         rush();
