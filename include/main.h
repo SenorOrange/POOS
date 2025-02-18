@@ -91,6 +91,8 @@ void opcontrol(void);
 #include "autons/rush.hpp"
 #include "autons/stackRush.hpp"
 #include "autons/skillsAuton.hpp"
+#include "autons/omegaAuton.hpp"
+
 
 
 //#include <iostream>

@@ -109,6 +109,28 @@ void setLadyBrown() {
     }
 }
 
+const int numStates = 3;
+int states[numStates] = {0, 2200, 17000};
+int currState = 0;
+int target = 0;
+
+void nextState() {
+    currState += 1;
+    if (currState == numStates) {
+        currState = 0;
+    }
+    target = states[currState];
+}
+
+void liftControl() {
+    double kp = .025;
+    double error = target - rotSensor.get_position();
+    double velocity = kp * error;
+    ladyBrown.move(velocity);
+}
+
+
+
 void printRotSensor() {
     // Get the current position of the rotation sensor in centidegrees
         int current_position_cdeg = rotSensor.get_position();

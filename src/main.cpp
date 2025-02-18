@@ -25,7 +25,14 @@ void initialize() {
     rotSensor.reset_position();
     ladyBrown.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     drawGUI();
-    chassis.calibrate(); 
+    chassis.calibrate();
+
+    pros::Task liftControlTask([]{
+        while (true) {
+            liftControl();
+            pros::delay(10);
+        }
+    });
     
 }
 
@@ -84,9 +91,12 @@ void opcontrol() {
         setMogoMech();
 
         //Moving Arms
-        setLadyBrown();
+        //setLadyBrown();
         rotateLadyBrown();
         printRotSensor();
+        if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
+            nextState();
+        }
 
         //Doinky
         setDoinker();
