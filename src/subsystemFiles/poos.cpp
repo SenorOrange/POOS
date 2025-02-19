@@ -71,7 +71,7 @@ lv_obj_t * spinner;
 int auton = 0;
 
 //Used to switch which side the auton is on to fix the asymmetrical field layout
-int flip = 1;
+int flip = -1;
 
 //Elims and Quals and SAWP Bools
 bool Quals = false;
