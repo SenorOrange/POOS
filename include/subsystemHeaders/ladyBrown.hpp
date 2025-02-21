@@ -7,6 +7,7 @@ void rotateLadyBrown();
 void printRotSensor();
 void nextState();
 void liftControl();
+void manualLiftControl();
 
 
 //MOTOR POSITION
@@ -14,6 +15,8 @@ void displayMotorPosition();
 
 extern bool primePosition;
 extern bool firstRing;
+extern bool freeStyle;
+
 
 
 

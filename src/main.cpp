@@ -29,6 +29,7 @@ void initialize() {
 
     pros::Task liftControlTask([]{
         while (true) {
+
             liftControl();
             pros::delay(10);
         }
@@ -92,7 +93,10 @@ void opcontrol() {
 
         //Moving Arms
         //setLadyBrown();
-        rotateLadyBrown();
+        //rotateLadyBrown();
+        if (controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y)) {
+            rotateLadyBrown();
+        }
         printRotSensor();
         if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
             nextState();

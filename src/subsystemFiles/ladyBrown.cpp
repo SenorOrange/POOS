@@ -3,6 +3,9 @@
 #include "pros/motors.hpp"
 
 
+bool freeStyle = true;
+
+
 
 //DRIVER CONTROL FUNCTIONS
 void setLadyBrown() {
@@ -110,11 +113,13 @@ void setLadyBrown() {
 }
 
 const int numStates = 3;
-int states[numStates] = {0, 2200, 17000};
+int states[numStates] = {0, 2650, 17000};
 int currState = 0;
 int target = 0;
+double velocity;
 
 void nextState() {
+    freeStyle = false;
     currState += 1;
     if (currState == numStates) {
         currState = 0;
@@ -123,9 +128,15 @@ void nextState() {
 }
 
 void liftControl() {
-    double kp = .025;
-    double error = target - rotSensor.get_position();
-    double velocity = kp * error;
+    if (freeStyle == false) {
+        double kp = .025;
+        double error = target - rotSensor.get_position();
+        velocity = kp * error;
+    } else if (freeStyle == true) {
+        velocity = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+        pros::delay(50);
+    }
+
     ladyBrown.move(velocity);
 }
 
@@ -145,10 +156,7 @@ void printRotSensor() {
 }
 
 void rotateLadyBrown() {
-    int rightY = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-
-        ladyBrown.move(rightY);
-    
+    freeStyle = true;
 }
 
 
