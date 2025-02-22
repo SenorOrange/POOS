@@ -11,38 +11,25 @@
 void rush() {
     chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
     rotSensor.set_position(2400);
-    chassis.setPose(flip * -41, 20, flip * 20);
+    chassis.setPose(flip * -41, 15, flip * 180);
     //chassis.turnToHeading(90, 5000);
-    chassis.moveToPose(flip * -26, 55, flip * 20, 2000, {.minSpeed = 600});
-    pros::delay(500);
-    ladyBrownScore();
-    chassis.waitUntilDone();
-    pros::delay(500);
-    chassis.moveToPose(flip * -48, 47, flip * 90, 1500, {.forwards = false, .minSpeed = 40});
-    ladyBrownIdle();
+    chassis.moveToPose(flip * -26, 67, flip * -150, 2000, {.forwards = false});
     chassis.waitUntilDone();
     clamp();
+    pros::delay(800);
     spinIntake();
-    chassis.moveToPose(flip * -16, 48, flip * 90, 2000);
+    chassis.moveToPose(flip * -25, 46, flip * 180, 2000, {.maxSpeed = 60});
+    chassis.moveToPose(flip * -25, 36, flip * 0, 1000);
     chassis.waitUntilDone();
-    chassis.moveToPose(flip * -11, 1, flip * 135, 3000);
-    stopIntake();
-    ladyBrownPrime();
     pros::delay(500);
-    HookStage.move_velocity(-600);
-    pros::delay(550);
-    HookStage.move_velocity(0);
-    ladyBrownLower();
-    spinIntake();
+    unclamp();
+    chassis.moveToPose(flip * -49, 53, flip * 90, 1500, {.forwards = false, .minSpeed = 40});
+    chassis.waitUntilDone();
+    pros::delay(500);
+    clamp();
+    pros::delay(500);
+    chassis.moveToPose(flip * -50, 15, flip * -90, 2000);
+    chassis.moveToPose(flip * -68, 46, flip * -90, 5000, {.maxSpeed = 60});
     
-    //Quals Bit
-    if (Quals == true) {
-        chassis.moveToPose(flip * 52, 52, flip * -45, 2000);
-    }
-
-    //Elims Bit
-    if (Elims == true) {
-
-    }
 }
  
