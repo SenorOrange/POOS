@@ -12,15 +12,20 @@
 
 void ringRush() {
     chassis.setBrakeMode(pros::E_MOTOR_BRAKE_BRAKE);
+    rotSensor.set_position(2450);
     chassis.setPose(flip * 59, 15, flip * 90);
+    //chassis.moveToPose(flip * 55, 17, flip * 110, 5000, {.forwards = false, .maxSpeed = 60});
     chassis.moveToPose(flip * 67, 8, flip * 135, 2000, {.maxSpeed = 60});
+    chassis.waitUntilDone();
+    ladyBrownScore();
     pros::delay(2000);
     spinIntake();
-    chassis.moveToPoint(flip  * 48, 40, 2000, {.forwards = false, .maxSpeed = 60});
+    chassis.moveToPoint(flip * 48, 42, 3000, {.forwards = false, .maxSpeed = 60});
     chassis.waitUntilDone();
+    ladyBrownLower();
     clamp();
-    chassis.moveToPose(flip * 24, 61, flip * -30, 2000, {.maxSpeed = 60});
-    chassis.moveToPose(flip * 22, 24, flip * 180, 3000, {.maxSpeed = 60});
+    chassis.moveToPose(flip * 29, 65, flip * -10, 2000, {.maxSpeed = 60});
+    chassis.moveToPose(flip * 23, 35, flip * 180, 3000, {.maxSpeed = 60});
     chassis.moveToPose(flip * 68, 46, flip * 90, 5000, {.maxSpeed = 60});
     /*chassis.waitUntilDone();
     clamp();
