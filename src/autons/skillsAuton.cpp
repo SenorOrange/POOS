@@ -22,6 +22,7 @@ void skills() {
         chassis.moveToPose(44, 24, 90, 4000, {.forwards = false, .maxSpeed = 40});
         chassis.waitUntilDone();
         clamp();
+        pros::delay(500);
         chassis.moveToPose(48, 50, 0, 2000);
         chassis.moveToPose(22, 48, -90, 2000);
         chassis.moveToPose(24, 11, 180, 3500, {.maxSpeed = 70});
@@ -33,6 +34,7 @@ void skills() {
         chassis.moveToPose(100, 24, -90, 6000, {.forwards = false, .maxSpeed = 40});
         chassis.waitUntilDone();
         clamp();
+        pros::delay(500);
         spinIntake();
         chassis.moveToPose(96, 50, 0, 2000);
         chassis.moveToPose(122, 48, 90, 2000);
@@ -47,6 +49,7 @@ void skills() {
         chassis.moveToPose(72, 120, 135, 5000, {.forwards = false});
         chassis.waitUntilDone();
         clamp();
+        pros::delay(500);
         spinIntake();
         chassis.moveToPose(30, 96, -90, 2500);
         chassis.waitUntilDone();
@@ -55,7 +58,7 @@ void skills() {
         unclamp();
         stopIntake();
         chassis.moveToPose(92, 128, 45, 5000);
-        chassis.moveToPose(130, 130, 45, 5000);
+        chassis.moveToPose(130, 130, 90, 5000);
         chassis.moveToPose(96, 96, 0, 2000);
 
         

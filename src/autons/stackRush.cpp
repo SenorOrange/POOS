@@ -15,18 +15,26 @@ void ringRush() {
     rotSensor.set_position(2450);
     chassis.setPose(flip * 59, 15, flip * 90);
     //chassis.moveToPose(flip * 55, 17, flip * 110, 5000, {.forwards = false, .maxSpeed = 60});
-    chassis.moveToPose(flip * 67, 8, flip * 135, 2000, {.maxSpeed = 60});
+    chassis.moveToPose(flip * 67, 8, flip * 135, 1500, {.maxSpeed = 60});
     chassis.waitUntilDone();
     ladyBrownScore();
-    pros::delay(2000);
+    pros::delay(1000);
     spinIntake();
     chassis.moveToPoint(flip * 48, 42, 3000, {.forwards = false, .maxSpeed = 60});
     chassis.waitUntilDone();
     ladyBrownLower();
     clamp();
-    chassis.moveToPose(flip * 29, 65, flip * -10, 2000, {.maxSpeed = 60});
-    chassis.moveToPose(flip * 23, 35, flip * 180, 3000, {.maxSpeed = 60});
-    chassis.moveToPose(flip * 68, 46, flip * 90, 5000, {.maxSpeed = 60});
+    chassis.moveToPose(flip * 29, 66, flip * -10, 2000, {.maxSpeed = 60});
+    chassis.moveToPose(flip * 25, 36, flip * 180, 3000, {.maxSpeed = 60});
+    
+    //Quals Bit
+    //chassis.moveToPose(flip * 68, 46, flip * 90, 5000, {.maxSpeed = 60});
+
+    //Elims Bit
+    chassis.moveToPose(flip * 110, 18, flip * 90, 5000);
+    pros::delay(1000);
+    stopIntake();
+
     /*chassis.waitUntilDone();
     clamp();
     spinIntake();
