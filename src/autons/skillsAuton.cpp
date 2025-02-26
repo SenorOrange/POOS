@@ -14,52 +14,38 @@ void skills() {
 
         //First Section
         //Consists of Red Wall Stake, Full Mogo and Corner
-        chassis.setBrakeMode(MOTOR_BRAKE_BRAKE);
-        chassis.setPose(72, 11, 0);
-        spinIntake();
+        chassis.setBrakeMode(pros::E_MOTOR_BRAKE_BRAKE);
+        rotSensor.set_position(2450);
+        chassis.setPose(59, 15, 90);
+        
+        //Tune For Speed Later
+        chassis.moveToPose(67, 8,135, 1500, {.maxSpeed = 60});
+        chassis.waitUntilDone();
+        ladyBrownScore();
         pros::delay(1000);
-        chassis.moveToPose(72, 24, 0, 500);
-        chassis.moveToPose(44, 24, 90, 4000, {.forwards = false, .maxSpeed = 40});
+        spinIntake();
+        chassis.moveToPose(48, 24, 135, 1000, {.forwards = false});
         chassis.waitUntilDone();
         clamp();
+        spinIntake();
+        chassis.moveToPose(48, 50, -30,1500);
+        chassis.moveToPose(24, 96, 0, 2000);
+        chassis.moveToPose(12, 120, 0, 2000);
         pros::delay(500);
-        chassis.moveToPose(48, 50, 0, 2000);
-        chassis.moveToPose(22, 48, -90, 2000);
-        chassis.moveToPose(24, 11, 180, 3500, {.maxSpeed = 70});
+        ladyBrownPrime();
+        chassis.moveToPose(12, 72, -90, 2000);
+        pros::delay(500);
+        ladyBrownIdle();
+        chassis.waitUntilDone();
+        ladyBrownScore();
+        pros::delay(200);
+        ladyBrownPrime();
+        pros::delay(200);
+        ladyBrownScore();
+        chassis.moveToPose(24, 11, 180, 3500);
         chassis.moveToPose(11, 24, -45, 1000);
         chassis.moveToPose(14, 14, 45, 2000, {.forwards = false});
         chassis.waitUntilDone();
         unclamp();
-        stopIntake();
-        chassis.moveToPose(100, 24, -90, 6000, {.forwards = false, .maxSpeed = 40});
-        chassis.waitUntilDone();
-        clamp();
-        pros::delay(500);
-        spinIntake();
-        chassis.moveToPose(96, 50, 0, 2000);
-        chassis.moveToPose(122, 48, 90, 2000);
-        chassis.moveToPose(120, 11, 180, 3500, {.maxSpeed = 70});
-        chassis.moveToPose(133, 24, 45, 1000);
-        chassis.moveToPose(130, 14, 45, 2000, {.forwards = false});
-        chassis.waitUntilDone();
-        unclamp();
-        chassis.moveToPose(120, 98, 0, 5000);
-        pros::delay(500);
-        stopIntake();
-        chassis.moveToPose(72, 120, 135, 5000, {.forwards = false});
-        chassis.waitUntilDone();
-        clamp();
-        pros::delay(500);
-        spinIntake();
-        chassis.moveToPose(30, 96, -90, 2500);
-        chassis.waitUntilDone();
-        chassis.moveToPose(18, 128, 135, 2000, {.forwards = false});
-        chassis.waitUntilDone();
-        unclamp();
-        stopIntake();
-        chassis.moveToPose(92, 128, 45, 5000);
-        chassis.moveToPose(130, 130, 90, 5000);
-        chassis.moveToPose(96, 96, 0, 2000);
 
-        
 }

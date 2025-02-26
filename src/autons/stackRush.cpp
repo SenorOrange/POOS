@@ -14,7 +14,6 @@ void ringRush() {
     chassis.setBrakeMode(pros::E_MOTOR_BRAKE_BRAKE);
     rotSensor.set_position(2450);
     chassis.setPose(flip * 59, 15, flip * 90);
-    //chassis.moveToPose(flip * 55, 17, flip * 110, 5000, {.forwards = false, .maxSpeed = 60});
     chassis.moveToPose(flip * 67, 8, flip * 135, 1500, {.maxSpeed = 60});
     chassis.waitUntilDone();
     ladyBrownScore();
