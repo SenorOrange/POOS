@@ -54,6 +54,7 @@ void competition_initialize() {
 ASSET(example_txt); // '.' replaced with "_" to make c++ happy
 
 void autonomous() {
+    omegaAuton();
     /*chassis.setPose(0,0,0);
     chassis.moveToPose(0, 20, 0, 5000);*/
     //Mogo Rush
