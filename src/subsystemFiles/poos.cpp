@@ -17,22 +17,28 @@
 
 lv_group_t * bluePos;
 lv_group_t * blueNeg;
+lv_group_t * blueOmega;
 lv_group_t * redPos;
 lv_group_t * redNeg;
+lv_group_t * redOmega;
 lv_group_t * skillsb;
 lv_group_t * cornerSw;
 lv_group_t * autonInfo;
 
 lv_event_cb_t  bluePosClick;
 lv_event_cb_t * blueNegClick;
+lv_event_cb_t * blueOmegaClick;
 lv_event_cb_t * redPosClick;
 lv_event_cb_t * redNegClick;
+lv_event_cb_t * redOmegaClick;
 lv_event_cb_t * skillsClick;
 
 lv_event_cb_t  bluePosReleased;
 lv_event_cb_t * blueNegReleased;
+lv_event_cb_t * blueOmegaReleased;
 lv_event_cb_t * redPosReleased;
 lv_event_cb_t * redNegReleased;
+lv_event_cb_t * redOmegaReleased;
 lv_event_cb_t * skillsReleased;
 
 
@@ -40,10 +46,14 @@ lv_obj_t * bluePosBtn;
 lv_obj_t * bluePosLabel;
 lv_obj_t * blueNegBtn;
 lv_obj_t * blueNegLabel;
+lv_obj_t * blueOmegaBtn;
+lv_obj_t * blueOmegaLabel;
 lv_obj_t * redPosBtn;
 lv_obj_t * redPosLabel;
 lv_obj_t * redNegBtn;
 lv_obj_t * redNegLabel;
+lv_obj_t * redOmegaBtn;
+lv_obj_t * redOmegaLabel;
 lv_obj_t * skillsBtn;
 lv_obj_t * skillsLabel;
 
@@ -128,6 +138,25 @@ static void event_bnr(lv_event_t * blueNegReleased) {
     lv_label_set_text(blueNegLabel, "Blue\nRing\nStack");
 }
 
+static void event_bo(lv_event_t * blueOmegaClick) {
+    lv_label_set_text(autonName, "Blue Negative\nOmega Auton");
+    lv_label_set_text(autonTimeEdit, "15 Seconds");
+    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx5 Mogo = 9\n\nTotal = 12 + RSAWP");
+    lv_label_set_text(colorSortEdit, "Sorting Red Rings");
+    lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
+    lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the right side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles");
+    flip = -1;
+    auton = 4;
+
+    //Switch Ring Sort Colour To Red
+    ringHueMin = RedMin;
+    ringHueMax = RedMax;
+}
+
+static void event_bor(lv_event_t * blueOmegaReleased) {
+    lv_label_set_text(blueOmegaLabel, "Blue\nRing\nStack");
+}
+
 static void event_rp(lv_event_t * redPosClick) {
     lv_label_set_text(autonName, "Red Positive\nMogo Rush");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
@@ -150,7 +179,7 @@ static void event_rpr(lv_event_t * redPosReleased) {
 static void event_rn(lv_event_t * redNegClick) {
     lv_label_set_text(autonName, "Red Negative\nRing Stack");
     lv_label_set_text(autonTimeEdit, "13 Seconds");
-    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx1 Mogo = 3\n\nTotal = 6 + AWP");
+    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx5 Mogo = 9\n\nTotal = 12 + RSAWP");
     lv_label_set_text(colorSortEdit, "Sorting Blue Rings");
     lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
     lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the left side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles 1&2 from you");
@@ -164,6 +193,25 @@ static void event_rn(lv_event_t * redNegClick) {
 
 static void event_rnr(lv_event_t * redNegReleased) {
     lv_label_set_text(redNegLabel, "Red\nRing\nStack");
+}
+
+static void event_ro(lv_event_t * redOmegaClick) {
+    lv_label_set_text(autonName, "Red Negative\nOmega Auton");
+    lv_label_set_text(autonTimeEdit, "15 Seconds");
+    lv_label_set_text(autonPointsEdit, "x1 Alliance Stake = 3\nx1 Mogo = 3\n\nTotal = 6 + AWP");
+    lv_label_set_text(colorSortEdit, "Sorting Blue Rings");
+    lv_label_set_text(robotPathEdit, "1) Score 1 ring on allinace stake\n2) Pick up mobile goal\n3) Pick up ring\n4) Clear corner\n5) Touch Tower");
+    lv_label_set_text(robotSetupEdit, "Place robot between tile\n2&3 from the left side,\nmogo mech facing outward,\nmogo mech bar on the\ngap between tiles 1&2 from you");
+    flip = 1;
+    auton = 4;
+
+    //Switch Ring Sort Colour To Blue
+    ringHueMin = BlueMin;
+    ringHueMax = BlueMax;
+}
+
+static void event_ror(lv_event_t * redOmegaReleased) {
+    lv_label_set_text(redOmegaLabel, "Red\nOmega");
 }
 
 static void event_s(lv_event_t * skillsClick) {
@@ -305,8 +353,10 @@ void drawGUI() {
     //Creating Groups
     bluePos = lv_group_create();
     blueNeg = lv_group_create();
+    blueOmega = lv_group_create();
     redPos = lv_group_create();
     redNeg = lv_group_create();
+    redOmega = lv_group_create();
     skillsb = lv_group_create();
     //cornerSw = lv_group_create();
     autonInfo = lv_group_create();
@@ -333,10 +383,14 @@ void drawGUI() {
     bluePosLabel = lv_label_create(bluePosBtn);
     blueNegBtn = lv_btn_create(lv_scr_act());
     blueNegLabel = lv_label_create(blueNegBtn);
+    blueOmegaBtn = lv_btn_create(lv_scr_act());
+    blueOmegaLabel = lv_label_create(blueOmegaBtn);
     redPosBtn = lv_btn_create(lv_scr_act());
     redPosLabel = lv_label_create(redPosBtn);
     redNegBtn = lv_btn_create(lv_scr_act());
     redNegLabel = lv_label_create(redNegBtn);
+    redOmegaBtn = lv_btn_create(lv_scr_act());
+    redOmegaLabel = lv_label_create(redOmegaBtn);
     skillsBtn = lv_btn_create(lv_scr_act());
     skillsLabel = lv_label_create(skillsBtn);
 
@@ -344,14 +398,18 @@ void drawGUI() {
     //Assigning Objects into Groups
     lv_group_add_obj(bluePos, bluePosBtn);
     lv_group_add_obj(blueNeg, blueNegBtn);
+    lv_group_add_obj(blueOmega, blueOmegaBtn);
     lv_group_add_obj(redPos, redPosBtn);
     lv_group_add_obj(redNeg, redNegBtn);
+    lv_group_add_obj(redOmega, redOmegaBtn);
     lv_group_add_obj(skillsb, skillsBtn);
 
     lv_group_add_obj(bluePos, bluePosLabel);
     lv_group_add_obj(blueNeg, blueNegLabel);
+    lv_group_add_obj(blueOmega, blueOmegaLabel);
     lv_group_add_obj(redPos, redPosLabel);
     lv_group_add_obj(redNeg, redPosLabel);
+    lv_group_add_obj(redOmega, redOmegaLabel);
     lv_group_add_obj(skillsb, skillsLabel);
 
     //lv_group_add_obj(cornerSw, cornerSwitch);
@@ -388,6 +446,15 @@ void drawGUI() {
     lv_obj_add_event_cb(blueNegBtn, event_bn, LV_EVENT_PRESSED, NULL);
     lv_obj_add_event_cb(blueNegBtn, event_bnr, LV_EVENT_RELEASED, NULL);
 
+    lv_label_set_text(blueOmegaLabel, "Blue\nOmega");
+    lv_obj_center(blueOmegaLabel);
+    lv_obj_add_style(blueOmegaBtn, &styleBlue, 0);
+    lv_obj_add_style(blueOmegaBtn, &styleBlue_pr, LV_STATE_PRESSED);
+    lv_obj_set_size(blueOmegaBtn, 110, 50);
+    lv_obj_align(blueOmegaBtn, LV_ALIGN_BOTTOM_LEFT, 10, -10);
+    lv_obj_add_event_cb(blueOmegaBtn, event_bo, LV_EVENT_PRESSED, NULL);
+    lv_obj_add_event_cb(blueOmegaBtn, event_bor, LV_EVENT_RELEASED, NULL);
+
     lv_label_set_text(redPosLabel, "Red\nMogo\nRush");
     lv_obj_center(redPosLabel);
     lv_obj_add_style(redPosBtn, &styleRed, 0);
@@ -405,6 +472,15 @@ void drawGUI() {
     lv_obj_align(redNegBtn, LV_ALIGN_LEFT_MID, 90, 10);
     lv_obj_add_event_cb(redNegBtn, event_rn, LV_EVENT_PRESSED, NULL);
     lv_obj_add_event_cb(redNegBtn, event_rnr, LV_EVENT_RELEASED, NULL);
+
+    lv_label_set_text(redOmegaLabel, "Red\nOmega");
+    lv_obj_center(redOmegaLabel);
+    lv_obj_add_style(redOmegaBtn, &styleRed, 0);
+    lv_obj_add_style(redOmegaBtn, &styleRed_pr, LV_STATE_PRESSED);
+    lv_obj_set_size(redOmegaBtn, 110, 50);
+    lv_obj_align(redOmegaBtn, LV_ALIGN_BOTTOM_LEFT, 130, -10);
+    lv_obj_add_event_cb(redOmegaBtn, event_ro, LV_EVENT_PRESSED, NULL);
+    lv_obj_add_event_cb(redOmegaBtn, event_ror, LV_EVENT_RELEASED, NULL);
 
     lv_label_set_text(skillsLabel, "Skills\nAuton");
     lv_obj_center(skillsLabel);
@@ -425,10 +501,10 @@ void drawGUI() {
     lv_obj_set_size(cornerSwitch, 100, 50);
     lv_obj_align(cornerSwitch, LV_ALIGN_BOTTOM_LEFT, 130, -10);*/
     
-    //Text To Display Poos Version
+    /*/Text To Display Poos Version
     lv_label_set_text(poosVerLabel, "POOS V3.1");
     lv_obj_add_style(poosVerLabel, &bigText, 0);
-    lv_obj_align(poosVerLabel, LV_ALIGN_BOTTOM_LEFT, 70, -25);
+    lv_obj_align(poosVerLabel, LV_ALIGN_BOTTOM_LEFT, 70, -25);*/
 
     //Create Box To Show Auton Info
     lv_obj_add_style(autonBox, &boxStyle, LV_STATE_DEFAULT);

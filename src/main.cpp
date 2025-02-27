@@ -71,6 +71,11 @@ void autonomous() {
     if (auton == 3) {
         ringRush();
     }
+
+    //Regionals SAWP
+    if (auton == 4) {
+        omegaAuton();
+    }
 }
 
 // Declare the async task globally
