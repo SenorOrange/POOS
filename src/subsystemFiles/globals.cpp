@@ -36,7 +36,7 @@ pros::adi::Encoder vertical_encoder('C', 'D');
 // horizontal tracking wheel
 lemlib::TrackingWheel horizontal_tracking_wheel(&horizontal_encoder, lemlib::Omniwheel::NEW_275, -2);
 // vertical tracking wheel
-lemlib::TrackingWheel vertical_tracking_wheel(&vertical_encoder, lemlib::Omniwheel::NEW_275, -0.25);
+lemlib::TrackingWheel vertical_tracking_wheel(&vertical_encoder, lemlib::Omniwheel::NEW_275, -0.5);
 // drivetrain settings
 lemlib::Drivetrain drivetrain(&leftMotors,
                               &rightMotors, 
