@@ -19,28 +19,28 @@ void omegaAuton() {
     ladyBrownScore();
     pros::delay(500);
     spinIntake();
-    chassis.moveToPose(flip * 48, 42, flip * 180, 1500, {.forwards = false, .minSpeed = 80});
+    chassis.moveToPose(flip * 48, 43, flip * 180, 2500, {.forwards = false, .minSpeed = 60});
     chassis.waitUntilDone();
     ladyBrownLower();
     clamp();
     pros::delay(500);
-    chassis.moveToPose(flip * 26, 62, flip * -90, 1500, {.minSpeed = 80});
-    chassis.moveToPose(flip * 19, 62, flip * -90, 1000, {.minSpeed = 80});
-    chassis.moveToPose(flip * 31, 36, flip * 180, 1000, {.minSpeed = 80});
-    chassis.moveToPose(flip * 100, 24, flip * 90, 2500, {.minSpeed = 80});
+    chassis.moveToPose(flip * 26, 65, flip * -90, 1500, {.minSpeed = 80});
+    chassis.moveToPose(flip * 19, 65, flip * -90, 1000, {.minSpeed = 80});
+    chassis.moveToPose(flip * 31, 24, flip * 180, 1500, {.minSpeed = 80});
+    chassis.moveToPose(flip * 110, 24, flip * 90, 5000, {.minSpeed = 40});
 
     //Second Half
-    chassis.turnToHeading(flip * -90, 500);
-    chassis.moveToPose(flip * 120, 12, flip * -90, 1500, {.forwards = false, .minSpeed = 150});
+    chassis.turnToHeading(flip * -90, 1000);
+    chassis.moveToPose(flip * 120, 24, flip * -90, 2500, {.forwards = false, .minSpeed = 60});
     chassis.waitUntilDone();
     unclamp();
     stopIntake();
-    chassis.moveToPoint(flip * 96, 24, 1500, {.minSpeed = 80});
-    chassis.moveToPose(flip * 96, 42, flip * 180, 1500, {.minSpeed = 80});
+    //chassis.moveToPose(flip * 110, 24, flip * -90, 1500, {.minSpeed = 60});
+    chassis.moveToPose(flip * 100, 50, flip * 180, 2000, {.forwards = false, .minSpeed = 60});
     chassis.waitUntilDone();
     clamp();
     pros::delay(500);
     spinIntake();
-    chassis.moveToPose(flip * 122, 48, flip * 90, 1000, {.minSpeed = 80});
-    chassis.moveToPose(flip * 76, 46, flip * -90, 1500, {.forwards = false});
+    chassis.moveToPose(flip * 130, 48, flip * 90, 2500, {.minSpeed = 60});
+    chassis.moveToPose(flip * 80, 46, flip * 90, 1500, {.forwards = false});
 }
