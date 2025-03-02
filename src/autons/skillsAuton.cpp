@@ -16,36 +16,39 @@ void skills() {
         //Consists of Red Wall Stake, Full Mogo and Corner
         chassis.setBrakeMode(pros::E_MOTOR_BRAKE_BRAKE);
         rotSensor.set_position(2450);
-        chassis.setPose(59, 15, 90);
+        chassis.setPose(57, 16, 90);
         
         //Tune For Speed Later
-        chassis.moveToPose(67, 8,135, 1500, {.maxSpeed = 60});
+        chassis.moveToPose(67, 8, 135, 1500);
         chassis.waitUntilDone();
         ladyBrownScore();
         pros::delay(1000);
         spinIntake();
-        chassis.moveToPose(48, 24, 135, 1000, {.forwards = false});
+        chassis.moveToPose(46, 26, 135, 1000, {.forwards = false});
         chassis.waitUntilDone();
+        pros::delay(500);
+        ladyBrownLower();
         clamp();
         spinIntake();
-        chassis.moveToPose(48, 50, -30,1500);
-        chassis.moveToPose(24, 96, 0, 2000);
-        chassis.moveToPose(12, 120, 0, 2000);
-        pros::delay(500);
-        ladyBrownPrime();
-        chassis.moveToPose(12, 72, -90, 2000);
-        pros::delay(500);
-        ladyBrownIdle();
+        chassis.moveToPose(46, 54, 0, 2000, {.minSpeed = 40});
+        chassis.moveToPose(22, 100, 0, 2500, {.minSpeed = 60});
+        chassis.moveToPose(9, 122, 0, 2000, {.minSpeed = 60});
         chassis.waitUntilDone();
-        ladyBrownScore();
         pros::delay(200);
-        ladyBrownPrime();
-        pros::delay(200);
-        ladyBrownScore();
-        chassis.moveToPose(24, 11, 180, 3500);
-        chassis.moveToPose(11, 24, -45, 1000);
-        chassis.moveToPose(14, 14, 45, 2000, {.forwards = false});
+        chassis.moveToPose(24, 74, 0, 2000, {.forwards = false, .minSpeed = 60});
+        chassis.moveToPose(2, 74, -90, 3000);
+        chassis.waitUntilDone();
+        pros::delay(1000);
+        chassis.moveToPose(22, 9, 180, 3500, {.minSpeed = 60});
+        chassis.moveToPose(2, 28, -45, 3000, {.minSpeed = 60});
+        chassis.moveToPose(10, 14, 45, 2000, {.forwards = false});
         chassis.waitUntilDone();
         unclamp();
+
+        //Second Part
+        chassis.moveToPose(24, 24, 90, 1500);
+        chassis.moveToPose(94, 24, -90, 4000, {.forwards = false});
+
+
 
 }

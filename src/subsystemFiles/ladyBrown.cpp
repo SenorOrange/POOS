@@ -32,6 +32,7 @@ void liftControl() {
     } else if (freeStyle == true) {
         velocity = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
         pros::delay(50);
+        currState = 0;
     }
 
     ladyBrown.move(velocity);

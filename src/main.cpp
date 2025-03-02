@@ -20,12 +20,28 @@
 
 //Competition initialize
 void initialize() {
-    loading();
+    /*loading();
     colorSensor.set_led_pwm(300);
     rotSensor.reset_position();
     ladyBrown.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     drawGUI();
-    chassis.calibrate();
+    chassis.calibrate();*/
+
+    pros::lcd::initialize(); // initialize brain screen
+    chassis.calibrate(); // calibrate sensors
+    rotSensor.reset_position();
+    // print position to brain screen
+    pros::Task screen_task([&]() {
+        while (true) {
+            // print robot location to the brain screen
+            pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
+            pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
+            pros::lcd::print(2, "Theta: %f", chassis.getPose().theta); // heading
+            // delay to save resources
+            pros::delay(20);
+        }
+    });
+
 
     pros::Task liftControlTask([]{
         while (true) {
@@ -54,10 +70,7 @@ void competition_initialize() {
 ASSET(example_txt); // '.' replaced with "_" to make c++ happy
 
 void autonomous() {
-    //omegaAuton();
-    /*chassis.setPose(0,0,0);
-    chassis.moveToPose(0, 20, 0, 5000);*/
-    //Mogo Rush
+    skills();
     if (auton == 1) {
         rush();
     }
