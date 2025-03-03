@@ -25,3 +25,4 @@ void ladyBrownLower();
 void ladyBrownPrime();
 void ladyBrownScore();
 void ladyBrownIdle();
+void ladyBrownWallStakeScore();
