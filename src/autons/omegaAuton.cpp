@@ -19,28 +19,30 @@ void omegaAuton() {
     ladyBrownScore();
     pros::delay(500);
     spinIntake();
-    chassis.moveToPose(flip * 48, 43, flip * 180, 2500, {.forwards = false, .minSpeed = 60});
+    chassis.moveToPose(flip * 48, 46, flip * 180, 2500, {.forwards = false, .minSpeed = 60});
     chassis.waitUntilDone();
     ladyBrownLower();
     clamp();
-    pros::delay(500);
-    chassis.moveToPose(flip * 26, 65, flip * -90, 1500, {.minSpeed = 80});
-    chassis.moveToPose(flip * 19, 65, flip * -90, 1000, {.minSpeed = 80});
-    chassis.moveToPose(flip * 31, 24, flip * 180, 1500, {.minSpeed = 80});
-    chassis.moveToPose(flip * 110, 24, flip * 90, 5000, {.minSpeed = 40});
+    pros::delay(750);
+    chassis.moveToPose(flip * 26, 62, flip * -90, 1500, {.minSpeed = 80});
+    chassis.moveToPose(flip * 16, 62, flip * -90, 1000, {.minSpeed = 80});
+    chassis.moveToPose(flip * 31, 40, flip * 180, 600, {.minSpeed = 80});
+    chassis.moveToPose(flip * 31, 24, flip * 180, 600, {.minSpeed = 80});
+    chassis.turnToHeading(flip * 90, 750);
+    chassis.moveToPose(flip * 110, 24, flip * 90, 2500);
 
     //Second Half
-    chassis.turnToHeading(flip * -90, 1000);
+    chassis.turnToHeading(flip * -90, 750);
     chassis.moveToPose(flip * 120, 24, flip * -90, 2500, {.forwards = false, .minSpeed = 60});
     chassis.waitUntilDone();
     unclamp();
     stopIntake();
     //chassis.moveToPose(flip * 110, 24, flip * -90, 1500, {.minSpeed = 60});
-    chassis.moveToPose(flip * 100, 50, flip * 180, 2000, {.forwards = false, .minSpeed = 60});
+    chassis.moveToPose(flip * 100, 54, flip * 180, 2500, {.forwards = false, .minSpeed = 60});
     chassis.waitUntilDone();
     clamp();
     pros::delay(500);
     spinIntake();
-    chassis.moveToPose(flip * 130, 48, flip * 90, 2500, {.minSpeed = 60});
-    chassis.moveToPose(flip * 80, 46, flip * 90, 1500, {.forwards = false});
+    chassis.moveToPose(flip * 134, 48, flip * 90, 2500, {.minSpeed = 60});
+    chassis.moveToPose(flip * 72, 58, flip * 90, 1500, {.forwards = false});
 }

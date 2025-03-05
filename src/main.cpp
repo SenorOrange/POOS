@@ -70,7 +70,7 @@ void competition_initialize() {
 ASSET(example_txt); // '.' replaced with "_" to make c++ happy
 
 void autonomous() {
-    skills();
+    omegaAuton();
     if (auton == 1) {
         rush();
     }
