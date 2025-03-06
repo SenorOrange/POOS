@@ -32,7 +32,7 @@ void skills() {
         spinIntake();
         chassis.moveToPose(48, 54, 0, 2000, {.minSpeed = 40});
         chassis.moveToPose(24, 100, 0, 2500, {.minSpeed = 60});
-        chassis.moveToPose(12, 122, 0, 2000, {.minSpeed = 60});
+        chassis.moveToPose(12, 125, 0, 2000, {.minSpeed = 60});
 
         //Score Wall Stake Gonna Need Tuning
         //ladyBrownPrime();
@@ -56,8 +56,8 @@ void skills() {
 
         pros::delay(1000);
         //ladyBrownLower();
-        chassis.moveToPose(20, 75, -90, 2000, {.forwards = false});
-        chassis.moveToPose(20, 16, 180, 3500, {.minSpeed = 60});
+        chassis.moveToPose(22, 75, -90, 2000, {.forwards = false});
+        chassis.moveToPose(22, 16, 180, 3500, {.minSpeed = 60});
         chassis.moveToPose(7, 40, -45, 3000, {.minSpeed = 60});
         chassis.moveToPose(12, 24, 45, 2000, {.forwards = false});
         chassis.waitUntilDone();
@@ -65,9 +65,9 @@ void skills() {
         stopIntake();
 
         //Transition Into Second Section
-        chassis.moveToPoint(24, 32, 2000, {.minSpeed = 30});
+        chassis.moveToPoint(24, 30, 2000, {.minSpeed = 30});
         chassis.turnToHeading(-90, 1000);
-        chassis.moveToPose(88, 32, -90, 4000, {.forwards = false, .minSpeed = 40});
+        chassis.moveToPose(88, 30, -90, 4000, {.forwards = false, .minSpeed = 40});
         chassis.waitUntilDone();
         pros::delay(500);
         clamp();
@@ -75,9 +75,9 @@ void skills() {
 
         //Second Section
         //Consists of Full Mogo, Corner and 2 Ring Wall Stake
-        chassis.moveToPose(90, 58, 0, 2000, {.minSpeed = 40});
-        chassis.moveToPose(114, 102, 0, 2500, {.minSpeed = 60});
-        chassis.moveToPose(126, 128, 0, 2000, {.minSpeed = 60});
+        chassis.moveToPose(90, 56, 0, 2000, {.minSpeed = 40});
+        chassis.moveToPose(114, 100, 0, 2500, {.minSpeed = 60});
+        chassis.moveToPose(126, 125, 0, 2000, {.minSpeed = 60});
                 
         //Score Wall Stake Gonna Need Tuning
         //ladyBrownPrime();
