@@ -19,7 +19,7 @@ void skills() {
         chassis.setPose(57, 16, 90);
         
         //Tune For Speed Later
-        chassis.moveToPose(67, 8, 135, 1500);
+        chassis.moveToPose(65, 9, 135, 1000);
         chassis.waitUntilDone();
         ladyBrownScore();
         pros::delay(1000);
@@ -30,17 +30,17 @@ void skills() {
         ladyBrownLower();
         clamp();
         spinIntake();
-        chassis.moveToPose(46, 54, 0, 2000, {.minSpeed = 40});
-        chassis.moveToPose(22, 100, 0, 2500, {.minSpeed = 60});
-        chassis.moveToPose(9, 122, 0, 2000, {.minSpeed = 60});
+        chassis.moveToPose(48, 54, 0, 2000, {.minSpeed = 40});
+        chassis.moveToPose(24, 100, 0, 2500, {.minSpeed = 60});
+        chassis.moveToPose(12, 122, 0, 2000, {.minSpeed = 60});
 
         //Score Wall Stake Gonna Need Tuning
         //ladyBrownPrime();
 
         chassis.waitUntilDone();
         pros::delay(200);
-        chassis.moveToPose(24, 74, 0, 2000, {.forwards = false, .minSpeed = 60});
-        chassis.moveToPose(2, 74, -90, 3000);
+        chassis.moveToPose(22, 75, 0, 2000, {.forwards = false, .minSpeed = 60});
+        chassis.moveToPose(7, 75, -90, 3000);
         chassis.waitUntilDone();
 
         //Score Wall Stake Gonna Need Tuning
@@ -56,17 +56,18 @@ void skills() {
 
         pros::delay(1000);
         //ladyBrownLower();
-        chassis.moveToPose(24, 74, -90, 2000, {.forwards = false, .minSpeed = 60});
-        chassis.moveToPose(24, 9, 180, 3500, {.minSpeed = 60});
-        chassis.moveToPose(2, 28, -45, 3000, {.minSpeed = 60});
-        chassis.moveToPose(10, 14, 45, 2000, {.forwards = false});
+        chassis.moveToPose(20, 75, -90, 2000, {.forwards = false});
+        chassis.moveToPose(20, 16, 180, 3500, {.minSpeed = 60});
+        chassis.moveToPose(7, 40, -45, 3000, {.minSpeed = 60});
+        chassis.moveToPose(12, 24, 45, 2000, {.forwards = false});
         chassis.waitUntilDone();
         unclamp();
         stopIntake();
 
         //Transition Into Second Section
-        chassis.moveToPoint(24, 24, 2000, {.minSpeed = 60});
-        chassis.moveToPose(96, 24, -90, 4000, {.forwards = false, .minSpeed = 40});
+        chassis.moveToPoint(24, 32, 2000, {.minSpeed = 30});
+        chassis.turnToHeading(-90, 1000);
+        chassis.moveToPose(88, 32, -90, 4000, {.forwards = false, .minSpeed = 40});
         chassis.waitUntilDone();
         pros::delay(500);
         clamp();
@@ -74,17 +75,17 @@ void skills() {
 
         //Second Section
         //Consists of Full Mogo, Corner and 2 Ring Wall Stake
-        chassis.moveToPose(96, 54, 0, 2000, {.minSpeed = 40});
-        chassis.moveToPose(120, 100, 0, 2500, {.minSpeed = 60});
-        chassis.moveToPose(135, 122, 0, 2000, {.minSpeed = 60});
+        chassis.moveToPose(90, 58, 0, 2000, {.minSpeed = 40});
+        chassis.moveToPose(114, 102, 0, 2500, {.minSpeed = 60});
+        chassis.moveToPose(126, 128, 0, 2000, {.minSpeed = 60});
                 
         //Score Wall Stake Gonna Need Tuning
         //ladyBrownPrime();
 
         chassis.waitUntilDone();
         pros::delay(200);
-        chassis.moveToPose(120, 74, 0, 2000, {.forwards = false, .minSpeed = 60});
-        chassis.moveToPose(142, 74, 90, 3000);
+        chassis.moveToPose(104, 75, 0, 2000, {.forwards = false, .minSpeed = 60});
+        chassis.moveToPose(124, 75, 90, 3000);
         chassis.waitUntilDone();
 
         //Score Wall Stake Gonna Need Tuning
@@ -100,10 +101,10 @@ void skills() {
 
         pros::delay(1000);
         //ladyBrownLower();
-        chassis.moveToPose(120, 74, 90, 2000, {.forwards = false, .minSpeed = 60});
-        chassis.moveToPose(120, 9, 180, 3500, {.minSpeed = 60});
-        chassis.moveToPose(142, 28, 45, 3000, {.minSpeed = 60});
-        chassis.moveToPose(134, 14, -45, 2000, {.forwards = false});
+        chassis.moveToPose(108, 77, 90, 2000, {.forwards = false, .minSpeed = 60});
+        chassis.moveToPose(108, 17, 180, 3500, {.minSpeed = 60});
+        chassis.moveToPose(128, 40, 45, 3000, {.minSpeed = 60});
+        chassis.moveToPose(128, 24, -45, 2000, {.forwards = false});
         chassis.waitUntilDone();
         unclamp();
 
