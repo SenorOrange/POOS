@@ -20,14 +20,14 @@
 
 //Competition initialize
 void initialize() {
-    /*loading();
+    loading();
     colorSensor.set_led_pwm(300);
     rotSensor.reset_position();
     ladyBrown.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     drawGUI();
-    chassis.calibrate();*/
+    chassis.calibrate();
 
-    pros::lcd::initialize(); // initialize brain screen
+    /*pros::lcd::initialize(); // initialize brain screen
     chassis.calibrate(); // calibrate sensors
     rotSensor.reset_position();
     // print position to brain screen
@@ -40,7 +40,7 @@ void initialize() {
             // delay to save resources
             pros::delay(20);
         }
-    });
+    });*/
 
 
     pros::Task liftControlTask([]{
@@ -70,7 +70,7 @@ void competition_initialize() {
 ASSET(example_txt); // '.' replaced with "_" to make c++ happy
 
 void autonomous() {
-    skills();
+    //omegaAuton();
     if (auton == 1) {
         rush();
     }

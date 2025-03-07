@@ -19,21 +19,25 @@ void omegaAuton() {
     ladyBrownScore();
     pros::delay(500);
     spinIntake();
-    chassis.moveToPose(flip * 48, 46, flip * 180, 2500, {.forwards = false, .minSpeed = 60});
+    chassis.moveToPose(flip * 48, 47, flip * 180, 2500, {.forwards = false, .minSpeed = 60});
     chassis.waitUntilDone();
     ladyBrownLower();
     clamp();
     pros::delay(750);
     chassis.moveToPose(flip * 26, 62, flip * -90, 1500, {.minSpeed = 80});
-    chassis.moveToPose(flip * 16, 62, flip * -90, 1000, {.minSpeed = 80});
-    chassis.moveToPose(flip * 31, 40, flip * 180, 600, {.minSpeed = 80});
-    chassis.moveToPose(flip * 31, 24, flip * 180, 600, {.minSpeed = 80});
+    chassis.moveToPose(flip * 14, 62, flip * -90, 1000, {.minSpeed = 80});
+    chassis.moveToPose(flip * 31, 36, flip * 180, 600, {.minSpeed = 80});
+    chassis.moveToPose(flip * 31, 24, flip * 180, 1000, {.minSpeed = 80});
     chassis.turnToHeading(flip * 90, 750);
-    chassis.moveToPose(flip * 110, 24, flip * 90, 2500);
+    chassis.moveToPose(flip * 116, 24, flip * 90, 2500);
+
 
     //Second Half
     chassis.turnToHeading(flip * -90, 750);
-    chassis.moveToPose(flip * 120, 24, flip * -90, 2500, {.forwards = false, .minSpeed = 60});
+    chassis.waitUntilDone();
+    pros::delay(500);
+    unclamp();
+    chassis.moveToPose(flip * 120, 24, flip * -90, 2500, {.forwards = false, .minSpeed = 70});
     chassis.waitUntilDone();
     unclamp();
     stopIntake();
@@ -43,6 +47,8 @@ void omegaAuton() {
     clamp();
     pros::delay(500);
     spinIntake();
-    chassis.moveToPose(flip * 134, 48, flip * 90, 2500, {.minSpeed = 60});
-    chassis.moveToPose(flip * 72, 58, flip * 90, 1500, {.forwards = false});
+    chassis.moveToPose(flip * 134, 48, flip * 90, 3000, {.minSpeed = 60});
+    chassis.waitUntilDone();
+    stopIntake();
+    chassis.moveToPose(flip * 90, 51, flip * 90, 1500, {.forwards = false, .minSpeed = 100});
 }
