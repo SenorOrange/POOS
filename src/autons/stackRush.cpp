@@ -13,26 +13,31 @@
 void ringRush() {
     chassis.setBrakeMode(pros::E_MOTOR_BRAKE_BRAKE);
     rotSensor.set_position(2450);
-    chassis.setPose(flip * 59, 15, flip * 90);
-    chassis.moveToPose(flip * 67, 8, flip * 135, 1500, {.maxSpeed = 60});
+    chassis.setPose(flip * 59, 16, flip * 90);
+
+    //First Half
+    chassis.moveToPose(flip * 67, 8, flip * 135, 1200, {.minSpeed = 80});
     chassis.waitUntilDone();
     ladyBrownScore();
-    pros::delay(1000);
+    pros::delay(500);
     spinIntake();
-    chassis.moveToPoint(flip * 48, 42, 3000, {.forwards = false, .maxSpeed = 60});
+    chassis.moveToPose(flip * 48, 47, flip * 180, 2500, {.forwards = false, .minSpeed = 60});
     chassis.waitUntilDone();
     ladyBrownLower();
     clamp();
-    chassis.moveToPose(flip * 29, 66, flip * -10, 2000, {.maxSpeed = 60});
-    chassis.moveToPose(flip * 25, 36, flip * 180, 3000, {.maxSpeed = 60});
+    pros::delay(750);
+    chassis.moveToPose(flip * 26, 62, flip * -90, 1500, {.minSpeed = 80});
+    chassis.moveToPose(flip * 14, 62, flip * -90, 1000, {.minSpeed = 80});
+    chassis.moveToPose(flip * 31, 36, flip * 180, 600, {.minSpeed = 80});
+    chassis.moveToPose(flip * 31, 24, flip * 180, 1000, {.minSpeed = 80});
     
     //Quals Bit
-    //chassis.moveToPose(flip * 68, 46, flip * 90, 5000, {.maxSpeed = 60});
+    chassis.moveToPose(flip * 68, 46, flip * 90, 5000, {.maxSpeed = 60});
 
     //Elims Bit
-    chassis.moveToPose(flip * 110, 18, flip * 90, 5000);
-    pros::delay(1000);
-    stopIntake();
+    /*chassis.turnToHeading(flip * 90, 750);
+    chassis.moveToPose(flip * 116, 24, flip * 90, 2500);
+    chassis.turnToHeading(flip * -90, 750);*/
 
     /*chassis.waitUntilDone();
     clamp();

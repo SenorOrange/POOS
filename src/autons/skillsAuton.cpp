@@ -132,16 +132,16 @@ void skills() {
         chassis.moveToPoint(66, 115, 500, {.forwards = false, .minSpeed = 60});
         ladyBrownLower();
         spinIntake();
-        chassis.moveToPose(48, 96, -90, 1000, {.minSpeed = 100});
+        chassis.moveToPose(48, 96, -90, 2000, {.minSpeed = 100});
         chassis.turnToHeading(-45, 500);
-        chassis.moveToPose(24, 134, 0, 1500, {.minSpeed = 100});
+        chassis.moveToPose(24, 130, 0, 1500, {.minSpeed = 100});
 
         //Place For Maybe Adding Top Blue Ring?
 
-        /*chassis.turnToHeading(135, 1000);
-        chassis.moveToPose(96, 96, 90, 1000, {.minSpeed = 100});
+        chassis.turnToHeading(135, 1000);
+        chassis.moveToPose(96, 96, 90, 150, {.minSpeed = 100});
         chassis.turnToHeading(45, 500);
-        chassis.moveToPose(120, 134, 0, 1500, {.minSpeed = 100});
+        chassis.moveToPose(120, 130, 0, 1500, {.minSpeed = 100});
         chassis.turnToHeading(-90, 2000);
         chassis.moveToPose(130, 130, -90, 500, {.forwards = false, .minSpeed = 60});
         chassis.waitUntilDone();
@@ -150,11 +150,11 @@ void skills() {
 
         //Place For Maybe Adding Top Blue Ring?
 
-        chassis.moveToPose(96, 96, -90, 1500, {.minSpeed = 100});
+        chassis.moveToPose(96, 110, -90, 1500, {.minSpeed = 100});
         chassis.moveToPose(72, 130, -90, 1000, {.minSpeed = 100});
         chassis.moveToPose(10, 130, -90, 1000, {.minSpeed = 100});
         chassis.moveToPose(48, 96, -45, 1000, {.forwards = false, .minSpeed = 100});
         ladyBrownScore();
-        chassis.moveToPose(58, 58, -45, 1000, {.forwards = false, .minSpeed = 100});*/
+        chassis.moveToPoint(58, 58, 1000, {.forwards = false, .minSpeed = 100});
 
 }
