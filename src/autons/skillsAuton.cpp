@@ -16,54 +16,48 @@ void skills() {
         //Consists of Red Wall Stake, Full Mogo, Corner and 2 Ring Wall Stake
         chassis.setBrakeMode(pros::E_MOTOR_BRAKE_BRAKE);
         rotSensor.set_position(2450);
-        chassis.setPose(57, 16, 90);
+        chassis.setPose(66, 16, 180);
         
         //Tune For Speed Later
-        chassis.moveToPose(65, 9, 135, 1000);
-        chassis.waitUntilDone();
+
         ladyBrownScore();
-        pros::delay(1000);
+        pros::delay(800);
+        chassis.moveToPoint(66, 20, 500, {.forwards = false});
+        chassis.turnToHeading(90, 500);
         spinIntake();
-        chassis.moveToPose(46, 26, 135, 1000, {.forwards = false});
-        chassis.waitUntilDone();
-        pros::delay(500);
-        ladyBrownLower();
-        clamp();
-        spinIntake();
-        chassis.moveToPose(48, 54, 0, 2000, {.minSpeed = 40});
-        chassis.moveToPose(24, 100, 0, 2500, {.minSpeed = 60});
-        chassis.moveToPose(12, 125, 0, 2000, {.minSpeed = 60});
-
-        //Score Wall Stake Gonna Need Tuning
-        ladyBrownPrime();
-
+        chassis.moveToPose(43, 24, 90, 1200, {.forwards = false});
         chassis.waitUntilDone();
         pros::delay(200);
-        chassis.moveToPose(29, 75, 0, 2000, {.forwards = false, .minSpeed = 60});
-        chassis.moveToPose(7, 75, -90, 3000);
+        ladyBrownLower();
+        clamp();
+        pros::delay(200);
+        chassis.turnToHeading(0, 1000);
+        spinIntake();
+        chassis.moveToPose(48, 54, 0, 2000, {.minSpeed = 100});
+        chassis.moveToPose(24, 104, 0, 2500, {.minSpeed = 80});
+
+        //Score Wall Stake Gonna Need Tuning
+        pros::delay(900);
+        ladyBrownPrime();
+
+        chassis.moveToPose(29, 75, 0, 2000, {.forwards = false, .minSpeed = 50});
+        chassis.turnToHeading(-90, 1000);
+        chassis.moveToPose(9, 75, -90, 2500, {.minSpeed = 69});
         chassis.waitUntilDone();
 
         //Score Wall Stake Gonna Need Tuning
-        stopIntake();
-        pros::delay(150);
         ladyBrownWallStakeScore();
-        pros::delay(600);
-        ladyBrownPrime();
-        spinIntake();
-        pros::delay(600);
-        stopIntake();
-        ladyBrownWallStakeScore();
+        pros::delay(500);
 
-        pros::delay(1000);
-        ladyBrownLower();
         spinIntake();
-        chassis.moveToPose(23, 75, -90, 2000, {.forwards = false});
-        chassis.moveToPose(23, 12, 180, 3500, {.minSpeed = 60});
+        chassis.moveToPose(21, 75, -90, 2000, {.forwards = false, .minSpeed = 40});
+        ladyBrownLower();
+        chassis.moveToPose(21, 10, 180, 2000, {.minSpeed = 40});
         chassis.waitUntilDone();
         pros::delay(500);
         chassis.turnToHeading(-45, 1000);
-        chassis.moveToPoint(15, 25, 2000);
-        chassis.moveToPose(17, 18, 45, 2000, {.forwards = false});
+        chassis.moveToPoint(10, 32, 1500);
+        chassis.moveToPose(14, 18, 45, 2000, {.forwards = false});
         chassis.waitUntilDone();
         unclamp();
         stopIntake();
@@ -71,25 +65,26 @@ void skills() {
         //Transition Into Second Section
         chassis.moveToPoint(24, 26, 2000, {.minSpeed = 30});
         chassis.turnToHeading(-90, 1000);
-        chassis.moveToPose(96, 26, -90, 4000, {.forwards = false, .minSpeed = 40});
+        chassis.moveToPose(98, 26, -90, 4000, {.forwards = false, .minSpeed = 60});
         chassis.waitUntilDone();
         pros::delay(500);
         clamp();
+        pros::delay(800);
         spinIntake();
 
         //Second Section
         //Consists of Full Mogo, Corner and 2 Ring Wall Stake
-        chassis.moveToPose(94, 56, 0, 2000, {.minSpeed = 40});
-        chassis.moveToPose(118, 100, 0, 2500, {.minSpeed = 60});
-        chassis.moveToPose(130, 124, 0, 2000, {.minSpeed = 60});
+        chassis.moveToPose(90, 56, 0, 2000, {.minSpeed = 100});
+        chassis.moveToPose(114, 100, 0, 2500, {.minSpeed = 100});
+        chassis.moveToPose(126, 124, 0, 2000, {.minSpeed = 100});
                 
         //Score Wall Stake Gonna Need Tuning
         ladyBrownPrime();
 
         chassis.waitUntilDone();
         pros::delay(200);
-        chassis.moveToPose(115, 73, 0, 2000, {.forwards = false, .minSpeed = 60});
-        chassis.moveToPose(133, 73, 90, 3000);
+        chassis.moveToPose(115, 73, 0, 2000, {.forwards = false, .minSpeed = 80});
+        chassis.moveToPose(128, 73, 90, 3000);
         chassis.waitUntilDone();
 
         //Score Wall Stake Gonna Need Tuning
@@ -106,12 +101,12 @@ void skills() {
         pros::delay(1000);
         ladyBrownLower();
         spinIntake();
-        chassis.moveToPose(118, 71, 90, 2000, {.forwards = false, .minSpeed = 60});
-        chassis.moveToPose(118, 14, 180, 3500, {.minSpeed = 60});
+        chassis.moveToPose(112, 71, 90, 2000, {.forwards = false, .minSpeed = 60});
+        chassis.moveToPose(112, 8, 180, 3500, {.minSpeed = 80});
         chassis.waitUntilDone();
         pros::delay(500);
         chassis.turnToHeading(45, 1000);
-        chassis.moveToPose(132, 24, 0, 3000, {.minSpeed = 60});
+        chassis.moveToPoint(126, 32, 3000, {.minSpeed = 60});
         chassis.moveToPose(130, 14, -45, 2000, {.forwards = false});
         chassis.waitUntilDone();
         unclamp();

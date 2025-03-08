@@ -89,5 +89,5 @@ void ladyBrownIdle() {
 void ladyBrownWallStakeScore() {
     freeStyle = false;
     currState = 2;
-    target = 17000;
+    target = 20000;
 }
