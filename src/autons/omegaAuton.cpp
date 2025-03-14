@@ -19,12 +19,12 @@ void omegaAuton() {
     ladyBrownScore();
     pros::delay(500);
     spinIntake();
-    chassis.moveToPose(flip * 48, 47, flip * 180, 2500, {.forwards = false, .minSpeed = 60});
+    chassis.moveToPose(flip * 48, 48, flip * 180, 2500, {.forwards = false, .minSpeed = 60});
     chassis.waitUntilDone();
     ladyBrownLower();
     clamp();
-    pros::delay(750);
-    chassis.moveToPose(flip * 26, 62, flip * -90, 1500, {.minSpeed = 80});
+    pros::delay(1000);
+    chassis.moveToPose(flip * 26, 60, flip * -90, 1500, {.minSpeed = 80});
     chassis.moveToPose(flip * 14, 62, flip * -90, 1000, {.minSpeed = 80});
     chassis.moveToPose(flip * 31, 36, flip * 180, 600, {.minSpeed = 80});
     chassis.moveToPose(flip * 31, 24, flip * 180, 1000, {.minSpeed = 80});
@@ -47,8 +47,8 @@ void omegaAuton() {
     clamp();
     pros::delay(500);
     spinIntake();
-    chassis.moveToPose(flip * 134, 48, flip * 90, 3000, {.minSpeed = 60});
+    chassis.moveToPose(flip * 134, 48, flip * 90, 2000, {.minSpeed = 80});
     chassis.waitUntilDone();
-    stopIntake();
+    ladyBrownIdle();
     chassis.moveToPose(flip * 90, 51, flip * 90, 1500, {.forwards = false, .minSpeed = 100});
 }

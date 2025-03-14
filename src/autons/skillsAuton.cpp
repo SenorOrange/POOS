@@ -16,7 +16,7 @@ void skills() {
         //Consists of Red Wall Stake, Full Mogo, Corner and 2 Ring Wall Stake
         chassis.setBrakeMode(pros::E_MOTOR_BRAKE_BRAKE);
         rotSensor.set_position(2450);
-        chassis.setPose(66, 16, 180);
+        chassis.setPose(68, 16, 180);
         
         //Tune For Speed Later
 
@@ -38,9 +38,9 @@ void skills() {
 
         //Score Wall Stake Gonna Need Tuning
         pros::delay(900);
-        ladyBrownPrime();
+        //ladyBrownPrime();
 
-        chassis.moveToPose(29, 75, 0, 2000, {.forwards = false, .minSpeed = 50});
+        /*chassis.moveToPose(29, 75, 0, 2000, {.forwards = false, .minSpeed = 50});
         chassis.turnToHeading(-90, 1000);
         chassis.moveToPose(9, 75, -90, 3000, {.minSpeed = 60});
         chassis.waitUntilDone();
@@ -48,8 +48,8 @@ void skills() {
         pros::delay(200);
 
         //Score Wall Stake Gonna Need Tuning
-        ladyBrownWallStakeScore();
-        pros::delay(500);
+        //ladyBrownWallStakeScore();
+        pros::delay(500);*/
 
         spinIntake();
         chassis.moveToPose(24, 75, -90, 2000, {.forwards = false, .minSpeed = 40});
@@ -81,9 +81,9 @@ void skills() {
                 
         //Score Wall Stake Gonna Need Tuning
         pros::delay(900);
-        ladyBrownPrime();
+        //ladyBrownPrime();
 
-        chassis.waitUntilDone();
+        /*chassis.waitUntilDone();
         pros::delay(200);
         chassis.moveToPose(115, 70, 0, 2000, {.forwards = false, .minSpeed = 80});
         chassis.turnToHeading(90, 1000);
@@ -93,10 +93,9 @@ void skills() {
         pros::delay(200);
 
         //Score Wall Stake Gonna Need Tuning
-        ladyBrownWallStakeScore();
-        pros::delay(500);
+        //ladyBrownWallStakeScore();
+        pros::delay(500);*/
 
-        ladyBrownLower();
         spinIntake();
         chassis.moveToPose(116, 70, 90, 2000, {.forwards = false, .minSpeed = 40});
         chassis.moveToPose(116, 4, 180, 2500, {.minSpeed = 40});
@@ -119,7 +118,7 @@ void skills() {
 
         //Third Section
         //Consists of Blue Wall Stake, Full Mogo and 2 Corners
-        chassis.moveToPose(66, 110, -135, 1500, {.forwards = false, .minSpeed = 70});
+        chassis.moveToPose(66, 110, -135, 1500, {.forwards = false, .minSpeed = 50});
         chassis.waitUntilDone();
         stopIntake();
         clamp();
